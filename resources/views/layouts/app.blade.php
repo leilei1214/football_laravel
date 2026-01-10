@@ -64,13 +64,14 @@
     <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+
+    <script src="{{ asset('js/script.js') }}"></script>
+    <script src="{{ asset('js/core.min.js') }}"></script>
     <script src="{{ asset('js/rd-navbar.min.js') }}"></script>
     <!-- <script src="{{ asset('js/bootstrap.js') }}"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 
-    <script src="{{ asset('js/script.js') }}"></script>
-    <script src="{{ asset('js/core.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
     <script src="{{ asset('js/my-component.js') }}" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
