@@ -1,2 +1,10 @@
-<h1>Laravel 教學成功 🎉</h1>
-<p>這是我的第一個頁面</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+</head>
+<body>
+    <h1>Welcome to Home Page!</h1>
+</body>
+</html>
