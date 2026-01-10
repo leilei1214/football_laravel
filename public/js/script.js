@@ -1933,11 +1933,3 @@ function event_content_href(id){
 	window.location.href = `./event_content?list_id=${id}`
 }
 
-$(function () {
-  if ($.fn.RDNavbar) {
-    $('.rd-navbar').RDNavbar({
-      stickUp: true,
-      stickUpClone: false
-    });
-  }
-});

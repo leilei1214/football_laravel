@@ -67,6 +67,7 @@
    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
    <script src="{{ asset('js/my-component.js') }}" defer></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/responsive-nav@1.0.39/dist/responsive-nav.min.js"></script>
 
     
 </body>
