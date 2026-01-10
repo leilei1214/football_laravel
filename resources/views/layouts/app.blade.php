@@ -12,7 +12,12 @@
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Kanit:300,400,500,500i,600,900%7CRoboto:400,900">
 
         <!-- CSS -->
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/fonts.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
     <style>
         .ie-panel { display: none; background: #212121; padding: 10px 0; box-shadow: 3px 3px 5px rgba(0,0,0,.3); clear: both; text-align:center; position: relative; z-index: 1; }
         html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel { display: block; }
@@ -44,18 +49,24 @@
     @stack('styles')
 </head>
 <body>
+    1111
     
     <!-- Navbar Header -->
     @include('partials.header') <!-- 我們可以把你這段 Header 拆成 partial -->
+    @include('partials.Swiper') <!-- 我們可以把你這段 Header 拆成 partial -->
 
     <main>
         @yield('content')
     </main>
 
     <!-- JS -->
-    <script src="{{ asset('js/jquery.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.js') }}"></script>
-    <script src="{{ asset('js/script.js') }}"></script>
+   <script src="{{ asset('js/script.js') }}"></script>
+   <script src="{{ asset('js/core.min.js') }}"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
+   <script src="{{ asset('js/my-component.js') }}" defer></script>
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
     
 </body>
 </html>
