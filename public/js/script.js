@@ -1933,3 +1933,11 @@ function event_content_href(id){
 	window.location.href = `./event_content?list_id=${id}`
 }
 
+$(document).ready(function() {
+    // 确保 rdNavbar 插件已加载并可使用
+    if (typeof plugins.rdNavbar !== 'undefined' && typeof plugins.rdNavbar.RDNavbar === 'function') {
+        plugins.rdNavbar.RDNavbar();
+    } else {
+        console.error('rdNavbar 插件没有正确加载');
+    }
+});
