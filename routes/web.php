@@ -8,3 +8,5 @@ Route::get('/', function () {
 Route::get('/hello', function () {
     return 'Hello Laravel 👋';
 });
+Route::get('/', [PageController::class, 'home']);
+
