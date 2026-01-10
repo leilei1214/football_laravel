@@ -73,7 +73,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
     <script src="{{ asset('js/my-component.js') }}" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-
     
+    <script>
+        $(window).on('load', function() {
+            // 确保 rdNavbar 插件已加载并可使用
+            if (typeof plugins.rdNavbar !== 'undefined' && typeof plugins.rdNavbar.RDNavbar === 'function') {
+                plugins.rdNavbar.RDNavbar();
+            } else {
+                console.error('rdNavbar 插件没有正确加载');
+            }
+        });
+    </script>
 </body>
 </html>
