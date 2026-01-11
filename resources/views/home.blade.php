@@ -954,7 +954,7 @@ Sevens head coach</a></h3>
             <form class="rd-mailform rd-form rd-inline-form-creative" data-form-output="form-output-global" data-form-type="subscribe" method="post" action="bat/rd-mailform.php">
               <div class="form-wrap">
                 <div class="form-input-wrap">
-                  <input class="form-input" id="footer-form-email" type="email" name="email" data-constraints="@Required">
+                  <input class="form-input" id="footer-form-email" type="email" name="email" data-constraints="@@Required">
                   <label class="form-label" for="footer-form-email">Enter your E-mail</label>
                 </div>
               </div>
