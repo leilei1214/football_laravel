@@ -78,11 +78,11 @@
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script>
-    $(document).ready(function() {
-        if (plugins.rdNavbar.length) {
-        plugins.rdNavbar.RDNavbar(); // 初始化 RDNavbar
-        }
-    });
+
+        $(document).ready(function () {
+            o.RDNavbar({}); // Additional options
+        });
+
     </script>
 </body>
 </html>
