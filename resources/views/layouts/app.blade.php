@@ -65,7 +65,8 @@
     <script src="{{ asset('js/script.js') }}"></script>
     <script src="{{ asset('js/core.min.js') }}"></script>
     <script src="{{ asset('js/rd-navbar.min.js') }}"></script>
-    <script src="{{ asset('js/scc-c2.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/regula.js"></script>
+
     <!-- <script src="{{ asset('js/bootstrap.js') }}"></script> -->
 
 
