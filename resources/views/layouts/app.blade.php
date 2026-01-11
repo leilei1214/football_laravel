@@ -85,7 +85,6 @@
     <script src="{{ asset('js/my-component.js') }}" defer></script> -->
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <script>
         const swiper = new Swiper(".swiper-container", {
@@ -114,7 +113,11 @@
             caption.classList.add('animated');
             });
         });
-        $('.owl-carousel-inline').owlCarousel({
+        $(document).ready(function(){
+
+        const $carousel = $('.owl-carousel-inline');
+
+        $carousel.owlCarousel({
             items: 1,
             loop: true,
             margin: 10,
@@ -122,12 +125,20 @@
             dots: false,
             autoplay: true,
             autoplayTimeout: 3200,
+            autoplayHoverPause: true,
             mouseDrag: false,
             touchDrag: false,
             navText: [
-                '<button class="owl-arrow owl-arrow-prev"></button>',
-                '<button class="owl-arrow owl-arrow-next"></button>'
+            '<button class="owl-arrow owl-arrow-prev"></button>',
+            '<button class="owl-arrow owl-arrow-next"></button>'
             ]
+        });
+
+        // 如果想用自定義外部箭頭控制
+        const $nav = $('.owl-carousel-navbar .owl-arrow');
+        $nav.eq(0).click(function(){ $carousel.trigger('prev.owl.carousel'); });
+        $nav.eq(1).click(function(){ $carousel.trigger('next.owl.carousel'); });
+
         });
 
     </script>
