@@ -113,36 +113,38 @@
             caption.classList.add('animated');
             });
         });
-        $(document).ready(function(){
 
-        const $carousel = $('.owl-carousel-inline');
-
-        $carousel.owlCarousel({
-            items: 1,
-            loop: true,
-            margin: 10,
-            nav: true,
-            dots: false,
-            autoplay: true,
-            autoplayTimeout: 3200,
-            autoplayHoverPause: true,
-            mouseDrag: false,
-            touchDrag: false,
-            navText: [
-            '<button class="owl-arrow owl-arrow-prev"></button>',
-            '<button class="owl-arrow owl-arrow-next"></button>'
-            ]
-        });
-
-        // 如果想用自定義外部箭頭控制
-        const $nav = $('.owl-carousel-navbar .owl-arrow');
-        $nav.eq(0).click(function(){ $carousel.trigger('prev.owl.carousel'); });
-        $nav.eq(1).click(function(){ $carousel.trigger('next.owl.carousel'); });
-
-        });
 
     </script>
+    <script>
+        $(document).ready(function(){
 
+            const $carousel = $('.owl-carousel-inline');
+
+            $carousel.owlCarousel({
+                items: 1,
+                loop: true,
+                margin: 10,
+                nav: true,
+                dots: false,
+                autoplay: true,
+                autoplayTimeout: 3200,
+                autoplayHoverPause: true,
+                mouseDrag: false,
+                touchDrag: false,
+                navText: [
+                '<button class="owl-arrow owl-arrow-prev"></button>',
+                '<button class="owl-arrow owl-arrow-next"></button>'
+                ]
+            });
+
+            // 如果想用自定義外部箭頭控制
+            const $nav = $('.owl-carousel-navbar .owl-arrow');
+            $nav.eq(0).click(function(){ $carousel.trigger('prev.owl.carousel'); });
+            $nav.eq(1).click(function(){ $carousel.trigger('next.owl.carousel'); });
+
+        });
+    </script>
     
 </body>
 </html>
