@@ -19,7 +19,7 @@
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"/>
     <style>
         .ie-panel { display: none; background: #212121; padding: 10px 0; box-shadow: 3px 3px 5px rgba(0,0,0,.3); clear: both; text-align:center; position: relative; z-index: 1; }
         html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel { display: block; }
@@ -85,8 +85,8 @@
     <script src="{{ asset('js/my-component.js') }}" defer></script> -->
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-
     <script>
         const swiper = new Swiper(".swiper-container", {
             loop: true,                  // 循環滑動
