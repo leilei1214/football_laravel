@@ -4,7 +4,19 @@
 	/**
 	 * Global variables
 	 */
-	var userAgent = navigator.userAgent.toLowerCase(),
+	let
+		userAgent = navigator.userAgent.toLowerCase(),
+		isIE = userAgent.indexOf("msie") !== -1 ? parseInt(userAgent.split("msie")[1], 10) : userAgent.indexOf("trident") !== -1 ? 11 : userAgent.indexOf("edge") !== -1 ? 12 : false;
+
+	// Unsupported browsers
+	if (isIE !== false && isIE < 12) {
+		console.warn("[Core] detected IE" + isIE + ", load alert");
+		var script = document.createElement("script");
+		script.src = "./js/support.js";
+		document.querySelector("head").appendChild(script);
+	}
+
+	let
 			initialDate = new Date(),
 
 			$document = $(document),
@@ -14,17 +26,15 @@
 
 			isDesktop = $html.hasClass("desktop"),
 			isRtl = $html.attr("dir") === "rtl",
-			isIE = userAgent.indexOf("msie") !== -1 ? parseInt(userAgent.split("msie")[1], 10) : userAgent.indexOf("trident") !== -1 ? 11 : userAgent.indexOf("edge") !== -1 ? 12 : false,
 			isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),
 
 			windowReady = false,
 			isNoviBuilder = false,
-			preloaderAnimateionDuration = 300,
 			loaderTimeoutId,
 
 			plugins = {
 				preloader:               $(".preloader"),
-				bootstrapTooltip:        $("[data-toggle='tooltip']"),
+				bootstrapTooltip:        $("[data-bs-toggle='tooltip']"),
 				bootstrapModalDialog:    $('.modal'),
 				bootstrapTabs:           $(".tabs-custom"),
 				bootstrapCollapse:       $(".card-custom"),
@@ -40,7 +50,7 @@
 				search:                  $(".rd-search"),
 				searchResults:           $('.rd-search-results'),
 				statefulButton:          $('.btn-stateful'),
-				popover:                 $('[data-toggle="popover"]'),
+				popover:                 $('[data-bs-toggle="popover"]'),
 				viewAnimate:             $('.view-animate'),
 				radio:                   $("input[type='radio']"),
 				checkbox:                $("input[type='checkbox']"),
@@ -66,6 +76,7 @@
 				countdown:               document.querySelectorAll('.countdown'),
 				doughnutChart:           document.querySelectorAll('.doughnut-chart'),
 				lazyIFrame:              $('iframe[data-src]'),
+				themeSwitcher:           $("[data-theme-name]")
 			};
 
 	/**
@@ -164,17 +175,20 @@
 			for (let i = 0; i < plugins.progressLinear.length; i++) {
 				let
 						container = plugins.progressLinear[i],
+						bar = container.querySelector('.progress-bar-linear'),
+						duration = container.getAttribute('data-duration') || 1000,
 						counter = aCounter({
 							node:     container.querySelector('.progress-value'),
-							duration: container.getAttribute('progress-value') || 1000,
+							duration: duration,
 							onStart:  function () {
 								this.custom.bar.style.width = this.params.to + '%';
 							}
 						});
 
+				bar.style.transitionDuration = duration / 1000 + 's';
 				counter.custom = {
 					container: container,
-					bar:       container.querySelector('.progress-bar-linear'),
+					bar:       bar,
 					onScroll:  (function () {
 						if ((Util.inViewport(this.custom.container) && !this.custom.container.classList.contains('animated')) || isNoviBuilder) {
 							this.run();
@@ -274,102 +288,96 @@
 		isNoviBuilder = window.xMode;
 
 		/**
-		 * getSwiperHeight
-		 * @description  calculate the height of swiper slider basing on data attr
+		 * Wrapper to eliminate json errors
+		 * @param {string} str - JSON string
+		 * @returns {object} - parsed or empty object
 		 */
-		function getSwiperHeight(object, attr) {
-			var val = object.attr("data-" + attr),
-					dim;
-
-			if (!val) {
-				return undefined;
-			}
-
-			dim = val.match(/(px)|(%)|(vh)|(vw)$/i);
-
-			if (dim.length) {
-				switch (dim[0]) {
-					case "px":
-						return parseFloat(val);
-					case "vh":
-						return $window.height() * (parseFloat(val) / 100);
-					case "vw":
-						return $window.width() * (parseFloat(val) / 100);
-					case "%":
-						return object.width() * (parseFloat(val) / 100);
-				}
-			} else {
-				return undefined;
+		function parseJSON ( str ) {
+			try {
+				if ( str )  return JSON.parse( str );
+				else return {};
+			} catch ( error ) {
+				console.warn( error );
+				return {};
 			}
 		}
 
 		/**
-		 * toggleSwiperInnerVideos
-		 * @description  toggle swiper videos on active slides
+		 * @desc Sets slides background images from attribute 'data-slide-bg'
+		 * @param {object} swiper - swiper instance
 		 */
-		function toggleSwiperInnerVideos(swiper) {
-			var prevSlide = $(swiper.slides[swiper.previousIndex]),
-					nextSlide = $(swiper.slides[swiper.activeIndex]),
-					videos,
-					videoItems = prevSlide.find("video");
+		function setBackgrounds(swiper) {
+			let swipersBg = swiper.el.querySelectorAll('[data-slide-bg]');
 
-			for (var i = 0; i < videoItems.length; i++) {
-				videoItems[i].pause();
-			}
-
-			videos = nextSlide.find("video");
-			if (videos.length) {
-				videos.get(0).play();
+			for (let i = 0; i < swipersBg.length; i++) {
+				let swiperBg = swipersBg[i];
+				swiperBg.style.backgroundImage = 'url(' + swiperBg.getAttribute('data-slide-bg') + ')';
+				swiperBg.style.backgroundSize = 'cover';
 			}
 		}
 
 		/**
-		 * @desc Toggle swiper animations on active slides
-		 * @param {object} swiper - swiper slider
+		 * @desc Sets hover autoplay  from attribute 'data-autoplay-hover'
+		 * @param {object} swiper - swiper instance
+		 */
+		function setHoverAutoplay(swiper) {
+			if (swiper.el.getAttribute('data-autoplay-hover') === 'true') {
+				let hoverEvent;
+				swiper.el.addEventListener('mouseenter', function (e) {
+					hoverEvent = setInterval(function () {
+						swiper.slideNext();
+					}, +swiper.el.getAttribute('data-autoplay-hover-delay') );
+				});
+				swiper.el.addEventListener('mouseleave', function (e) {
+					clearInterval(hoverEvent);
+				})
+			}
+		}
+		
+		/**
+		 * toggleSwiperCaptionAnimation
+		 * @description  toggle swiper animations on active slides
 		 */
 		function toggleSwiperCaptionAnimation(swiper) {
-			var prevSlide = $(swiper.container).find("[data-caption-animate]"),
-					nextSlide = $(swiper.slides[swiper.activeIndex]).find("[data-caption-animate]"),
-					delay,
-					duration,
-					nextSlideItem,
-					prevSlideItem;
-
-			for (var i = 0; i < prevSlide.length; i++) {
-				prevSlideItem = $(prevSlide[i]);
-
-				prevSlideItem.removeClass("animated")
-				.removeClass(prevSlideItem.attr("data-caption-animate"))
-				.addClass("not-animated");
-			}
-
-			var tempFunction = function (nextSlideItem, duration) {
-				return function () {
-					nextSlideItem
-					.removeClass("not-animated")
-					.addClass(nextSlideItem.attr("data-caption-animate"))
-					.addClass("animated");
-					if (duration) {
-						nextSlideItem.css('animation-duration', duration + 'ms');
-					}
-				};
-			};
-
-			for (var i = 0; i < nextSlide.length; i++) {
-				nextSlideItem = $(nextSlide[i]);
-				delay = nextSlideItem.attr("data-caption-delay");
-				duration = nextSlideItem.attr('data-caption-duration');
-				if (!isNoviBuilder) {
-					if (delay) {
-						setTimeout(tempFunction(nextSlideItem, duration), parseInt(delay, 10));
+			let prevSlide = $(swiper.$el[0]),
+				nextSlide = $(swiper.slides[swiper.activeIndex]);
+			
+			prevSlide
+				.find("[data-caption-animate]")
+				.each(function () {
+					let $this = $(this);
+					$this
+						.removeClass("animated")
+						.removeClass($this.attr("data-caption-animate"))
+						.addClass("not-animated");
+				});
+			
+			nextSlide
+				.find("[data-caption-animate]")
+				.each(function () {
+					let $this = $(this),
+						delay = $this.attr("data-caption-delay");
+					
+					
+					if (!isNoviBuilder) {
+						setTimeout(function () {
+							$this
+								.removeClass("not-animated")
+								.addClass($this.attr("data-caption-animate"))
+								.addClass("animated");
+						}, delay ? parseInt(delay) : 0);
 					} else {
-						setTimeout(tempFunction(nextSlideItem, duration), 0);
+						$this
+							.removeClass("not-animated")
 					}
+				});
+		}
 
-				} else {
-					nextSlideItem.removeClass("not-animated")
-				}
-			}
+		/**
+		 * @desc Swiper Render Bullet function
+		 */
+		function renderBullet(index, className) {
+			return '<span class="' + className + '"><span>' + ((index + 1) < 10 ? ('0' + (index + 1)) : (index + 1)) + '</span></span>';
 		}
 
 		/**
@@ -797,27 +805,10 @@
 		 * @description  Adds some loosing functionality to IE browsers
 		 */
 		if (isIE) {
-			if (isIE < 10) {
-				$html.addClass("lt-ie-10");
-			}
-
-			if (isIE < 11) {
-				if (plugins.pointerEvents) {
-					$.getScript(plugins.pointerEvents)
-					.done(function () {
-						$html.addClass("ie-10");
-						PointerEventsPolyfill.initialize({});
-					});
-				}
-			}
-
-			if (isIE === 11) {
-				$html.addClass("ie-11");
-			}
-
-			if (isIE === 12) {
-				$html.addClass("ie-edge");
-			}
+			if (isIE === 12) $html.addClass("ie-edge");
+			if (isIE === 11) $html.addClass("ie-11");
+			if (isIE < 10) $html.addClass("lt-ie-10");
+			if (isIE < 11) $html.addClass("ie-10");
 		}
 
 		/**
@@ -825,7 +816,7 @@
 		 * @description Activate Bootstrap Tooltips
 		 */
 		if (plugins.bootstrapTooltip.length) {
-			var tooltipPlacement = plugins.bootstrapTooltip.attr('data-placement');
+			var tooltipPlacement = plugins.bootstrapTooltip.attr('data-bs-placement');
 			initBootstrapTooltip(tooltipPlacement);
 
 			$window.on('resize orientationchange', function () {
@@ -867,7 +858,7 @@
 		 */
 		if (plugins.popover.length) {
 			if (window.innerWidth < 767) {
-				plugins.popover.attr('data-placement', 'bottom');
+				plugins.popover.attr('data-bs-placement', 'bottom');
 				plugins.popover.popover();
 			} else {
 				plugins.popover.popover();
@@ -888,37 +879,75 @@
 			})
 		}
 
-		// Bootstrap tabs
+		/**
+		 * Bootstrap tabs
+		 * @description Activate Bootstrap Tabs
+		 */
+
 		if (plugins.bootstrapTabs.length) {
 			for (let i = 0; i < plugins.bootstrapTabs.length; i++) {
-				let bootstrapTab = $(plugins.bootstrapTabs[i]);
+				let $bootstrapTab = $(plugins.bootstrapTabs[i]);
 
-				//If have slick carousel inside tab - resize slick carousel on click
-				if (bootstrapTab.find('.slick-slider').length) {
-					bootstrapTab.find('.tabs-custom-list > li > a').on('click', $.proxy(function () {
-						let $this = $(this);
-						let setTimeOutTime = isNoviBuilder ? 1500 : 300;
+				let tabs = $bootstrapTab.find('.nav li a');
+				for (var t = 0; t < tabs.length; t++) {
+					let tab = $(tabs[t]);
+					let	target = $(tab.attr('href')) ;
 
-						setTimeout(function () {
-							$this.find('.tab-content .tab-pane.active .slick-slider').slick('setPosition');
-						}, setTimeOutTime);
-					}, bootstrapTab));
-				}
-
-				let tabs = plugins.bootstrapTabs[i].querySelectorAll('.nav li a');
-
-				for (let t = 0; t < tabs.length; t++) {
-					let tab = tabs[t];
+					tab.removeClass('active show');
+					target.removeClass('active show');
 
 					if (t === 0) {
-						tab.parentElement.classList.remove('active');
-						$(tab).tab('show');
+						tab.addClass('active show');
+						target.addClass('active show');
 					}
+				}
 
-					tab.addEventListener('click', function (event) {
-						event.preventDefault();
-						$(this).tab('show');
-					});
+				// Nav plugin
+				if ($bootstrapTab.attr('data-nav') === 'true') {
+
+					let $buttonPrev = $($bootstrapTab.find('[data-nav-prev]')).first(),
+						$buttonNext = $($bootstrapTab.find('[data-nav-next]')).first();
+
+					if ($buttonPrev && $buttonNext) {
+						let isClicked = true,
+							currentIndex = 0,
+							$nav = $($bootstrapTab.find('.nav')),
+							navItemsLength = $nav.children().length;
+
+
+						for (let z = 0; z < navItemsLength; z++) {
+							$($nav.find('li:eq(' + z + ') a')).on('hidden.bs.tab', function () {
+								isClicked = true;
+							});
+							$($nav.find('li:eq(' + z + ') a')).on('shown.bs.tab', function () {
+								isClicked = true;
+							});
+						}
+
+						$buttonPrev.on('click', (function ($nav) {
+							return function () {
+								let prevIndex = $($nav.find('.active')).parent().index() - 1;
+
+								if ((currentIndex != prevIndex) && prevIndex >= 0 && isClicked) {
+									currentIndex = prevIndex;
+									isClicked = false;
+									$($nav.find('li:eq(' + prevIndex + ') a')).tab('show');
+								}
+							}
+						})($nav));
+
+						$buttonNext.on('click', (function ($nav) {
+							return function () {
+								let nextIndex = $($nav.find('.active')).parent().index() + 1;
+
+								if ((currentIndex != nextIndex) && (nextIndex < navItemsLength) && isClicked) {
+									currentIndex = nextIndex;
+									isClicked = false;
+									$($nav.find('li:eq(' + nextIndex + ') a')).tab('show');
+								}
+							}
+						})($nav));
+					}
 				}
 			}
 		}
@@ -959,13 +988,13 @@
 		if (plugins.selectFilter.length) {
 			for (var i = 0; i < plugins.selectFilter.length; i++) {
 				var select = $(plugins.selectFilter[i]);
-
+				let parent = select.closest('div')
 				select.select2({
-					placeholder:             select.attr("data-placeholder") ? select.attr("data-placeholder") : false,
-					minimumResultsForSearch: select.attr("data-minimum-results-search") ? select.attr("data-minimum-results-search") : -1,
-					maximumSelectionSize:    3,
-					selectOnBlur:            false,
-					dropdownCssClass:        select.attr("data-dropdown-class") ? select.attr("data-dropdown-class") : ''
+					dropdownParent:          $( parent ),
+					placeholder:             select.attr( 'data-placeholder' ) || null,
+					minimumResultsForSearch: select.attr( 'data-minimum-results-search' ) || Infinity,
+					containerCssClass:       select.attr( 'data-container-class' ) || null,
+					dropdownCssClass:        select.attr( 'data-dropdown-class' ) || null
 				});
 			}
 		}
@@ -1096,7 +1125,7 @@
 							navbarSearch.val('').trigger('propertychange');
 						}
 
-						var navbarSelect = plugins.rdNavbar.find('.select2-container');
+						var navbarSelect = plugins.rdNavbar.find('select');
 						if (navbarSelect.length) {
 							navbarSelect.select2("close");
 						}
@@ -1237,90 +1266,52 @@
 		 * @description  Enable Swiper Slider
 		 */
 		if (plugins.swiper.length) {
-			for (var i = 0; i < plugins.swiper.length; i++) {
-				var s = $(plugins.swiper[i]);
-				var pag = s.find(".swiper-pagination"),
-						next = s.find(".swiper-button-next"),
-						prev = s.find(".swiper-button-prev"),
-						bar = s.find(".swiper-scrollbar"),
-						swiperSlide = s.find(".swiper-slide"),
-						autoplay = false;
 
-				for (var j = 0; j < swiperSlide.length; j++) {
-					var $this = $(swiperSlide[j]),
-							url;
+			for (let i = 0; i < plugins.swiper.length; i++) {
 
-					if (url = $this.attr("data-slide-bg")) {
-						$this.css({
-							"background-image": "url(" + url + ")",
-							"background-size":  "cover"
-						})
-					}
-				}
-
-				swiperSlide.end()
-				.find("[data-caption-animate]")
-				.addClass("not-animated")
-				.end();
-
-				s.swiper({
-					autoplay:                 s.attr('data-autoplay') ? s.attr('data-autoplay') === "false" || s.attr('data-autoplay-hover') === "true" ? undefined : s.attr('data-autoplay') : 5000,
-					direction:                s.attr('data-direction') ? s.attr('data-direction') : "horizontal",
-					effect:                   s.attr('data-slide-effect') ? s.attr('data-slide-effect') : "slide",
-					speed:                    s.attr('data-slide-speed') ? s.attr('data-slide-speed') : 600,
-					keyboardControl:          s.attr('data-keyboard') === "true",
-					mousewheelControl:        s.attr('data-mousewheel') === "true",
-					mousewheelReleaseOnEdges: s.attr('data-mousewheel-releaase') === "true",
-					lazyLoading:              s.attr('data-lazy-loading') === "true",
-					nextButton:               next.length ? next.get(0) : null,
-					prevButton:               prev.length ? prev.get(0) : null,
-					pagination:               pag.length ? pag.get(0) : null,
-					paginationClickable:      pag.length ? pag.attr("data-clickable") !== "false" : false,
-					paginationBulletRender:   pag.length ? pag.attr("data-index-bullet") === "true" ? function (swiper, index, className) {
-						return '<span class="' + className + '"><span>' + ((index + 1) < 10 ? ('0' + (index + 1)) : (index + 1)) + '</span></span>';
-					} : null : null,
-					scrollbar:                bar.length ? bar.get(0) : null,
-					scrollbarDraggable:       bar.length ? bar.attr("data-draggable") !== "false" : true,
-					scrollbarHide:            bar.length ? bar.attr("data-draggable") === "false" : false,
-					loop:                     isNoviBuilder ? false : s.attr('data-loop') !== "false",
-					simulateTouch:            s.attr('data-simulate-touch') && !isNoviBuilder ? s.attr('data-simulate-touch') === "true" : false,
-					onTransitionStart:        function (swiper) {
-						toggleSwiperInnerVideos(swiper);
+				let
+					node = plugins.swiper[i],
+					pag = $(node).find(".swiper-pagination"),
+					params = parseJSON(node.getAttribute('data-swiper')),
+					defaults = {
+						speed:      1000,
+						loop:       true,
+						pagination: {
+							el:        '.swiper-pagination',
+							clickable: true,
+						},
+						navigation: {
+							nextEl: '.swiper-button-next',
+							prevEl: '.swiper-button-prev'
+						},
+						autoplay:   {
+							delay: 5000
+						}
 					},
-					onTransitionEnd:          function (swiper) {
-						toggleSwiperCaptionAnimation(swiper);
-					},
-					onInit:                   function (swiper) {
-						toggleSwiperInnerVideos(swiper);
-						toggleSwiperCaptionAnimation(swiper);
+					xMode = {
+						autoplay:      false,
+						loop:          false,
+						simulateTouch: false
+					};
 
-						if (swiper.container.data('autoplay-hover') === true) {
-							var hoverEvent;
+				defaults.pagination.renderBullet =  pag.length ? pag.attr("data-index-bullet") === "true" ? renderBullet : null : null;
 
-							swiper.container.mouseenter(function (e) {
-								hoverEvent = setInterval(function () {
-									swiper.slideNext();
-								}, $(swiper.container).data('autoplay'));
-							});
+				params.on = {
+						init: function () {
+							setBackgrounds(this);
+							setHoverAutoplay(this);
+							
+							toggleSwiperCaptionAnimation(this);
+							initLightGalleryItem($(node).find('[data-lightgallery="item"]'), 'lightGallery-in-carousel');
 
-							swiper.container.mouseleave(function (e) {
-								clearInterval(hoverEvent);
+							// Real Previous Index must be set recent
+							this.on('slideChangeTransitionEnd', function () {
+								toggleSwiperCaptionAnimation(this);
 							});
 						}
+				};
 
-						initLightGalleryItem(s.find('[data-lightgallery="item"]'), 'lightGallery-in-carousel');
-					}
-				});
-
-				$window.on("resize", (function (s) {
-					return function () {
-						var mh = getSwiperHeight(s, "min-height"),
-								h = getSwiperHeight(s, "height");
-						if (h) {
-							s.css("height", mh ? mh > h ? mh : h : h);
-						}
-					}
-				})(s)).trigger("resize");
+				new Swiper( node, Util.merge( isNoviBuilder ? [ defaults, params, xMode ] : [ defaults, params ] ) );
 			}
 		}
 
@@ -1623,7 +1614,7 @@
 						form.clearForm();
 
 						if (select.length) {
-							select.select2("val", "");
+							select.val(null).trigger('change');
 						}
 
 						form.find('input, textarea').trigger('blur');
@@ -1874,8 +1865,6 @@
 				});
 			}
 		}
-
-		// {DEL GRANTER USERPACKAGE}
 		// ThemeSwitcher
 		if (plugins.themeSwitcher.length) {
 			document.documentElement.addEventListener('theme-switching', function () {
@@ -1922,22 +1911,16 @@
 					},
 					"rugby":      {
 						styles: 'css/style-rugby.css'
+					},
+					"tennis":      {
+						styles: 'css/style-tennis.css'
 					}
 				}
 			});
 		}
-		// {DEL}
 	});
 }());
 function event_content_href(id){
 	window.location.href = `./event_content?list_id=${id}`
 }
 
-$(document).ready(function() {
-    // 确保 rdNavbar 插件已加载并可使用
-    if (typeof plugins.rdNavbar !== 'undefined' && typeof plugins.rdNavbar.RDNavbar === 'function') {
-        plugins.rdNavbar.RDNavbar();
-    } else {
-        console.error('rdNavbar 插件没有正确加载');
-    }
-});
