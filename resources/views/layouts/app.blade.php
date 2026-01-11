@@ -58,12 +58,17 @@
     <main>
         @yield('content')
     </main>
-
+    <script src="https://cms.devoffice.com/coding-dev/rd-navbar/demo/js/core.min.js"></script>
+    <script src="https://cms.devoffice.com/coding-dev/rd-navbar/demo/js/script.js"></script>
+    <script src="https://cms.devoffice.com/coding-dev/rd-navbar/demo/js/smoothscroll.min.js"></script>
+    <script src="https://cms.devoffice.com/coding-dev/rd-navbar/demo/js/jquery.ui.totop.min.js"></script>
+    <script src="https://cms.devoffice.com/coding-dev/rd-navbar/demo/js/jquery.rd-parallax.min.js"></script>
+    <script src="https://cms.devoffice.com/coding-dev/rd-navbar/dist/js/jquery.rd-navbar.js"></script>
     <!-- JS -->
     <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
     <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <!-- <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/core.min.js') }}"></script>
     <script src="{{ asset('js/script.js') }}"></script>
 
@@ -71,19 +76,19 @@
 
     <script src="https://cdn.jsdelivr.net/npm/regula.js"></script>
 
-    <!-- <script src="{{ asset('js/bootstrap.js') }}"></script> -->
+    <script src="{{ asset('js/bootstrap.js') }}"></script> -->
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
-    <script src="{{ asset('js/my-component.js') }}" defer></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
+    <script src="{{ asset('js/my-component.js') }}" defer></script> -->
     <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script>
 
         $(document).ready(function () {
             o.RDNavbar({}); // Additional options
         });
 
-    </script>
+    </script>  -->
 </body>
 </html>
