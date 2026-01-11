@@ -49,7 +49,7 @@
     @stack('styles')
 </head>
 <body>
-    1111
+    
     
     <!-- Navbar Header -->
     @include('partials.header') <!-- 我們可以把你這段 Header 拆成 partial -->
@@ -83,12 +83,47 @@
     <script src="{{ asset('js/my-component.js') }}" defer></script> -->
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-    <!--<script>
+    <script>
 
         $(document).ready(function () {
-            o.RDNavbar({}); // Additional options
+            $(".swiper-slider").each(function () {
+                var s = $(this);
+                var swiperInstance = new Swiper(s, {
+                    autoplay: {
+                        delay: s.attr('data-autoplay') || 5000
+                    },
+                    direction: s.attr('data-direction') || 'horizontal',
+                    effect: s.attr('data-slide-effect') || 'slide',
+                    speed: s.attr('data-slide-speed') || 600,
+                    loop: s.attr('data-loop') !== 'false',
+                    pagination: {
+                        el: s.find(".swiper-pagination"),
+                        clickable: true
+                    },
+                    navigation: {
+                        nextEl: s.find(".swiper-button-next"),
+                        prevEl: s.find(".swiper-button-prev")
+                    }
+                });
+
+                // 動畫及視頻功能
+                swiperInstance.on('transitionStart', function () {
+                    toggleSwiperInnerVideos(swiperInstance);
+                });
+
+                swiperInstance.on('transitionEnd', function () {
+                    toggleSwiperCaptionAnimation(swiperInstance);
+                });
+
+                swiperInstance.on('init', function () {
+                    toggleSwiperInnerVideos(swiperInstance);
+                    toggleSwiperCaptionAnimation(swiperInstance);
+                });
+            });
         });
 
-    </script>  -->
+
+    </script> 
+    
 </body>
 </html>
