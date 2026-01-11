@@ -84,46 +84,34 @@
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script>
+    const swiper = new Swiper(".swiper-container", {
+        loop: true,                  // 循環滑動
+        effect: "fade",              // 淡入淡出
+        simulateTouch: true,         // 允許拖動，如果不想拖動可以改 false
+        autoplay: {
+        delay: 4000,               // 4 秒自動播放
+        disableOnInteraction: false,
+        },
+        navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+        },
+    });
 
-        $(document).ready(function () {
-            $(".swiper-slider").each(function () {
-                var s = $(this);
-                var swiperInstance = new Swiper(s, {
-                    autoplay: {
-                        delay: s.attr('data-autoplay') || 5000
-                    },
-                    direction: s.attr('data-direction') || 'horizontal',
-                    effect: s.attr('data-slide-effect') || 'slide',
-                    speed: s.attr('data-slide-speed') || 600,
-                    loop: s.attr('data-loop') !== 'false',
-                    pagination: {
-                        el: s.find(".swiper-pagination"),
-                        clickable: true
-                    },
-                    navigation: {
-                        nextEl: s.find(".swiper-button-next"),
-                        prevEl: s.find(".swiper-button-prev")
-                    }
-                });
-
-                // 動畫及視頻功能
-                swiperInstance.on('transitionStart', function () {
-                    toggleSwiperInnerVideos(swiperInstance);
-                });
-
-                swiperInstance.on('transitionEnd', function () {
-                    toggleSwiperCaptionAnimation(swiperInstance);
-                });
-
-                swiperInstance.on('init', function () {
-                    toggleSwiperInnerVideos(swiperInstance);
-                    toggleSwiperCaptionAnimation(swiperInstance);
-                });
-            });
+    // 如果有文字動畫
+    swiper.on('slideChange', function () {
+        document.querySelectorAll('.swiper-slide-caption').forEach(caption => {
+        caption.classList.remove('animated');
+        void caption.offsetWidth;
+        caption.classList.add('animated');
         });
+    });
+    </script>
 
-
-    </script> 
     
 </body>
 </html>
