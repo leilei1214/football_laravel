@@ -88,32 +88,48 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
     <script>
-    const swiper = new Swiper(".swiper-container", {
-        loop: true,                  // 循環滑動
-        effect: "fade",              // 淡入淡出
-        simulateTouch: true,         // 允許拖動，如果不想拖動可以改 false
-        autoplay: {
-        delay: 4000,               // 4 秒自動播放
-        disableOnInteraction: false,
-        },
-        navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-        },
-        pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-        },
-    });
-
-    // 如果有文字動畫
-    swiper.on('slideChange', function () {
-        document.querySelectorAll('.swiper-slide-caption').forEach(caption => {
-        caption.classList.remove('animated');
-        void caption.offsetWidth;
-        caption.classList.add('animated');
+        const swiper = new Swiper(".swiper-container", {
+            loop: true,                  // 循環滑動
+            effect: "fade",              // 淡入淡出
+            simulateTouch: true,         // 允許拖動，如果不想拖動可以改 false
+            autoplay: {
+            delay: 4000,               // 4 秒自動播放
+            disableOnInteraction: false,
+            },
+            navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+            },
+            pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+            },
         });
-    });
+
+        // 如果有文字動畫
+        swiper.on('slideChange', function () {
+            document.querySelectorAll('.swiper-slide-caption').forEach(caption => {
+            caption.classList.remove('animated');
+            void caption.offsetWidth;
+            caption.classList.add('animated');
+            });
+        });
+        $('.owl-carousel-inline').owlCarousel({
+            items: 1,
+            loop: true,
+            margin: 10,
+            nav: true,
+            dots: false,
+            autoplay: true,
+            autoplayTimeout: 3200,
+            mouseDrag: false,
+            touchDrag: false,
+            navText: [
+                '<button class="owl-arrow owl-arrow-prev"></button>',
+                '<button class="owl-arrow owl-arrow-next"></button>'
+            ]
+        });
+
     </script>
 
     
