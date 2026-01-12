@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\Auth\LoginController;
 
 Route::get('/hello', function () {
     return 'Hello Laravel 👋';
