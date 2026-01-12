@@ -9,7 +9,6 @@ document.querySelectorAll('[data-custom-toggle]').forEach(btn => {
     btn.addEventListener('click', () => {
         const target = document.querySelector(btn.dataset.customToggle);
         target.classList.toggle('active');
-        btn.querySelector('.card-toggle')?.classList.toggle('active');
-        target?.classList.toggle('active');
+        btn?.classList.toggle('active');
     });
 });
