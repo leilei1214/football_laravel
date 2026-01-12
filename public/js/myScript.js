@@ -9,5 +9,7 @@ document.querySelectorAll('[data-custom-toggle]').forEach(btn => {
     btn.addEventListener('click', () => {
         const target = document.querySelector(btn.dataset.customToggle);
         target.classList.toggle('active');
+        this.querySelector('.card-toggle-circle')?.classList.toggle('active');
+        target?.classList.toggle('active');
     });
 });
