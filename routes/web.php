@@ -9,3 +9,5 @@ Route::get('/hello', function () {
 
 Route::get('/', [PageController::class, 'home']);
 
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+
