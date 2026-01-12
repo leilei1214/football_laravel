@@ -33,7 +33,6 @@
                 </div>
                 <div class="form-wrap">
                     <label class="form-label rd-input-label" for="form-login-name-2">Sex(性別) : </label>
-                    <!-- <input class="form-input form-control-has-validation form-control-last-child" id="form-login-name-2" type="text" name="form-input" data-constraints="@Required"><span class="form-validation"></span> -->
                     <select class="form-select form-input" aria-label="Default select example" id="form-login-name-3" name="Gender"  data-constraints="Required" style="padding-left: 71px;">
                     <option selected></option>
                     <option value="M">男生(Boy)</option>
