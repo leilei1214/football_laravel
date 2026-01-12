@@ -42,7 +42,6 @@
                 </div>
                 <div class="form-wrap">
                     <label class="form-label rd-input-label" for="form-login-name-2">position 1 (位置 1) : </label>
-                    <!-- <input class="form-input form-control-has-validation form-control-last-child" id="form-login-name-2" type="text" name="form-input" data-constraints="@Required"><span class="form-validation"></span> -->
                     <select class="form-select form-input" aria-label="Default select example" id="form-login-name-2" name="position1"  data-constraints="Required" style="padding-left: 131px;">
                     <option selected></option>
                     <option value="GK">GK(守門員)</option>
