@@ -270,4 +270,10 @@ document.write('<meta name="viewport" content="width=device-width,initial-scale=
 function event_content_href(id){
 	window.location.href = `./event_content?list_id=${id}`
 }
+document.querySelectorAll('[data-custom-toggle]').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const target = document.querySelector(btn.dataset.customToggle);
+        target.classList.toggle('active');
+    });
+});
 
