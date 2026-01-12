@@ -29,12 +29,12 @@
                 <form class="rd-form rd-mailform" novalidate="novalidate">
                 <div class="form-wrap">
                     <label class="form-label rd-input-label" for="form-register-email">Birthday(生日) : </label>
-                    <input class="form-input form-control-has-validation form-control-last-child" id="form-register-email" type="date"  name="birthday"  data-constraints="@Required" style="padding-left: 131px !important;">
+                    <input class="form-input form-control-has-validation form-control-last-child" id="form-register-email" type="date"  name="birthday"  data-constraints="Required" style="padding-left: 131px !important;">
                 </div>
                 <div class="form-wrap">
                     <label class="form-label rd-input-label" for="form-login-name-2">Sex(性別) : </label>
                     <!-- <input class="form-input form-control-has-validation form-control-last-child" id="form-login-name-2" type="text" name="form-input" data-constraints="@Required"><span class="form-validation"></span> -->
-                    <select class="form-select form-input" aria-label="Default select example" id="form-login-name-3" name="Gender"  data-constraints="@Required" style="padding-left: 71px;">
+                    <select class="form-select form-input" aria-label="Default select example" id="form-login-name-3" name="Gender"  data-constraints="Required" style="padding-left: 71px;">
                     <option selected></option>
                     <option value="M">男生(Boy)</option>
                     <option value="W">女生(Girl)</option>
@@ -43,7 +43,7 @@
                 <div class="form-wrap">
                     <label class="form-label rd-input-label" for="form-login-name-2">position 1 (位置 1) : </label>
                     <!-- <input class="form-input form-control-has-validation form-control-last-child" id="form-login-name-2" type="text" name="form-input" data-constraints="@Required"><span class="form-validation"></span> -->
-                    <select class="form-select form-input" aria-label="Default select example" id="form-login-name-2" name="position1"  data-constraints="@Required" style="padding-left: 131px;">
+                    <select class="form-select form-input" aria-label="Default select example" id="form-login-name-2" name="position1"  data-constraints="Required" style="padding-left: 131px;">
                     <option selected></option>
                     <option value="GK">GK(守門員)</option>
                     <option value="DF">DF(後衛)</option>
@@ -56,7 +56,7 @@
                 <div class="form-wrap">
                     <label class="form-label rd-input-label" for="form-login-name-2">position 2 (位置 2) : </label>
 
-                    <select class="form-select form-input" aria-label="Default select example" id="form-login-name-1" name="position2"  data-constraints="@Required" style="padding-left: 131px;">
+                    <select class="form-select form-input" aria-label="Default select example" id="form-login-name-1" name="position2"  data-constraints="Required" style="padding-left: 131px;">
                     <option selected></option>
                     <option value="GK">GK(守門員)</option>
                     <option value="DF">DF(後衛)</option>
