@@ -59,7 +59,9 @@
 
     <main>
         @yield('content')
+
     </main>
+     @yield('scripts') <!-- <<--- 一定要有 -->
     <script src="https://cms.devoffice.com/coding-dev/rd-navbar/demo/js/core.min.js"></script>
     <script src="https://cms.devoffice.com/coding-dev/rd-navbar/demo/js/script.js"></script>
     <script src="https://cms.devoffice.com/coding-dev/rd-navbar/demo/js/smoothscroll.min.js"></script>
