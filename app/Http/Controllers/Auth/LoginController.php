@@ -17,7 +17,7 @@ class LoginController extends Controller
         // ① 導向 LINE 授權頁
     public function login()
     {
-        $state = Str::random(40);
+        $state = Str::random(32);
         session(['line_state' => $state]);
 
         $query = http_build_query([
@@ -26,7 +26,7 @@ class LoginController extends Controller
             'redirect_uri'  => env('LINE_REDIRECT_URI'),
             'state'         => $state,
             'scope'         => 'profile openid',
-            'prompt'        => 'consent',
+            
         ]);
 
         return redirect('https://access.line.me/oauth2/v2.1/authorize?' . $query);
