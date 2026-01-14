@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 //身分驗證
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Str; 
 class LoginController extends Controller
 {
      public function showLoginForm()
