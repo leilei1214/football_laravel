@@ -19,7 +19,7 @@
             </div>
             <div class="card-form card-form-login">
                 <form class="rd-form rd-mailform" novalidate="novalidate">
-                <button class="button button-lg button-primary button-block" type="submit" onclick="line_login()">
+                <button class="button button-lg button-primary button-block" type="button" onclick="line_login()">
                     <img src="./images/icons8-line.svg" alt="" style="width: 30px;margin-right: 20px;">
                     使用line登入
                 </button>
