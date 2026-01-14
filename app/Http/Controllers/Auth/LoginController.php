@@ -74,7 +74,7 @@ class LoginController extends Controller
             // 使用者存在
             return redirect()->route('home');
         }
-        return response()->json($profile);
+        return redirect('/login');
     }
     
 }
