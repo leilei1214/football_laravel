@@ -86,7 +86,7 @@
 <script>
     function line_login(){
         console.log(1111)
-        // window.location.href = '{{ url('/line_login') }}';
+        window.location.href = '{{ url('/line_login') }}';
     }
 </script>
 @endsection
