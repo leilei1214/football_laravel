@@ -82,3 +82,10 @@
 
 
 @endsection
+@section('scripts')
+<script>
+    function line_login(){
+        window.location.href = '{{ url('/line_login') }}';
+    }
+</script>
+@endsection

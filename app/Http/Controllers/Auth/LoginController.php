@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 //身分驗證
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class LoginController extends Controller
 {
@@ -64,7 +65,15 @@ class LoginController extends Controller
             'pictureUrl' => 'https://...',
           ]
         */
+        $result = DB::select(
+            'SELECT * FROM users WHERE userid = ? ',
+            [$userId]
+        );
 
+        if (count($result) > 0) {
+            // 使用者存在
+            return redirect()->route('home');
+        }
         return response()->json($profile);
     }
     

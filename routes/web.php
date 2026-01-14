@@ -13,7 +13,7 @@ Route::get('/hello', function () {
     return 'Hello Laravel 👋';
 });
 
-Route::get('/', [PageController::class, 'home']);
+Route::get('/', [PageController::class, 'home'])->name('home');
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::get('/line_login', [LineLoginController::class, 'login']);
