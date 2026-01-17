@@ -143,7 +143,7 @@ class LoginController extends Controller
                     ]);
                 }
                 DB::table('users')->insert([
-                    'username' => $displayName,
+                    'username' => $lineDisplayName,
                     'userid'   => $userId,
                     'identifier'=> $identifier,
                     'birthday' => $birthday,
@@ -165,7 +165,7 @@ class LoginController extends Controller
                     foreach ($tag as $sport) {
                         DB::table('union_members')->insert([
                             'guild_id' => $guildId,
-                            'name'     => $identifier,
+                            'name'     => $lineDisplayName,
                             'level'    => 5,
                             'is_active'=> 1,
                             'class'    => $sport,
