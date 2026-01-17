@@ -168,8 +168,8 @@ class LoginController extends Controller
                     foreach ($tag as $sport) {
                         DB::table('union_members')->insert([
                             'guild_id' => $guildId,
-                            'name'     => $lineDisplayName,
-                            'level'    => 5,
+                            'name'     => $identifier,
+                            'level'    => $level,
                             'is_active'=> 1,
                             'class'    => $sport,
                         ]);
