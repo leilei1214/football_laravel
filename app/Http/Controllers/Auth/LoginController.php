@@ -66,19 +66,168 @@ class LoginController extends Controller
             'pictureUrl' => 'https://...',
           ]
         */
+        // status:'register'
+
+        $status = $request->session()->get('status'); // 拿 session 裡存的公會
         $Guild = $request->session()->get('Guild'); // 拿 session 裡存的公會
         $result = DB::select(
-            'SELECT * FROM users WHERE userid = ? AND Guild = ?',
-            [$userId, $Guild]
+            'SELECT * FROM users WHERE userid = ?',
+            [$userId]
         );
-
+        $sql_true = false;
+        $identifier = '';
         if (count($result) > 0) {
+            $identifier = $result[0] ->identifier;
+            
+            foreach ($result as  $index => $user) {
+                // $user 是物件，可以直接存取欄位
+                if ($user->Guild == $Guild && $status == 'login') {
+                    // Guild 一致，導首頁
+                    return redirect()->route('home');
+                } 
+                // 使用者未註冊
+                else if($user->Guild != $Guild && ($index+1 == count($result)) && $status == 'login'){
+                    // Guild 不一致
+                    return redirect()->route('login')->with('error', '公會不一致');
+                }
+                // 註冊第二個工會確認(一人最多兩個)
+                else if($user->Guild != $Guild && count($result) == 1 && $status == 'register'){
+                    $sql_true = TRUE;
+                }
+            }
+
             // 使用者存在
             return redirect()->route('home');
         }else{
-            return redirect()->route('login');
+            $sql_true = true;
+            
         }
-        return redirect('/login');
+        if($sql_true){
+
+            $birthday  = session('birthday');
+            $position1 = session('position1');
+            $position2 = session('position2');
+            $Guild     = session('Guild');
+            $level     = session('level');
+            $Gender    = session('Gender');
+
+            // 頭像
+            $user_img = match ($Gender) {
+                'M' => 'images/person_log.png',
+                'W' => 'images/person_log_W.png',
+                default => 'images/person_log.png',
+            };
+            if($identifier == ''){
+                $identifier =  generateUniqueIdentifier(); // 生成唯一的 identifier
+            }
+            DB::beginTransaction();
+
+            try {
+
+                // ===============================
+                // 🟡 level 5 → 創建公會
+                // ===============================
+                if ($level == 5) {
+
+                    $tag           = session('tag'); // array
+                    $club_level_1  = session('club_level_1');
+                    $club_level_2  = session('club_level_2');
+                    $club_level_3  = session('club_level_3');
+
+                    // 建立 guild
+                    DB::table('guilds')->insert([
+                        'name'          => $Guild,
+                        'tag'           => json_encode($tag),
+                        'club_level_1'  => $club_level_1,
+                        'club_level_2'  => $club_level_2,
+                        'club_level_3'  => $club_level_3,
+                    ]);
+                }
+                DB::table('users')->insert([
+                    'username' => $displayName,
+                    'userid'   => $userId,
+                    'identifier'=> $identifier,
+                    'birthday' => $birthday,
+                    'preferred_position1' => $position1,
+                    'preferred_position2' => $position2,
+                    'Guild'    => $Guild,
+                    'level'    => $level,
+                    'Gender'   => $Gender,
+                    'user_img' => $user_img,
+                ]);
+
+                DB::commit();
+
+                // 取得 guild_id
+                $guildId = DB::table('guilds')
+                    ->where('name', $Guild)
+                    ->value('guild_id');
+                if ($guildId > 0) {
+                    foreach ($tag as $sport) {
+                        DB::table('union_members')->insert([
+                            'guild_id' => $guildId,
+                            'name'     => $identifier,
+                            'level'    => 5,
+                            'is_active'=> 1,
+                            'class'    => $sport,
+                        ]);
+                    }
+                }
+                    // ✅ 有公會 → 繼續
+                else {
+
+                    // ❌ 查不到公會
+                    return redirect()->route('login')
+                        ->with('error', '找不到此公會');
+                }
+                // 建立 union_members（多筆）
+
+            }
+            catch (Exception $e) {
+
+                DB::rollBack();
+
+                return redirect()
+                    ->route('login')
+                    ->with('error', '註冊失敗：'.$e->getMessage());
+            }
+
+        }
     }
     
+}
+function generateIdentifier()
+{
+    $digits = rand(1000, 9999);
+
+    $letters = collect(range('A', 'Z'))
+        ->random(4)
+        ->implode('');
+
+    $identifier = str_shuffle($digits . $letters);
+
+    return $identifier;
+}
+function generateUniqueIdentifier()
+{
+    while (true) {
+        $identifier = generateIdentifier();
+
+        try {
+            User::create([
+                'identifier' => $identifier,
+            ]);
+
+            return $identifier;
+
+        } catch (QueryException $e) {
+
+            // MySQL duplicate key
+            if ($e->errorInfo[1] != 1062) {
+                throw $e;
+            }
+
+            // 撞號就重來
+        }
+    }
 }

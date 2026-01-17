@@ -94,10 +94,29 @@
     }
 </script>
 <script>
-  
+        // 使用 URLSearchParams 提取查詢參數
+    const urlParams = new URLSearchParams(window.location.search);
+
+        // 獲取 `list_id` 的值
+    let club = urlParams.get('club');
     function line_login(){
-        console.log(1111)
-        window.location.href = '{{ url('/line_login') }}';
+        fetch('{{ url('/save-to-session') }}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            body: JSON.stringify({ status:'login',birthday: '', position1: '', position2: '',Guild:club,level:'',Gender:'' }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if( data.message == 200){
+            window.location.href ='{{ url('/line_login') }}';
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
     }
 </script>
 <script>
@@ -134,7 +153,7 @@
                   'Content-Type': 'application/json;charset=utf-8',
                   'X-CSRF-TOKEN': '{{ csrf_token() }}'
               },
-              body: JSON.stringify({ birthday: birthday, position1: position1, position2: position2,Guild:club,level:level,Gender:Gender }),
+              body: JSON.stringify({ status:'register',birthday: birthday, position1: position1, position2: position2,Guild:club,level:level,Gender:Gender }),
           })
           .then(response => response.json())
           .then(data => {
