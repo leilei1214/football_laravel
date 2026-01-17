@@ -8,7 +8,7 @@ class EventController extends Controller
 {
      public function ShowEvent()
     {
-        return view('event.ViewList', compact('events'));
+        return view('event.ViewList');
     }
 
 }
