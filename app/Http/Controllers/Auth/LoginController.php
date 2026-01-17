@@ -147,6 +147,7 @@ class LoginController extends Controller
                     'userid'   => $userId,
                     'identifier'=> $identifier,
                     'birthday' => $birthday,
+                    'displayName' => $lineDisplayName,
                     'preferred_position1' => $position1,
                     'preferred_position2' => $position2,
                     'Guild'    => $Guild,
