@@ -183,7 +183,7 @@ class LoginController extends Controller
                         ->with('error', '找不到此公會');
                 }
                 // 建立 union_members（多筆）
-
+                return redirect()->route('home');
             }
             catch (Exception $e) {
 
