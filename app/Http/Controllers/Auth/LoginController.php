@@ -97,7 +97,6 @@ class LoginController extends Controller
             }
 
             // 使用者存在
-            return redirect()->route('home');
         }else{
             $sql_true = true;
             
@@ -155,7 +154,7 @@ class LoginController extends Controller
                     'Gender'   => $Gender,
                     'user_img' => $user_img,
                 ]);
-
+                
                 DB::commit();
 
                 // 取得 guild_id
