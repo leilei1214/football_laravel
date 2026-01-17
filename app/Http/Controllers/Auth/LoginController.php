@@ -154,6 +154,7 @@ class LoginController extends Controller
                     'level'    => $level,
                     'Gender'   => $Gender,
                     'user_img' => $user_img,
+                    'Sex' => $Gender
                 ]);
                 
                 DB::commit();
