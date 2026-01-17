@@ -68,7 +68,7 @@
                 </div>
                 <div class="form-wrap">
 
-                    <a style="width: 100%;" class="button button-google button-icon button-icon-left button-round button-lg" href="#" onclick="line_register(event))">
+                    <a style="width: 100%;" class="button button-google button-icon button-icon-left button-round button-lg" href="#" onclick="line_register(event)">
                     <img src="./images/icons8-line-red.svg" alt="" style="width: 30px;margin-right: 20px;">
                     <span>使用line註冊</span></a>
                 </div>                  </form>
@@ -88,8 +88,11 @@
     const status = params.get('status');
 
     if (status === 'register') {
-        $(".card-login-register").addClass("active")
-        $(".card-toggle").addClass("active")
+        const cardLoginRegister = document.querySelector(".card-login-register");
+        if (cardLoginRegister) cardLoginRegister.classList.add("active");
+
+        const cardToggle = document.querySelector(".card-toggle");
+        if (cardToggle) cardToggle.classList.add("active");
         // alert('請先註冊'); // 或改用更美觀的訊息框
     }
 </script>
