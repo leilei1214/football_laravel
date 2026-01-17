@@ -84,6 +84,17 @@
 @endsection
 @section('scripts')
 <script>
+    const params = new URLSearchParams(window.location.search);
+    const status = params.get('status');
+
+    if (status === 'register') {
+        $(".card-login-register").addClass("active")
+        $(".card-toggle").addClass("active")
+        // alert('請先註冊'); // 或改用更美觀的訊息框
+    }
+</script>
+<script>
+  
     function line_login(){
         console.log(1111)
         window.location.href = '{{ url('/line_login') }}';

@@ -66,6 +66,7 @@ class LoginController extends Controller
             'pictureUrl' => 'https://...',
           ]
         */
+        $Guild = $request->session()->get('Guild'); // 拿 session 裡存的公會
         $result = DB::select(
             'SELECT * FROM users WHERE userid = ? AND Guild = ?',
             [$userId, $Guild]
@@ -74,6 +75,8 @@ class LoginController extends Controller
         if (count($result) > 0) {
             // 使用者存在
             return redirect()->route('home');
+        }else{
+            return redirect()->route('login');
         }
         return redirect('/login');
     }
