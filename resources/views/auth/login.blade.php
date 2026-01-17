@@ -68,7 +68,7 @@
                 </div>
                 <div class="form-wrap">
 
-                    <a style="width: 100%;" class="button button-google button-icon button-icon-left button-round button-lg" href="#" onclick="line_register()">
+                    <a style="width: 100%;" class="button button-google button-icon button-icon-left button-round button-lg" href="#" onclick="line_register(event))">
                     <img src="./images/icons8-line-red.svg" alt="" style="width: 30px;margin-right: 20px;">
                     <span>使用line註冊</span></a>
                 </div>                  </form>
@@ -88,5 +88,54 @@
         console.log(1111)
         window.location.href = '{{ url('/line_login') }}';
     }
+</script>
+<script>
+    function line_register(e){
+        
+        // 使用 URLSearchParams 提取查詢參數
+        const urlParams = new URLSearchParams(window.location.search);
+
+          // 獲取 `list_id` 的值
+        let club = urlParams.get('club');
+        let level = urlParams.get('level');
+        if(!level){
+          level = 4
+        }
+        if(!club){
+          club = "圖斯特宇宙"
+        }
+          // 抓取表單值
+        e.preventDefault(); 
+        const birthday =document.getElementsByName('birthday')[0].value;
+        const Gender =document.getElementsByName('Gender')[0].value;
+        const position1 = document.getElementsByName('position1')[0].value;
+        const position2 = document.getElementsByName('position2')[0].value;
+
+        // 檢查是否為空
+        if (!birthday || !position1 || !position2) {
+          alert('請填寫所有必填項目');
+          
+        }else{
+            // 使用 fetch 发送 POST 请求到服务器以保存到 session
+          fetch('{{ url('/save-to-session') }}', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json;charset=utf-8',
+                  'X-CSRF-TOKEN': '{{ csrf_token() }}'
+              },
+              body: JSON.stringify({ birthday: birthday, position1: position1, position2: position2,Guild:club,level:level,Gender:Gender }),
+          })
+          .then(response => response.json())
+          .then(data => {
+              if( data.message == 200){
+                window.location.href ='{{ url('/line_login') }}';
+              }
+          })
+          .catch((error) => {
+              console.error('Error:', error);
+          });
+        }
+
+      }
 </script>
 @endsection

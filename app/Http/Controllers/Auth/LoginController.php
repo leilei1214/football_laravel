@@ -67,8 +67,8 @@ class LoginController extends Controller
           ]
         */
         $result = DB::select(
-            'SELECT * FROM users WHERE userid = ? ',
-            [$userId]
+            'SELECT * FROM users WHERE userid = ? AND Guild = ?',
+            [$userId, $Guild]
         );
 
         if (count($result) > 0) {

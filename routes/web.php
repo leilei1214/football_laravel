@@ -20,5 +20,8 @@ Route::get('/', [PageController::class, 'home'])->name('home');
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::get('/line_login', [LoginController::class, 'login']);
-
 Route::get('/login_data', [LoginController::class, 'callback']);
+Route::post('/save-to-session', function (\Illuminate\Http\Request $request) {
+    session($request->all());
+    return response()->json(['message' => 200]);
+});
