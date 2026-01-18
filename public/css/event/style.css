@@ -1,9 +1,9 @@
-.tabs-modern .nav-tabs {
+#tabs-modern .nav-tabs {
     background: #fff;
     border: 1px solid #e1e1e1;
     display: -webkit-inline-box;
 }
-.tabs-modern .nav-link {
+#tabs-modern .nav-link {
     position: relative;
     display: block;
     padding: 15px;
@@ -16,11 +16,11 @@
     text-transform: uppercase;
     transition: all .3s;
 }
-.tabs-modern .nav-link:hover, .tabs-modern .nav-link.active {
+#tabs-modern .nav-link:hover, .tabs-modern .nav-link.active {
     color: #fff;
     background: #35ad79;
 }
-.tabs-modern .nav-link::before {
+#tabs-modern .nav-link::before {
     position: absolute;
     bottom: 2px;
     left: 50%;
