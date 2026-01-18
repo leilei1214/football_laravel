@@ -2,7 +2,7 @@
 
 @section('title', 'EventViewList')
 @section('style')
-<link rel="stylesheet" href="{{ asset('style.css') }}">
+<link rel="stylesheet" href="{{ asset('css/event/style.css') }}">
 @endsection
 
 
@@ -40,8 +40,8 @@
                 </article>
                 <div id="tabs-modern">
                     <ul class="nav nav-tabs" role="tablist">
-                        <li class="nav-item" role="presentation"><a class="nav-link active show" href="#tabs-modern-1" data-bs-toggle="tab" aria-selected="true" role="tab">總覽</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link active show" href="#tabs-modern-1" data-bs-toggle="tab" aria-selected="true" role="tab">基礎</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link active show " href="#tabs-modern-1" data-bs-toggle="tab" aria-selected="true" role="tab">總覽</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link " href="#tabs-modern-1" data-bs-toggle="tab" aria-selected="true" role="tab">基礎</a></li>
                         <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-modern-2" data-bs-toggle="tab" aria-selected="false" tabindex="-1" role="tab">樂踢</a></li>
                         <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-modern-3" data-bs-toggle="tab" aria-selected="false" tabindex="-1" role="tab">實戰</a></li>
                     </ul>                    
