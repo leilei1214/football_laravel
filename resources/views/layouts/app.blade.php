@@ -47,7 +47,7 @@
             display: none;
         }
     </style>
-
+    @yield('style')
     @stack('styles')
 </head>
 <body>
