@@ -16,7 +16,7 @@
     text-transform: uppercase;
     transition: all .3s;
 }
-#tabs-modern .nav-link:hover, .tabs-modern .nav-link.active {
+#tabs-modern .nav-link:hover, #tabs-modern .nav-link.active {
     color: #fff;
     background: #35ad79;
 }
