@@ -1,14 +1,11 @@
 @extends('layouts.app')
 
 @section('title', 'EventViewList')
-<!-- @section('style')
-.nav .nav-tabse {
-    background: #fff;
-    border: 1px solid #e1e1e1;
-    /* width: auto; */
-    display: -webkit-inline-box;
-}
-@endsection -->
+@section('style')
+<link rel="stylesheet" href="{{ asset('style.css') }}">
+@endsection
+
+
 @section('content')
 <section class="section section-variant-1 bg-gray-100">
     <div class="container">
