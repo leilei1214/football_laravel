@@ -3,172 +3,61 @@
 @section('title', 'Login Page')
 
 @section('content')
-    <section class="section section-variant-1 bg-gray-100">
+<section class="section section-variant-1 bg-gray-100">
     <div class="container">
-        <div class="row row-50 justify-content-center">
-        <div class="col-md-10 col-lg-8 col-xl-6">
-            <div class="card-login-register" id="card-l-r">
-            <div class="card-top-panel">
-                <div class="card-top-panel-left">
-                <h5 class="card-title card-title-login">Login</h5>
-                <h5 class="card-title card-title-register">Register</h5>
-                </div>
-                <div class="card-top-panel-right"><span class="card-subtitle"><span class="card-subtitle-login">Register now</span><span class="card-subtitle-register">Sign in</span></span>
-                <button class="card-toggle" data-custom-toggle="#card-l-r"><span class="card-toggle-circle"></span></button>
-                </div>
-            </div>
-            <div class="card-form card-form-login">
-                <form class="rd-form rd-mailform" novalidate="novalidate">
-                <button class="button button-lg button-primary button-block" type="button" onclick="line_login()">
-                    <img src="./images/icons8-line.svg" alt="" style="width: 30px;margin-right: 20px;">
-                    使用line登入
-                </button>
-                </form>
-            </div>
-            <div class="card-form card-form-register">
-                <form class="rd-form rd-mailform" novalidate="novalidate">
-                <div class="form-wrap">
-                    <label class="form-label rd-input-label" for="form-register-email">Birthday(生日) : </label>
-                    <input class="form-input form-control-has-validation form-control-last-child" id="form-register-email" type="date"  name="birthday"  data-constraints="Required" style="padding-left: 131px !important;">
-                </div>
-                <div class="form-wrap">
-                    <label class="form-label rd-input-label" for="form-login-name-2">Sex(性別) : </label>
-                    <select class="form-select form-input" aria-label="Default select example" id="form-login-name-3" name="Gender"  data-constraints="Required" style="padding-left: 97px;">
-                    <option selected></option>
-                    <option value="M">男生(Boy)</option>
-                    <option value="W">女生(Girl)</option>
-                    </select>
-                </div>
-                <div class="form-wrap">
-                    <label class="form-label rd-input-label" for="form-login-name-2">position 1 (位置 1) : </label>
-                    <select class="form-select form-input" aria-label="Default select example" id="form-login-name-2" name="position1"  data-constraints="Required" style="padding-left: 157px;">
-                    <option selected></option>
-                    <option value="GK">GK(守門員)</option>
-                    <option value="DF">DF(後衛)</option>
-                    <option value="MF">MF(中場)</option>
-                    <option value="FW">FW(前鋒)</option>
-                    <option value="libero">libero(自由人)</option>
+        <!-- 更改成管理中心 -->
+        <!-- <a class="button-icon-alternate button-icon-alternate-google" style="height: 50px;" href="/add_event">
+        <span class="icon mdi mdi-plus"></span>
+        <div class="button-icon-alternate-title" style="font-size: 17px;">新建活動</div>
+        </a> -->
+        <div class="row row-50">
+            <div class="col-md-12">
+            <div class="main-component">
 
-                    </select>
-                </div>
-                <div class="form-wrap">
-                    <label class="form-label rd-input-label" for="form-login-name-2">position 2 (位置 2) : </label>
+                <div class="owl-carousel-outer-navigation">
+                <!-- Heading Component-->
+                <article class="heading-component">
+                    <div class="heading-component-inner">
+                    <h5 class="heading-component-title">活動
+                        
+                    </h5>
+                    <div class="d-flex justify-content-center mb-4 border-b border-gray-300 dark:border-gray-700">
+                        <button class="py-2 px-4 text-sm font-medium active" onclick="show_level('基礎')" data-subtab="north">基礎</button>
+                        <button class="py-2 px-4 text-sm font-medium " onclick="show_level('樂踢')" data-subtab="central">樂踢</button>
+                        <button class="py-2 px-4 text-sm font-medium " onclick="show_level('實戰')" data-subtab="south">實戰</button>
+                    </div>
+                    <div class="owl-carousel-arrows-outline">
+                        <div class="owl-nav">
+                        <button class="owl-arrow owl-arrow-prev"></button>
+                        <button class="owl-arrow owl-arrow-next"></button>
+                        </div>
+                    </div>
+                    </div>
+                </article>
+                <!-- Owl Carousel-->
+                <div class="owl-carousel owl-spacing-1 owl-loaded" data-items="3" data-dots="false" data-nav="true" data-autoplay="true" data-autoplay-speed="4000" data-stage-padding="0" data-loop="false" data-margin="30" id="myCarousel"  data-mouse-drag="false" data-nav-custom=".owl-carousel-outer-navigation">
+                    
+                    
+                <div class="owl-carousel owl-spacing-1" id="myCarousel"></div>
 
-                    <select class="form-select form-input" aria-label="Default select example" id="form-login-name-1" name="position2"  data-constraints="Required" style="padding-left: 157px;">
-                    <option selected></option>
-                    <option value="GK">GK(守門員)</option>
-                    <option value="DF">DF(後衛)</option>
-                    <option value="MF">MF(中場)</option>
-                    <option value="FW">FW(前鋒)</option>
-                    <option value="libero">libero(自由人)</option>
-
-                    </select>
                 </div>
-                <div class="form-wrap">
-                </div>
-                <div class="form-wrap">
 
-                    <a style="width: 100%;" class="button button-google button-icon button-icon-left button-round button-lg" href="#" onclick="line_register(event)">
-                    <img src="./images/icons8-line-red.svg" alt="" style="width: 30px;margin-right: 20px;">
-                    <span>使用line註冊</span></a>
-                </div>                  </form>
-                <!-- <div class="group-sm group-sm-justify group-middle"><a class="button button-google button-icon button-icon-left button-round" href="#"><span class="icon fa fa-google-plus"></span><span>Google+</span></a><a class="button button-twitter button-icon button-icon-left button-round" href="#"><span class="icon fa fa-twitter"></span><span>Twitter</span></a><a class="button button-facebook button-icon button-icon-left button-round" href="#"><span class="icon fa fa-facebook"></span><span>Facebook</span></a></div> -->
+
             </div>
+
             </div>
-        </div>
+            <!-- Aside Block-->
+
         </div>
     </div>
-    </section>
+</section>
 
 
 @endsection
 @section('scripts')
+
 <script>
-    const params = new URLSearchParams(window.location.search);
-    const status = params.get('status');
 
-    if (status === 'register') {
-        const cardLoginRegister = document.querySelector(".card-login-register");
-        if (cardLoginRegister) cardLoginRegister.classList.add("active");
-
-        const cardToggle = document.querySelector(".card-toggle");
-        if (cardToggle) cardToggle.classList.add("active");
-        // alert('請先註冊'); // 或改用更美觀的訊息框
-    }
 </script>
-<script>
-        // 使用 URLSearchParams 提取查詢參數
-    const urlParams = new URLSearchParams(window.location.search);
 
-        // 獲取 `list_id` 的值
-    let club = urlParams.get('club');
-    function line_login(){
-        fetch('{{ url('/save-to-session') }}', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json;charset=utf-8',
-                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-            },
-            body: JSON.stringify({ status:'login',birthday: '', position1: '', position2: '',Guild:club,level:'',Gender:'' }),
-        })
-        .then(response => response.json())
-        .then(data => {
-            if( data.message == 200){
-            window.location.href ='{{ url('/line_login') }}';
-            }
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
-    }
-</script>
-<script>
-    function line_register(e){
-        
-        // 使用 URLSearchParams 提取查詢參數
-        const urlParams = new URLSearchParams(window.location.search);
-
-          // 獲取 `list_id` 的值
-        let club = urlParams.get('club');
-        let level = urlParams.get('level');
-        if(!level){
-          level = 4
-        }
-        if(!club){
-          club = "圖斯特宇宙"
-        }
-          // 抓取表單值
-        e.preventDefault(); 
-        const birthday =document.getElementsByName('birthday')[0].value;
-        const Gender =document.getElementsByName('Gender')[0].value;
-        const position1 = document.getElementsByName('position1')[0].value;
-        const position2 = document.getElementsByName('position2')[0].value;
-
-        // 檢查是否為空
-        if (!birthday || !position1 || !position2) {
-          alert('請填寫所有必填項目');
-          
-        }else{
-            // 使用 fetch 发送 POST 请求到服务器以保存到 session
-          fetch('{{ url('/save-to-session') }}', {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json;charset=utf-8',
-                  'X-CSRF-TOKEN': '{{ csrf_token() }}'
-              },
-              body: JSON.stringify({ status:'register',birthday: birthday, position1: position1, position2: position2,Guild:club,level:level,Gender:Gender }),
-          })
-          .then(response => response.json())
-          .then(data => {
-              if( data.message == 200){
-                window.location.href ='{{ url('/line_login') }}';
-              }
-          })
-          .catch((error) => {
-              console.error('Error:', error);
-          });
-        }
-
-      }
-</script>
 @endsection
