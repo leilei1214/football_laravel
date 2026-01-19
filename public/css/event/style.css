@@ -34,3 +34,7 @@
     transition: all .3s;
     pointer-events: none;
 }
+.tabs-modern .nav-link.active:before {
+    bottom: -6px;
+    opacity: 1;
+}
