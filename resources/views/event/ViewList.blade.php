@@ -34,7 +34,7 @@
                 <div id="tabs-modern">
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item" role="presentation" onclick="show_level('總攬')"><a class="nav-link active show " href="#tabs-modern-1" data-bs-toggle="tab" aria-selected="true" role="tab">總覽</a></li>
-                        <li class="nav-item" role="presentation" onclick="show_level('基礎')"><a class="nav-link " href="#tabs-modern-1" data-bs-toggle="tab" aria-selected="true" role="tab">基礎</a></li>
+                        <li class="nav-item" role="presentation" onclick="show_level('基礎')"><a class="nav-link " href="#tabs-modern-1" data-bs-toggle="tab" aria-selected="false" tabindex="-1" role="tab">基礎</a></li>
                         <li class="nav-item" role="presentation" onclick="show_level('樂踢')"><a class="nav-link" href="#tabs-modern-2" data-bs-toggle="tab" aria-selected="false" tabindex="-1" role="tab">樂踢</a></li>
                         <li class="nav-item" role="presentation" onclick="show_level('實戰')"><a class="nav-link" href="#tabs-modern-3" data-bs-toggle="tab" aria-selected="false" tabindex="-1" role="tab">實戰</a></li>
                     </ul>                    
