@@ -22,14 +22,7 @@
                 <!-- Heading Component-->
                 <article class="heading-component">
                     <div class="heading-component-inner">
-                    <h5 class="heading-component-title">活動
-                        
-                    </h5>
-                    <div class="d-flex justify-content-center mb-4 border-b border-gray-300 dark:border-gray-700">
-                        <button class="py-2 px-4 text-sm font-medium active" onclick="show_level('基礎')" data-subtab="north">基礎</button>
-                        <button class="py-2 px-4 text-sm font-medium " onclick="show_level('樂踢')" data-subtab="central">樂踢</button>
-                        <button class="py-2 px-4 text-sm font-medium " onclick="show_level('實戰')" data-subtab="south">實戰</button>
-                    </div>
+                    <h5 class="heading-component-title">活動</h5>
                     <div class="owl-carousel-arrows-outline">
                         <div class="owl-nav">
                         <button class="owl-arrow owl-arrow-prev"></button>
@@ -40,10 +33,10 @@
                 </article>
                 <div id="tabs-modern">
                     <ul class="nav nav-tabs" role="tablist">
-                        <li class="nav-item" role="presentation"><a class="nav-link active show " href="#tabs-modern-1" data-bs-toggle="tab" aria-selected="true" role="tab">總覽</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link " href="#tabs-modern-1" data-bs-toggle="tab" aria-selected="true" role="tab">基礎</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-modern-2" data-bs-toggle="tab" aria-selected="false" tabindex="-1" role="tab">樂踢</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-modern-3" data-bs-toggle="tab" aria-selected="false" tabindex="-1" role="tab">實戰</a></li>
+                        <li class="nav-item" role="presentation" onclick="show_level('總攬')"><a class="nav-link active show " href="#tabs-modern-1" data-bs-toggle="tab" aria-selected="true" role="tab">總覽</a></li>
+                        <li class="nav-item" role="presentation" onclick="show_level('基礎')"><a class="nav-link " href="#tabs-modern-1" data-bs-toggle="tab" aria-selected="true" role="tab">基礎</a></li>
+                        <li class="nav-item" role="presentation" onclick="show_level('樂踢')"><a class="nav-link" href="#tabs-modern-2" data-bs-toggle="tab" aria-selected="false" tabindex="-1" role="tab">樂踢</a></li>
+                        <li class="nav-item" role="presentation" onclick="show_level('實戰')"><a class="nav-link" href="#tabs-modern-3" data-bs-toggle="tab" aria-selected="false" tabindex="-1" role="tab">實戰</a></li>
                     </ul>                    
                 </div>
 
@@ -69,8 +62,15 @@
 @endsection
 @section('scripts')
 
+<!-- <script src="{{ asset('js/event_level.js') }}"></script> -->
 <script>
+    var tabEl = document.querySelectorAll('#tabs-modern .nav-link');
 
+    tabEl.forEach(function (el) {
+        el.addEventListener('shown.bs.tab', function (event) {
+            const level = event.target.dataset.level;
+            console.log('切換完成：', level);
+        });
+    });
 </script>
-
 @endsection
