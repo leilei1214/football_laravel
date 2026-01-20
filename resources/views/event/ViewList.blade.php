@@ -64,13 +64,15 @@
 
 <!-- <script src="{{ asset('js/event_level.js') }}"></script> -->
 <script>
-    var tabEl = document.querySelectorAll('#tabs-modern .nav-link');
+    function show_level(level){
+        var tabEl = document.querySelectorAll('#tabs-modern .nav-link');
 
-    tabEl.forEach(function (el) {
-        el.addEventListener('shown.bs.tab', function (event) {
-            const level = event.target.dataset.level;
-            console.log('切換完成：', level);
+        tabEl.forEach(function (el) {
+            el.addEventListener('shown.bs.tab', function (event) {
+                const level = event.target.dataset.level;
+                console.log('切換完成：', level);
+            });
         });
-    });
+    }
 </script>
 @endsection
