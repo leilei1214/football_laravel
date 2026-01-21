@@ -84,7 +84,7 @@
             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
 
           },
-          body: JSON.stringify({ identifier: "none",level:"總覽" })
+          body: JSON.stringify({ level:"總覽" })
       })
       .then(response => {
           if (!response.ok) {

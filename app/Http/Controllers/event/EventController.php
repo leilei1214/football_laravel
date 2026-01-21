@@ -12,7 +12,7 @@ class EventController extends Controller
     }
     public function ApiEvent(Request $request)
     {
-        $identifier = $request->input('identifier');
+        // $identifier = $request->input('identifier');
         $level      = $request->input('input');
 
         try {
