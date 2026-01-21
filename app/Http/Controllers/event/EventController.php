@@ -15,32 +15,44 @@ class EventController extends Controller
         $identifier = $request->input('identifier');
         $level      = $request->input('input');
 
+        try {
         // 🔐 未登入就擋
-        if ($level === '總覽') {
-            $activities = DB::table('activities')->get();
-            if ($activities->isEmpty()) {
-                return response()->json(['message' => '找不到對應的活動'], 404);
+            if ($level === '總覽') {
+                $activities = DB::table('activities')->get();
+                if ($activities->isEmpty()) {
+                    return response()->json(['message' => '找不到對應的活動'], 404);
+                }
+            return response()->json($activities);
+            }else{
+
+                // 撈活動
+                $result = DB::select(
+                    "SELECT * FROM activities
+                    WHERE FIND_IN_SET(
+                        ?, 
+                        REPLACE(REPLACE(activity_level, '{', ''), '}', '')
+                    ) > 0",
+                    [$level]
+                );
+
+                if (count($result) === 0) {
+                    return response()->json(['message' => '找不到對應的活動'], 404);
+                }
+
+                return response()->json($result);
             }
-           return response()->json($activities);
-        }else{
+        }catch (\Exception $e) {
+            // 將完整 Exception 訊息寫入日誌
+            \Log::error('ApiEvent Exception', [
+                'message' => $e->getMessage(),
+                'trace'   => $e->getTraceAsString()
+            ]);
 
-            // 撈活動
-            $result = DB::select(
-                "SELECT * FROM activities
-                 WHERE FIND_IN_SET(
-                    ?, 
-                    REPLACE(REPLACE(activity_level, '{', ''), '}', '')
-                 ) > 0",
-                [$level]
-            );
-
-            if (count($result) === 0) {
-                return response()->json(['message' => '找不到對應的活動'], 404);
-            }
-
-            return response()->json($result);
+            return response()->json([
+                'message' => '資料庫查詢錯誤',
+                'error'   => $e->getMessage()
+            ], 500);
         }
-
 
 
     }
