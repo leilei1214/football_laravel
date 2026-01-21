@@ -38,7 +38,7 @@ class EventController extends Controller
                 return response('找不到對應的活動', 404);
             }
 
-            return response()->json($events);
+            return response()->json($result);
         }
 
 
