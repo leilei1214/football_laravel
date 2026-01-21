@@ -17,10 +17,10 @@
 <section class="section section-variant-1 bg-gray-100">
     <div class="container">
         <!-- 更改成管理中心 -->
-        <!-- <a class="button-icon-alternate button-icon-alternate-google" style="height: 50px;" href="/add_event">
-        <span class="icon mdi mdi-plus"></span>
-        <div class="button-icon-alternate-title" style="font-size: 17px;">新建活動</div>
-        </a> -->
+        <a class="button-icon-alternate button-icon-alternate-google d-none addEventHref" style="height: 50px;" href="/add_event">
+            <span class="icon mdi mdi-plus"></span>
+            <div class="button-icon-alternate-title" style="font-size: 17px;">新建活動</div>
+        </a>
         <div class="row row-50">
             <div class="col-md-12">
             <div class="main-component">
@@ -86,7 +86,12 @@
 <script>
 fetch('/check-identity')
   .then(res => res.json())
-  .then(data => console.log('Level:', data.level, 'Guild:', data.Guild));
+  .then(data => 
+    console.log('Level:', data.level, 'Guild:', data.Guild)
+    if(data.level == 1){
+        $(".addEventHref").addClass("d-none")
+    }
+  );
 </script>
 <script>
       fetch('./api/event', {
