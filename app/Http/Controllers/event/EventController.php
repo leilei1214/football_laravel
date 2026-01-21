@@ -13,7 +13,7 @@ class EventController extends Controller
     public function ApiEvent(Request $request)
     {
         // $identifier = $request->input('identifier');
-        $level      = $request->input('input');
+        $level = $request->input('level');
 
         try {
         // 🔐 未登入就擋
@@ -22,7 +22,7 @@ class EventController extends Controller
                 if ($activities->isEmpty()) {
                     return response()->json(['message' => '找不到對應的活動'], 404);
                 }
-            return response()->json($activities);
+                return response()->json($activities);
             }else{
                 $activities = DB::table('activities')->get();
                 if ($activities->isEmpty()) {
