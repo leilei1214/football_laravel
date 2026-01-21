@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\event;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class EventController extends Controller
 {
      public function ShowEvent()
