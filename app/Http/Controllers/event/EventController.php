@@ -12,8 +12,8 @@ class EventController extends Controller
     }
     public function ApiEvent(Request $request)
     {
-        $identifier = $request->identifier;
-        $level      = $request->level;
+        $identifier = $request->input('identifier');
+        $level      = $request->input('input');
 
         // 🔐 未登入就擋
         if ($level === '總覽') {
