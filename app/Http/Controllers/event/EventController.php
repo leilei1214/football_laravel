@@ -19,7 +19,7 @@ class EventController extends Controller
         if ($level === '總覽') {
             $activities = DB::table('activities')->get();
             if ($activities->isEmpty()) {
-                return response('找不到對應的活動', 404);
+                return response()->json(['message' => '找不到對應的活動'], 404);
             }
            return response()->json($activities);
         }else{
@@ -35,7 +35,7 @@ class EventController extends Controller
             );
 
             if (count($result) === 0) {
-                return response('找不到對應的活動', 404);
+                return response()->json(['message' => '找不到對應的活動'], 404);
             }
 
             return response()->json($result);
