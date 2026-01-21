@@ -80,7 +80,9 @@
       fetch('./api/event', {
           method: 'POST',
           headers: {
-              'Content-Type': 'application/json;charset=utf-8'
+            'Content-Type': 'application/json;charset=utf-8',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+
           },
           body: JSON.stringify({ identifier: "none",level:"總覽" })
       })

@@ -25,14 +25,19 @@ class EventController extends Controller
         }else{
 
             // 撈活動
-            $events = DB::table('events')
-                ->where('activity_level', 'like', "%{$level}%")
-                ->orderBy('time', 'asc')
-                ->get();
+            $result = DB::select(
+                "SELECT * FROM activities
+                 WHERE FIND_IN_SET(
+                    ?, 
+                    REPLACE(REPLACE(activity_level, '{', ''), '}', '')
+                 ) > 0",
+                [$level]
+            );
 
-            if (count($events) === 0) {
+            if (count($result) === 0) {
                 return response('找不到對應的活動', 404);
             }
+
             return response()->json($events);
         }
 
