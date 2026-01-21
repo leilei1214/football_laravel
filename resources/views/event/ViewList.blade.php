@@ -82,7 +82,7 @@
           headers: {
               'Content-Type': 'application/json;charset=utf-8'
           },
-          body: JSON.stringify({ identifier: "none",level:"基礎" })
+          body: JSON.stringify({ identifier: "none",level:"總覽" })
       })
       .then(response => {
           if (!response.ok) {

@@ -28,3 +28,4 @@ Route::post('/save-to-session', function (\Illuminate\Http\Request $request) {
     return response()->json(['message' => 200]);
 });
 Route::get('/ShowEvent', [EventController::class, 'ShowEvent'])->name('ShowEvent');
+Route::post('/api/event', [EventController::class, 'ApiEvent']);
