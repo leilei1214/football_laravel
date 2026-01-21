@@ -18,7 +18,7 @@ class EventController extends Controller
         // 🔐 未登入就擋
         if ($level === '總覽') {
             $activities = DB::table('activities')->get();
-            if (count($activities) === 0) {
+            if ($activities->isEmpty()) {
                 return response('找不到對應的活動', 404);
             }
            return response()->json($activities);
