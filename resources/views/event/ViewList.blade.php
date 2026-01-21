@@ -61,12 +61,13 @@
 
 @endsection
 @section('scripts')
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- <script src="{{ asset('js/event_level.js') }}"></script> -->
 <script>
     function show_level(level){
         var tabEl = document.querySelectorAll('#tabs-modern .nav-link');
-
+        consol
         tabEl.forEach(function (el) {
             el.addEventListener('shown.bs.tab', function (event) {
                 const level = event.target.dataset.level;
