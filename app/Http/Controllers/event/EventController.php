@@ -24,24 +24,24 @@ class EventController extends Controller
                 }
                 return response()->json($activities);
             }else{
-                $activities = DB::table('activities')->get();
-                if ($activities->isEmpty()) {
-                    return response()->json(['message' => '找不到對應的活動'], 404);
-                }
-
-                // // 撈活動
-                // $result = DB::select(
-                //     "SELECT * FROM activities
-                //     WHERE FIND_IN_SET(
-                //         ?, 
-                //         REPLACE(REPLACE(activity_level, '{', ''), '}', '')
-                //     ) > 0",
-                //     [$level]
-                // );
-
-                // if (count($result) === 0) {
+                // $activities = DB::table('activities')->get();
+                // if ($activities->isEmpty()) {
                 //     return response()->json(['message' => '找不到對應的活動'], 404);
                 // }
+
+                // // 撈活動
+                $result = DB::select(
+                    "SELECT * FROM activities
+                    WHERE FIND_IN_SET(
+                        ?, 
+                        REPLACE(REPLACE(activity_level, '{', ''), '}', '')
+                    ) > 0",
+                    [$level]
+                );
+
+                if (count($result) === 0) {
+                    return response()->json(['message' => '找不到對應的活動'], 404);
+                }
 
                 return response()->json($result);
             }
