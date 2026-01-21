@@ -83,6 +83,10 @@ class LoginController extends Controller
                 // $user 是物件，可以直接存取欄位
                 if ($user->Guild == $Guild && $status == 'login') {
                     // Guild 一致，導首頁
+                    session([
+                        'level'     => $user ->level,
+                        'Guild'     => $Guild,
+                    ]);
                     return redirect()->route('home');
                 } 
                 // 使用者未註冊

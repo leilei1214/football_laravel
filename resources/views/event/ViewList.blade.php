@@ -84,6 +84,11 @@
     }
 </script>
 <script>
+fetch('/check-identity')
+  .then(res => res.json())
+  .then(data => console.log('Level:', data.level, 'Guild:', data.Guild));
+</script>
+<script>
       fetch('./api/event', {
           method: 'POST',
           headers: {

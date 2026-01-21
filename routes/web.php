@@ -27,5 +27,21 @@ Route::post('/save-to-session', function (\Illuminate\Http\Request $request) {
     session($request->all());
     return response()->json(['message' => 200]);
 });
+Route::get('/check-identity', function () {
+
+    $birthday  = session('birthday');
+    $position1 = session('position1');
+    $position2 = session('position2');
+    $Guild     = session('Guild');
+    $level     = session('level');
+    $Gender    = session('Gender');
+
+    // 例：用 session 去查資料庫
+    return response()->json([
+        'level'     => $level,
+        'Guild'     => $Guild,
+    ]);
+});
+
 Route::get('/ShowEvent', [EventController::class, 'ShowEvent'])->name('ShowEvent');
 Route::post('/api/event', [EventController::class, 'ApiEvent']);
