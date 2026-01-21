@@ -3,6 +3,13 @@
 @section('title', 'EventViewList')
 @section('style')
 <link rel="stylesheet" href="{{ asset('css/event/style.css') }}">
+<style>
+.product-header .badge {
+    position: relative;
+    font-size: 20px;
+    padding: 10px;
+}
+</style>
 @endsection
 
 
@@ -119,6 +126,7 @@
               }
 
               const formattedDate = `${eventDate.getFullYear()}-${String(eventDate.getMonth() + 1).padStart(2, '0')}-${String(eventDate.getDate()).padStart(2, '0')} ${String(eventDate.getHours()).padStart(2, '0')}:${String(eventDate.getMinutes()).padStart(2, '0')}`;
+              
               const levels = activity.activity_level.replace(/^{|}$/g, '').split(',');
               for (const item of levels) {
                   if( item == "基礎"){
