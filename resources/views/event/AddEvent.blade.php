@@ -88,7 +88,15 @@
         outline: none;
         cursor: pointer;
         top:0;
-        opacity: 1;
+        opacity: 0;
+    }
+    .checkbox-inline .checkbox-custom-dummy {
+        top: 1px;
+        left: 0;
+        width: 21px;
+        height: 21px;
+        margin: 0;
+        border: 1px solid #e1e1e1;
     }
         
 </style>
