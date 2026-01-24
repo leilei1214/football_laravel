@@ -174,7 +174,7 @@
             <div class="form-group row">
             <label for="exampleInputConfirmPassword2" class="col-sm-2">活動地點 : </label>
             <div class="col-sm-10  col-form-label">
-                <select class="form-select form-select-sm address"  aria-label="Default select example" style="height: 38px;padding: 0;">
+                <select class="form-select form-select-sm address" id="activity_level" name="activity_level" aria-label="Default select example" style="height: 38px;padding: 0;">
                 <option value="1">西屯足球場</option>
                 <option value="2">朝馬足球場</option>
                 <option value="3">太原足球場</option>
