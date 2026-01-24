@@ -234,7 +234,7 @@
             },
             columns: [
                 { data: 'id', name: 'id' },
-                { data: 'activity_notice', name: 'title' },
+                { data: 'activity_notice', name: 'activity_notice' },
                 { 
                     data: 'activity_level',
                     name: 'activity_level',
@@ -251,14 +251,14 @@
                         return html;
                     }
                 },
-                { data: 'time', name: 'created_at' },
+                { data: 'time', name: 'time' },
                 { 
-                    data: 'id',
+                    data: 'action', 
                     name: 'action',
                     orderable: false,
                     searchable: false,
-                    render: function(id, type, row){
-                        return `<a href="/manager/event-edit/${id}" class="btn btn-sm btn-primary">編輯</a>`;
+                    render: function(data, type, row){
+                        return data; // 後端已經回傳 action html
                     }
                 }
             ]
