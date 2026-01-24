@@ -1,0 +1,2 @@
+[17-Jan-2026 11:27:43 UTC] PHP Fatal error:  Cannot declare class App\Http\Controllers\Auth\EventController, because the name is already in use in /home/dyvxi7fuvckc/public_html/app/Http/Controllers/event/EventController.php on line 7
+[17-Jan-2026 11:29:16 UTC] PHP Fatal error:  Cannot declare class App\Http\Controllers\Auth\EventController, because the name is already in use in /home/dyvxi7fuvckc/public_html/app/Http/Controllers/event/EventController.php on line 7
