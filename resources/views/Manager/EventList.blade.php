@@ -202,7 +202,7 @@ fetch('/check-identity')
             destroy: true, // 重新初始化
             ajax: {
                 url: '{{ route('api.event') }}',
-                data: { level: level }
+                data: { level: '總覽' }
             },
             columns: [
                 { data: 'id', name: 'id' },
