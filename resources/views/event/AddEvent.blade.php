@@ -117,16 +117,19 @@
                 <li>
                 <label class="checkbox-inline checkbox-inline-lg">
                     <input name="input-checkbox-1" value="基礎" type="checkbox"/>基礎
+                    <span class="checkbox-custom-dummy"></span>
                 </label>
                 </li>
                 <li>
                 <label class="checkbox-inline checkbox-inline-lg">
                     <input name="input-checkbox-2" value="樂踢" type="checkbox"/>樂踢
+                    <span class="checkbox-custom-dummy"></span>
                 </label>
                 </li>
                 <li>
                 <label class="checkbox-inline checkbox-inline-lg">
                     <input name="input-checkbox-3" value="實踐" type="checkbox"/>實踐
+                    <span class="checkbox-custom-dummy"></span>
                 </label>
                 </li>
             </ul>
