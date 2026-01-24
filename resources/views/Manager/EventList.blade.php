@@ -234,10 +234,33 @@
             },
             columns: [
                 { data: 'id', name: 'id' },
-                { data: 'title', name: 'title' },
-                { data: 'activity_level', name: 'activity_level' },
-                { data: 'created_at', name: 'created_at' },
-                { data: 'action', name: 'action', orderable: false, searchable: false }
+                { data: 'activity_notice', name: 'title' },
+                { 
+                    data: 'activity_level',
+                    name: 'activity_level',
+                    render: function(data, type, row){
+                        if(!data) return '';
+                        let levels = data.replace(/{|}/g,'').split(',');
+                        let html = '';
+                        levels.forEach(function(item){
+                            item = item.trim();
+                            if(item == '基礎') html += `<span class="badge badge-primary">${item}</span>`;
+                            else if(item == '實踐') html += `<span class="badge badge-red">${item}</span>`;
+                            else html += `<span class="badge badge-secondary">${item}</span>`;
+                        });
+                        return html;
+                    }
+                },
+                { data: 'time', name: 'created_at' },
+                { 
+                    data: 'id',
+                    name: 'action',
+                    orderable: false,
+                    searchable: false,
+                    render: function(id, type, row){
+                        return `<a href="/manager/event-edit/${id}" class="btn btn-sm btn-primary">編輯</a>`;
+                    }
+                }
             ]
         });
     });
