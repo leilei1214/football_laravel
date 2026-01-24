@@ -37,6 +37,7 @@
 @endsection
 @section('scripts')
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
 <!-- <script src="{{ asset('js/event_level.js') }}"></script> -->
 <script>
@@ -198,7 +199,11 @@ fetch('/check-identity')
         $('#events-table').DataTable({
             processing: true,
             serverSide: true,
-            ajax: '{{ route('manager.event_list.data') }}',
+            destroy: true, // 重新初始化
+            ajax: {
+                url: '{{ route('api.event') }}',
+                data: { level: level }
+            },
             columns: [
                 { data: 'id', name: 'id' },
                 { data: 'title', name: 'title' },

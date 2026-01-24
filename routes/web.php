@@ -45,7 +45,7 @@ Route::get('/check-identity', function () {
 });
 
 Route::get('/ShowEvent', [EventController::class, 'ShowEvent'])->name('ShowEvent');
-Route::post('/api/event', [EventController::class, 'ApiEvent']);
+Route::post('/api/event', [EventController::class, 'ApiEvent'])->name('api.event');;
 Route::get('/AddEvent', [EventController::class, 'AddEvent'])->name('AddEvent');
 
 
