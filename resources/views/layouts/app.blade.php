@@ -64,7 +64,7 @@
 
     </main>
     
-    
+    @yield('scripts') <!-- <<--- 一定要有 -->
     <script src="https://cms.devoffice.com/coding-dev/rd-navbar/demo/js/core.min.js"></script>
     <script src="https://cms.devoffice.com/coding-dev/rd-navbar/demo/js/script.js"></script>
     <script src="https://cms.devoffice.com/coding-dev/rd-navbar/demo/js/smoothscroll.min.js"></script>
@@ -72,7 +72,6 @@
     <script src="https://cms.devoffice.com/coding-dev/rd-navbar/demo/js/jquery.rd-parallax.min.js"></script>
     <script src="https://cms.devoffice.com/coding-dev/rd-navbar/dist/js/jquery.rd-navbar.js"></script>
     <script src="{{ asset('js/myScript.js') }}"></script>
-    @yield('scripts') <!-- <<--- 一定要有 -->
     <!-- JS -->
     <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
     <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
