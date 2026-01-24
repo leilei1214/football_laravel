@@ -12,7 +12,7 @@ class EventController extends Controller
     }
     public function AddEvent()
     {
-        return view('addevent.ViewList');
+        return view('event.AddEvent');
     }
     public function ApiEvent(Request $request)
     {
