@@ -70,8 +70,6 @@
                     'error'   => $e->getMessage()
                 ], 500);
             }
-                $levels = $request->input('level', []);
-
 
         }
     }
