@@ -42,8 +42,7 @@
 @section('scripts')
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src = "http://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js" defer></script>
  
 <!-- <script src="{{ asset('js/event_level.js') }}"></script> -->
@@ -71,6 +70,7 @@
       .catch(err => console.error('Fetch error:', err));
 </script>
 <!-- 1️⃣ jQuery 先載入 -->
+<!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> -->
 
 <!-- 2️⃣ DataTables CSS -->
 
@@ -209,8 +209,6 @@
     //   });
 
     $(document).ready(function(){
-        $.noConflict();
-
         $('#events-table').DataTable({
             processing: true,
             serverSide: true,
