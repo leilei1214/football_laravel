@@ -107,7 +107,7 @@
         height: calc(1.5em + 0.75rem + 2px);
         padding: 0.375rem 0.75rem;
         font-size: 1rem;
-        font-weight: 400;
+        font-weight: 600;
         line-height: 1.5;
         color: #495057;
         background-color: #fff;
@@ -121,7 +121,7 @@
 
 @section('content')
 <section class="section section-md bg-gray-100">
-<div class="col-12">
+<div class="col-8" style="margin:0 auto">
     <div class="card index_page_edit">
 
         <div class="card-body" style="background-color: #fff;border-radius: 0px 0px 16px 16px;">
