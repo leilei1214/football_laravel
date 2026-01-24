@@ -217,11 +217,11 @@
             destroy: true, // 重新初始化
             ajax: {
                 url: '{{ route('Mapi.event') }}',
-                data: { level: '總覽' }
-            },
-            type: 'POST',
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                data: { level: '總覽' },
+                type: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
             },
             columns: [
                 { data: 'id', name: 'id' },
