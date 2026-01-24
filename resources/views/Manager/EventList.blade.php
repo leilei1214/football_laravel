@@ -210,6 +210,7 @@
     //   });
 
     $(document).ready(function(){
+         $.noConflict();
         $('#events-table').DataTable({
             processing: true,
             serverSide: true,
