@@ -220,6 +220,7 @@
                 url: '{{ route('Mapi.event') }}',
                 data: { level: '總覽' }
             },
+            type: 'POST',
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },

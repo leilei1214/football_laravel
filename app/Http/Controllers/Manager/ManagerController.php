@@ -20,7 +20,7 @@
 
                     $activities = DB::table('activities')->get();
                     if ($activities->isEmpty()) {
-                        $query->where(function($q) use ($levels){
+                        $activities->where(function($q) use ($levels){
                             foreach ($levels as $level) {
                                 $q->orWhereRaw("FIND_IN_SET(?, REPLACE(REPLACE(activity_level, '{',''), '}','')) > 0", [$level]);
                             }
@@ -34,12 +34,8 @@
                     // }
 
                     // // 撈活動
-                    $result = DB::select(
-                        "SELECT * FROM activities
-                        WHERE FIND_IN_SET(
-                            ?, 
-                            REPLACE(REPLACE(activity_level, '{', ''), '}', '')
-                        ) > 0",
+                    $result = DB::table()->whereRaw(
+                        "FIND_IN_SET(?, REPLACE(REPLACE(activity_level, '{',''), '}','')) > 0",
                         [$level]
                     );
 
@@ -47,7 +43,7 @@
                         return response()->json(['message' => '找不到對應的活動'], 404);
                     }
 
-                    $query->where(function($q) use ($levels){
+                    $result->where(function($q) use ($levels){
                         foreach ($levels as $level) {
                             $q->orWhereRaw("FIND_IN_SET(?, REPLACE(REPLACE(activity_level, '{',''), '}','')) > 0", [$level]);
                         }
