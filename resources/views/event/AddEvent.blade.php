@@ -4,11 +4,72 @@
 @section('style')
 <link rel="stylesheet" href="{{ asset('css/event/style.css') }}">
 <style>
-.product-header .badge {
-    position: relative;
-    font-size: 20px;
-    padding: 10px;
-}
+    .form-group .col-sm-2 {
+    color: #35ad79;
+    font-weight: 600;
+    }
+    .radio .radio-custom, .radio .radio-custom-dummy, .radio-inline .radio-custom, .radio-inline .radio-custom-dummy, .checkbox .checkbox-custom, .checkbox .checkbox-custom-dummy, .checkbox-inline .checkbox-custom, .checkbox-inline .checkbox-custom-dummy{
+        border: 1px solid #707279;
+        box-shadow: 0 0 1px 1px #707279;
+    }
+    .select2-chosen{
+    font-family: "Kanit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 600;
+    
+    }
+    
+    .form-control{
+    border: 3px solid #707279;
+    font-family: "Kanit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 600;
+    }
+    .stepper{
+    max-width: 300px;
+    width: auto;
+    } 
+    .select2-container{
+    display: block;
+    }
+    .select2-container .select2-choice{
+    display: block;
+    width: 100%;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 3px solid #707279;
+    border-radius: 0.25rem;
+    }
+    .product-header {
+
+        background: #d5deeb;
+    }
+    .object-container {
+        width: 100%;
+        max-width: 1212px; /* 限制最大寬度 */
+        height: 200px; /* 固定高度 */
+        overflow: hidden; /* 隱藏滾動條 */
+        border: 2px solid #007BFF;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        background-color: #ffffff;
+        margin-bottom: 20px;
+    }
+    object {
+        width: 100%; /* 設定為 100% 寬度 */
+        height: 100%; /* 設定為 100% 高度 */
+        border: none; /* 去掉邊框 */
+        overflow: hidden !important; /* 強制隱藏滾動條 */
+    }
+
+    .object-container::webkit-scrollbar {
+        display: none; /* 隱藏滾動條 */
+    }
+    
 </style>
 @endsection
 
