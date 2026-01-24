@@ -56,8 +56,9 @@
     
     <!-- Navbar Header -->
     @include('partials.header') <!-- 我們可以把你這段 Header 拆成 partial -->
-    @include('partials.Swiper') <!-- 我們可以把你這段 Header 拆成 partial -->
-
+    @if (!request()->is('Manager/*'))
+        @include('partials.Swiper') <!-- 我們可以把你這段 Header 拆成 partial -->
+    @endif
     <main>
         @yield('content')
 

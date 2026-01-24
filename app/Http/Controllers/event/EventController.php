@@ -14,6 +14,9 @@ class EventController extends Controller
     {
         return view('event.AddEvent');
     }
+    
+    
+    
     public function ApiEvent(Request $request)
     {
         // $identifier = $request->input('identifier');
