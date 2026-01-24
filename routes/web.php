@@ -47,4 +47,7 @@ Route::get('/check-identity', function () {
 Route::get('/ShowEvent', [EventController::class, 'ShowEvent'])->name('ShowEvent');
 Route::post('/api/event', [EventController::class, 'ApiEvent']);
 Route::get('/AddEvent', [EventController::class, 'AddEvent'])->name('AddEvent');
-Route::get('/Manager/EventList', [EventController::class, 'EventManager'])->name('ManagerEventList');;
+
+
+
+Route::get('/Manager/EventList', [ManagerController::class, 'EventManager'])->name('ManagerEventList');;
