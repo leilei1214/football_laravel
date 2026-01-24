@@ -128,9 +128,9 @@
                     <div class="rd-navbar-main-container container">
                     <!-- RD Navbar Nav-->
                                         <ul class="rd-navbar-nav">
-                                        <li class="rd-nav-item active"><a class="rd-nav-link" href="./home">Home</a>
+                                        <li class="rd-nav-item active"><a class="rd-nav-link" href="{{ route('home') }}">Home</a>
                                         </li>
-                                        <li class="rd-nav-item"><a class="rd-nav-link" href="./event">活動</a>
+                                        <li class="rd-nav-item"><a class="rd-nav-link" href="{{ route('ShowEvent') }}">活動</a>
                                         </li>
                                         <li class="rd-nav-item"><a class="rd-nav-link" href="./USER_Member_3">球員名單</a>
                                         </li>
@@ -140,7 +140,7 @@
                                             <a class="rd-nav-link" href="#">管理中心</a>
                                             <!-- <span class="rd-navbar-submenu-toggle"></span> -->
                                             <ul class="rd-menu rd-navbar-dropdown">
-                                            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="./add_event">新增活動</a>
+                                            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="{{ route('AddEvent') }}">新增活動</a>
                                             </li>
                                             <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="./ListMember">球員名冊</a>
                                             </li>
