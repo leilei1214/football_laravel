@@ -204,7 +204,8 @@
 @endsection
 @section('scripts')
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
+<script src="https://account.templatemonster.com/cp/main.js"></script>
 <!-- <script src="{{ asset('js/event_level.js') }}"></script> -->
 <script>
     function show_level(level){
