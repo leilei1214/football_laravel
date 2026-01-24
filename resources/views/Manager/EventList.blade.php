@@ -221,6 +221,15 @@
                 type: 'POST',
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },          
+                dataType: 'json',
+                // 這個成功就會在 console 顯示
+                success: function(response) {
+                    console.log('後端回傳資料:', response);
+                },
+                error: function(xhr, status, error) {
+                    console.error('Ajax 發生錯誤:', status, error);
+                    console.log(xhr.responseText);
                 }
             },
             columns: [
