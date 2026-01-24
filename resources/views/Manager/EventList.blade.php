@@ -62,6 +62,14 @@ fetch('/check-identity')
     }
   );
 </script>
+<!-- 1️⃣ jQuery 先載入 -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<!-- 2️⃣ DataTables CSS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+
+<!-- 3️⃣ DataTables JS -->
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 <script>
     //   fetch('./api/event', {
     //       method: 'POST',
