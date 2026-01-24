@@ -194,17 +194,19 @@ fetch('/check-identity')
     //       console.error('Error:', error);
     //   });
 
-    $('#events-table').DataTable({
-        processing: true,
-        serverSide: true,
-        ajax: '/api/event?level=總覽',  // Laravel Route
-        columns: [
-            { data: 'id', name: 'id' },
-            { data: 'title', name: 'title' },
-            { data: 'activity_level', name: 'activity_level' },
-            { data: 'created_at', name: 'created_at' }
-        ]
+    $(document).ready(function(){
+        $('#events-table').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: '{{ route('manager.event_list.data') }}',
+            columns: [
+                { data: 'id', name: 'id' },
+                { data: 'title', name: 'title' },
+                { data: 'activity_level', name: 'activity_level' },
+                { data: 'created_at', name: 'created_at' },
+                { data: 'action', name: 'action', orderable: false, searchable: false }
+            ]
+        });
     });
-
 </script>
 @endsection
