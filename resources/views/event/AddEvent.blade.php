@@ -101,6 +101,20 @@
     .checkbox-custom:checked + .checkbox-custom-dummy:after {
         opacity: 1;
     }
+    .form-select {
+        display: block;
+        width: 100%;
+        height: calc(1.5em + 0.75rem + 2px);
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 3px solid #707279;
+        border-radius: 0.25rem;
+    }
 </style>
 @endsection
 
