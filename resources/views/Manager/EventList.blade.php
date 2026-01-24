@@ -201,7 +201,7 @@ fetch('/check-identity')
             serverSide: true,
             destroy: true, // 重新初始化
             ajax: {
-                url: '{{ route('api.event') }}',
+                url: '{{ route('Mapi.event') }}',
                 data: { level: '總覽' }
             },
             columns: [
