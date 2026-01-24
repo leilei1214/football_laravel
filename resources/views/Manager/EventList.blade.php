@@ -2,7 +2,7 @@
 
 @section('title', 'EventViewList')
 @section('style')
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net">
 
 <link rel="stylesheet" href="{{ asset('css/event/style.css') }}">
 <style>
@@ -38,6 +38,8 @@
 
 @endsection
 @section('scripts')
+<script src="https://code.jquery.com"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.datatables.net"></script>
@@ -55,14 +57,16 @@
     }
 </script>
 <script>
-fetch('/check-identity')
-  .then(res => res.json())
-  .then(data => 
-    console.log('Level:', data.level, 'Guild:', data.Guild)
-    if(data.level == 1){
-        $(".addEventHref").addClass("d-none")
-    }
-  );
+    // 修正你的 fetch 語法錯誤 (少了一個括號)
+    fetch('/check-identity')
+      .then(res => res.json())
+      .then(data => {
+        console.log('Level:', data.level, 'Guild:', data.Guild);
+        if(data.level == 1){
+            $(".addEventHref").addClass("d-none");
+        }
+      })
+      .catch(err => console.error('Fetch error:', err));
 </script>
 <!-- 1️⃣ jQuery 先載入 -->
 <!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> -->
@@ -211,6 +215,9 @@ fetch('/check-identity')
             ajax: {
                 url: '{{ route('Mapi.event') }}',
                 data: { level: '總覽' }
+            },
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             columns: [
                 { data: 'id', name: 'id' },
