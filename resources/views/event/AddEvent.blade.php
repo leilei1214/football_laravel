@@ -69,7 +69,26 @@
     .object-container::webkit-scrollbar {
         display: none; /* 隱藏滾動條 */
     }
-    
+    .checkbox-inline .checkbox-custom-dummy::after {
+        content: '\f222';
+        font-family: "Material Design Icons";
+        position: absolute;
+        top: -1px;
+        left: 1px;
+        font-size: 18px;
+        line-height: 18px;
+        color: #35ad79;
+    }
+    .checkbox-inline input {
+
+        position: absolute;
+        left: 0;
+        width: 14px;
+        height: 14px;
+        outline: none;
+        cursor: pointer;
+    }
+        
 </style>
 @endsection
 
