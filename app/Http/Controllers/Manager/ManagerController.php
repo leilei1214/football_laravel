@@ -16,39 +16,15 @@
             $level = $request->input('level');
             try {
             // 🔐 未登入就擋
-                if ($level === '總覽') {      
-
-                    $activities = DB::table('activities')->get();
-                    if ($activities->isEmpty()) {
-                        $activities->where(function($q) use ($levels){
-                            foreach ($levels as $level) {
-                                $q->orWhereRaw("FIND_IN_SET(?, REPLACE(REPLACE(activity_level, '{',''), '}','')) > 0", [$level]);
-                            }
-                        });                    
-                    }
-                    return response()->json($activities);
-                }else{
-                    // $activities = DB::table('activities')->get();
-                    // if ($activities->isEmpty()) {
-                    //     return response()->json(['message' => '找不到對應的活動'], 404);
-                    // }
-
-                    // // 撈活動
-                    $result = DB::table()->whereRaw(
+                $query = DB::table('activities')->get();
+                if ($level !== '總覽') {
+                    // 只撈符合 level 的活動
+                    $query->whereRaw(
                         "FIND_IN_SET(?, REPLACE(REPLACE(activity_level, '{',''), '}','')) > 0",
                         [$level]
                     );
-
-                    if (count($result) === 0) {
-                        return response()->json(['message' => '找不到對應的活動'], 404);
-                    }
-
-                    $result->where(function($q) use ($levels){
-                        foreach ($levels as $level) {
-                            $q->orWhereRaw("FIND_IN_SET(?, REPLACE(REPLACE(activity_level, '{',''), '}','')) > 0", [$level]);
-                        }
-                    });                   
                 }
+
                 return DataTables::of($query)
                 ->addColumn('action', function($row){
                     return '<a href="/manager/event-edit/'.$row->id.'" class="btn btn-sm btn-primary">編輯</a>';
