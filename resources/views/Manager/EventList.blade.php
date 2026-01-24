@@ -46,7 +46,6 @@
 <script>
     function show_level(level){
         var tabEl = document.querySelectorAll('#tabs-modern .nav-link');
-        consol
         tabEl.forEach(function (el) {
             el.addEventListener('shown.bs.tab', function (event) {
                 const level = event.target.dataset.level;
