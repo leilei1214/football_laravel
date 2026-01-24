@@ -98,7 +98,7 @@
         margin: 0;
         border: 1px solid #e1e1e1;
     }
-    .checkbox-inline .checkbox-custom-dummy:after {
+    .checkbox-custom:checked + .checkbox-custom-dummy:after {
         opacity: 1;
     }
 </style>
