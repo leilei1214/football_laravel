@@ -71,7 +71,6 @@
       .catch(err => console.error('Fetch error:', err));
 </script>
 <!-- 1️⃣ jQuery 先載入 -->
-<!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> -->
 
 <!-- 2️⃣ DataTables CSS -->
 
