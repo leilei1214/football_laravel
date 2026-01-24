@@ -87,6 +87,8 @@
         height: 14px;
         outline: none;
         cursor: pointer;
+        top:0;
+        opacity: 1;
     }
         
 </style>
