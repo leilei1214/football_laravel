@@ -22,29 +22,31 @@
 <section class="section section-md bg-gray-100">
     <div class="container">
         <div class="row row-50">
-        <!-- 更改成管理中心 -->
-            <article class="heading-component">
-                <div class="heading-component-inner">
-                <h5 class="heading-component-title">活動列表</h5>
-                <div class="owl-carousel-arrows-outline">
-                    <div class="owl-nav">
-                    <button class="owl-arrow owl-arrow-prev"></button>
-                    <button class="owl-arrow owl-arrow-next"></button>
+            <div class="col-md-12">
+                <!-- 更改成管理中心 -->
+                <article class="heading-component">
+                    <div class="heading-component-inner">
+                    <h5 class="heading-component-title">活動列表</h5>
+                    <div class="owl-carousel-arrows-outline">
+                        <div class="owl-nav">
+                        <button class="owl-arrow owl-arrow-prev"></button>
+                        <button class="owl-arrow owl-arrow-next"></button>
+                        </div>
                     </div>
-                </div>
-                </div>
-            </article>
-            <table id="events-table" class="table table-bordered table-striped">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>標題</th>
-                        <th>活動等級</th>
-                        <th>建立時間</th>
-                        <th>操作</th>
-                    </tr>
-                </thead>
-            </table>
+                    </div>
+                </article>
+                <table id="events-table" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>標題</th>
+                            <th>活動等級</th>
+                            <th>建立時間</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
         </div>
     </div>
 </section>
