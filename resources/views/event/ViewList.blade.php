@@ -30,12 +30,6 @@
                 <article class="heading-component">
                     <div class="heading-component-inner">
                     <h5 class="heading-component-title">活動</h5>
-                    <div class="owl-carousel-arrows-outline">
-                        <div class="owl-nav">
-                        <button class="owl-arrow owl-arrow-prev"></button>
-                        <button class="owl-arrow owl-arrow-next"></button>
-                        </div>
-                    </div>
                     </div>
                 </article>
                 <div id="tabs-modern">

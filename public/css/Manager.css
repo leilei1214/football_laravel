@@ -3,3 +3,9 @@
     margin: 0px 0 1px;
     border-bottom: 1px solid #eee;
 }
+h5 {
+    font-size: 18px;
+}
+.badge {
+    background-color: none !important;
+}

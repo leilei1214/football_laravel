@@ -256,7 +256,8 @@
                         levels.forEach(function(item){
                             item = item.trim();
                             if(item == '基礎') html += `<span class="badge badge-primary">${item}</span>`;
-                            else if(item == '實踐') html += `<span class="badge badge-red">${item}</span>`;
+                            else if(item == '樂踢') html += `<span class="badge badge-red">${item}</span>`;
+                            else if(item == '實踐') html += `<span class="badge badge-secondary">${item}</span>`;
                             else html += `<span class="badge badge-secondary">${item}</span>`;
                         });
                         return html;
