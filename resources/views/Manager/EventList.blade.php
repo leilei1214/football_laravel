@@ -265,9 +265,9 @@
                 },
                 { data: 'time', name: 'time',
                   render:function name(data,type,row) {
-                    const eventDate = new Date(activity.time);
+                    const eventDate = new Date(data);
                     if (isNaN(eventDate)) {
-                        console.error('Invalid date:', activity.time);
+                        console.error('Invalid date:', data);
                         return false;;  // 跳過無效日期的活動
                     }
                     const formattedDate = `${eventDate.getFullYear()}-${String(eventDate.getMonth() + 1).padStart(2, '0')}-${String(eventDate.getDate()).padStart(2, '0')} ${String(eventDate.getHours()).padStart(2, '0')}:${String(eventDate.getMinutes()).padStart(2, '0')}`;
