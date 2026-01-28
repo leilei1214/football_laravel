@@ -21,12 +21,12 @@ h5 {
 .badge-secondary {
     font-weight: 500;
     color: #151515;
-    background-color: #fcef57;
+    background-color: #fcef57 !important ;
 }
 
 .badge-primary {
-    background-color: #35ad79;
+    background-color: #35ad79 !important;
 }
 .badge-red {
-    background-color: #fd6565;
+    background-color: #fd6565 !important;
 }
