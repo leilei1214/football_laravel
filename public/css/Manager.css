@@ -7,7 +7,7 @@ h5 {
     font-size: 18px;
 }
 .badge {
-    background-color: none !important;
+    background-color: transparent !important;
 }
 .dataTables_processing{
     background: #35AD76;
