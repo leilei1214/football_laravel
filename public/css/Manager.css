@@ -14,9 +14,9 @@ h5 {
     background: #35AD76;
     color: aliceblue;
 }
-#events-table tr:active,tr:focus{
+#events-table tbody tr:hover {
     cursor: pointer;
-    background-color:rgba(90, 90, 90, 0.2);
+    background-color: rgba(90, 90, 90, 0.2);
 }
 .badge-secondary {
     font-weight: 500;
