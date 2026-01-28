@@ -9,3 +9,11 @@ h5 {
 .badge {
     background-color: none !important;
 }
+.dataTables_processing{
+    background: #35AD76;
+    color: aliceblue;
+}
+.dataTables_processing tr:active{
+    cursor: pointer;
+    background-color:rgba(90, 90, 90, 0.2);
+}
