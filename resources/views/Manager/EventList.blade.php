@@ -265,7 +265,12 @@
                 },
                 { data: 'time', name: 'time',
                   render:function name(data,type,row) {
-                    const formattedDate = `${data.getFullYear()}-${String(data.getMonth() + 1).padStart(2, '0')}-${String(data.getDate()).padStart(2, '0')} ${String(data.getHours()).padStart(2, '0')}:${String(data.getMinutes()).padStart(2, '0')}`;
+                    const eventDate = new Date(activity.time);
+                    if (isNaN(eventDate)) {
+                        console.error('Invalid date:', activity.time);
+                        continue;  // 跳過無效日期的活動
+                    }
+                    const formattedDate = `${eventDate.getFullYear()}-${String(eventDate.getMonth() + 1).padStart(2, '0')}-${String(eventDate.getDate()).padStart(2, '0')} ${String(eventDate.getHours()).padStart(2, '0')}:${String(eventDate.getMinutes()).padStart(2, '0')}`;
 
                     return formattedDate;
                   }
