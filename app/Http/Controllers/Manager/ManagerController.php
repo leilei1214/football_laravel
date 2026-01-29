@@ -10,6 +10,10 @@
         {
             return view('Manager.EventList');
         }
+        public function EventContentManager()
+        {
+            return view('Manager.EventContent');
+        }
         public function MApiEvent(Request $request)
         {
             $Slevel= session('level');
@@ -28,7 +32,12 @@
 
                 return DataTables::of($query)
                 ->addColumn('action', function($row){
-                    return '<a href="/manager/event-edit/'.$row->id.'" class="btn btn-sm btn-primary">編輯</a>';
+                    return '
+                    
+                    <a href="/Manager/event-content/'.$row->id.'" class="btn btn-sm btn-primary">詳情</a>
+                    <a href="/Manager/event-edit/'.$row->id.'" class="btn btn-sm btn-secondary">編輯</a>
+                    <a href="/Manager/event-delete/'.$row->id.'" class="btn btn-sm btn-red">刪除</a>
+                    ';
                 })
                 ->rawColumns(['action'])
                 ->make(true);
