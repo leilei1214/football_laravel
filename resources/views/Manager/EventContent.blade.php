@@ -214,6 +214,9 @@
     const guildId = params.get('guild_id');
     if (!listId || !guildId) {
         alert("連結錯誤");
+        setTimeout(() => {
+            window.location.href = "/home";
+        }, 1000);
     }
 
 
