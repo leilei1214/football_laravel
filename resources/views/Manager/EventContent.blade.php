@@ -209,8 +209,9 @@
       .catch(err => console.error('Fetch error:', err));
 </script>
 <script>
-    const listId = getURLParameter('list_id');
-    const guildId = getURLParameter('guild_id');
+    const params = new URLSearchParams(window.location.search);
+    const listId = params.get('list_id');
+    const guildId = params.get('guild_id');
     if (!listId || !guildId) {
         alert("連結錯誤");
     }
