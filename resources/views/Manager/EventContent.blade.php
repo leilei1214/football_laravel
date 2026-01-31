@@ -211,8 +211,8 @@
 <script>
     const listId = getURLParameter('list_id');
     const guildId = getURLParameter('guild_id');
-    if(listId == "" || guildId =""){
-       alert("連結錯誤") 
+    if (!listId || !guildId) {
+        alert("連結錯誤");
     }
 
 
