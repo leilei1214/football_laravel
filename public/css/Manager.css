@@ -26,11 +26,22 @@ h5 {
 
 .badge-primary {
     font-weight: 500;
-    color: #151515;
+    color: #fff;
     background-color: #35ad79 !important;
 }
 .badge-red {
     font-weight: 500;
-    color: #151515;
+    color: #fff;
     background-color: #fd6565 !important;
+}
+
+.btn-primary{
+	color: #fff;
+	background: #fcef57;
+	border-color: #fcef57;
+}
+.btn-red{
+	color: #fff;
+	background: #fd6565;
+	border-color: #fd6565;
 }
