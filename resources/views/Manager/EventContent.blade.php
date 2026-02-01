@@ -215,8 +215,28 @@
     if (!listId || !guildId) {
         alert("連結錯誤");
         setTimeout(() => {
-            window.location.href = "/home";
+            window.location.href = "/";
         }, 1000);
+    }else{
+        const response = await fetch('/api/event/content', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+            },
+            body: JSON.stringify({
+                list_id: listId,
+                guild_id: guildId
+            })
+        });
+
+        if (!response.ok) {
+            alert('讀取失敗');
+            return;
+        }
+
+        const data = await response.json();
+        console.log(data);
     }
 
 

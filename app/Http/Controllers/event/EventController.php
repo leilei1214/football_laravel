@@ -65,6 +65,35 @@ class EventController extends Controller
 
 
     }
+        // 單一活動內容
+    public function content(Request $request)
+    {
+        $listId  = $request->input('list_id');
+        $guildId = $request->input('guild_id');
+
+        if (!$listId) {
+            return response()->json(['message' => 'list_id 必填'], 400);
+        }
+
+        $event = DB::table('activities')->where('id', $listId)->first();
+
+        if (!$event) {
+            return response()->json(['message' => '找不到活動'], 404);
+        }
+
+        $registrations = DB::select("
+            SELECT r.*, u.username, u.preferred_position1, u.preferred_position2
+            FROM registrations r
+            JOIN users u ON r.identifier = u.identifier
+            WHERE r.activity_id = ?
+            ORDER BY r.id ASC
+        ", [$listId]);
+
+        return response()->json([
+            'event' => $event,
+            'registrations' => $registrations
+        ]);
+    }
 
 }
 
