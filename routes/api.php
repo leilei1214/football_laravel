@@ -2,7 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\EventController;
+// use App\Http\Controllers\EventController;
+use App\Http\Controllers\event\EventController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +29,7 @@ use App\Http\Controllers\EventController;
 | POST /api/event/content
 |-------------------------------------------------
 */
-Route::post('event/content', [EventController::class, 'content']);
+Route::post('event/content', [EventController::class, 'content'])->name('api.event.content');
 
 /*
 |-------------------------------------------------
