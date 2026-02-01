@@ -34,11 +34,15 @@ h5 {
     color: #fff;
     background-color: #fd6565 !important;
 }
-
 .btn-primary{
 	color: #fff;
-	background: #fcef57;
-	border-color: #fcef57;
+	background: #35ad79;
+	border-color: #35ad79;
+}
+.btn-primary{
+	color: #fff;
+	background: #425c7f;
+	border-color: #425c7f;
 }
 .btn-red{
 	color: #fff;

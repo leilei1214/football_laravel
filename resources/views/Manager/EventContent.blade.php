@@ -209,20 +209,27 @@
       .catch(err => console.error('Fetch error:', err));
 </script>
 <script>
+async function loadEventContent() {
     const params = new URLSearchParams(window.location.search);
     const listId = params.get('list_id');
     const guildId = params.get('guild_id');
+
     if (!listId || !guildId) {
         alert("連結錯誤");
         setTimeout(() => {
             window.location.href = "/";
         }, 1000);
-    }else{
+        return;
+    }
+
+    try {
         const response = await fetch('/api/event/content', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                'X-CSRF-TOKEN': document
+                    .querySelector('meta[name="csrf-token"]')
+                    ?.getAttribute('content')
             },
             body: JSON.stringify({
                 list_id: listId,
@@ -237,8 +244,15 @@
 
         const data = await response.json();
         console.log(data);
+
+    } catch (err) {
+        console.error(err);
+        alert('系統錯誤');
     }
+}
 
-
+// 頁面載入後執行
+// document.addEventListener('DOMContentLoaded', loadEventContent);
 </script>
+
 @endsection
