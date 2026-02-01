@@ -252,7 +252,7 @@ async function loadEventContent() {
 }
 
 // 頁面載入後執行
-// document.addEventListener('DOMContentLoaded', loadEventContent);
+document.addEventListener('DOMContentLoaded', loadEventContent);
 </script>
 
 @endsection
