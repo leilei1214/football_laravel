@@ -9,6 +9,71 @@
     font-size: 20px;
     padding: 10px;
 }
+.player-avatar {
+  width: 80px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+/* 頭貼包裝 */
+.avatar-wrapper {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto;
+}
+
+/* 圓形頭貼 */
+.avatar-wrapper img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #2a2a2a;
+}
+
+/* 位置 Badge（FW） */
+.position-badge {
+  position: absolute;
+  right: -4px;
+  bottom: -4px;
+  background-color: #e74c3c;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px 6px;
+  border-radius: 12px;
+  box-shadow: 0 0 0 2px #fff;
+}
+
+/* 狀態列 */
+.status-row {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+/* 狀態 Icon */
+.status {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+  color: #fff;
+}
+
+/* 已簽到 */
+.status.checkin {
+  background-color: #2ecc71;
+}
+
+/* 已繳費 */
+.status.paid {
+  background-color: #3498db;
+}
 </style>
 @endsection
 
