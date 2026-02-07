@@ -23,14 +23,7 @@
     <div class="container">
         <div class="row row-50">
             <div class="col-lg-8 ">
-                <ul class="list-inline mx-auto list-inline-xs Boss_edit"  style="margin-bottom: -4px;display: inline-block;">
-                <li class="pl-0 pr-0"><a class=" button-md icon-media icon-media-round icon-media-instagram " href="#">編輯</a></li>
-                <li class="pl-0 pr-0"><a class="button-md icon-media icon-media-round icon-media-google " href="#">刪除</a></li>
-                </ul>
-                <ul class="list-inline mx-auto list-inline-xs Boss_edit float-right"  style="margin-bottom: -4px;display: inline-block;">
-                <li class="pl-0 pr-0"><a class="button-md icon-media icon-media-round icon-media-instagram " onclick="ClockOut()">簽到表</a></li>
-                <li class="pl-0 pr-0"><a class="button-md icon-media icon-media-round icon-media-instagram " onclick="QrcodeSign()">Qrcode簽到</a></li>
-                </ul>
+
 
 
                 <div class="blog-post" style="margin: -4px;">
@@ -68,8 +61,13 @@
                 <div class="row">
                 <!-- mx-auto -->
                 <ul class="list-inline mx-auto list-inline-xs">
-                    <li><a class="button button-md button-primary btn_add" href="#">V 參加</a></li>
-                    <li><a class="button button-md button-primary btn_Nadd" href="#">X 不參加</a></li>
+                    <li><a class="button button-md button-primary btn_add" href="#">編輯</a></li>
+                    <li><a class="button button-md button-primary btn_Nadd" href="#">刪除</a></li>
+
+                </ul>
+                <ul class="list-inline mx-auto list-inline-xs">
+                    <li><a class="button button-md button-primary btn_add" href="#" onclick="ClockOut()">簽到表</a></li>
+                    <li><a class="button button-md button-primary btn_Nadd" href="#" onclick="QrcodeSign()">Qrcode簽到</a></li>
 
                 </ul>
 
@@ -191,7 +189,7 @@
 @endsection
 @section('scripts')
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script sr 淤c="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src = "https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js" ></script>
  
