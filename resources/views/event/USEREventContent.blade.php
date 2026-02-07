@@ -2,12 +2,7 @@
 
 @section('title', 'EventViewList')
 @section('style')
-
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-
-
-<link rel="stylesheet" href="{{ asset('css/Manager.css') }}">
+<link rel="stylesheet" href="{{ asset('css/event/style.css') }}">
 <style>
 .product-header .badge {
     position: relative;
@@ -188,26 +183,33 @@
 </section>
 @endsection
 @section('scripts')
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-<script sr 淤c="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src = "https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js" ></script>
- 
-
+<!-- <script src="{{ asset('js/event_level.js') }}"></script> -->
 <script>
-    // 修正你的 fetch 語法錯誤 (少了一個括號)
-    fetch('/check-identity')
-      .then(res => res.json())
-      .then(data => {
-        console.log('Level:', data.level, 'Guild:', data.Guild);
-        if(data.level == 1){
-            $(".addEventHref").addClass("d-none");
-        }
-      })
-      .catch(err => console.error('Fetch error:', err));
+    function show_level(level){
+        var tabEl = document.querySelectorAll('#tabs-modern .nav-link');
+        consol
+        tabEl.forEach(function (el) {
+            el.addEventListener('shown.bs.tab', function (event) {
+                const level = event.target.dataset.level;
+                console.log('切換完成：', level);
+            });
+        });
+    }
 </script>
 <script>
-async function loadEventContent() {
+fetch('/check-identity')
+  .then(res => res.json())
+  .then(data => 
+    console.log('Level:', data.level, 'Guild:', data.Guild)
+    if(data.level == 1){
+        $(".addEventHref").addClass("d-none")
+    }
+  );
+</script>
+<script>
+    async function loadEventContent() {
     const params = new URLSearchParams(window.location.search);
     const listId = params.get('list_id');
     const guildId = params.get('guild_id');
@@ -417,35 +419,5 @@ async function loadEventContent() {
         alert('系統錯誤');
     }
 }
-
-// 頁面載入後執行
-document.addEventListener('DOMContentLoaded', loadEventContent);
-</script>
-<script>
-      function ClockOut() {
-        const currentUrl = window.location.href;
-
-        // 使用 URLSearchParams 提取查詢參數
-        const urlParams = new URLSearchParams(window.location.search);
-
-        // 獲取 `list_id` 的值
-        const activityId = urlParams.get('list_id');
-
-        window.location.href ="./SignIn?list_id="+activityId
-
-      }
-      function QrcodeSign(){
-        const currentUrl = window.location.href;
-
-        // 使用 URLSearchParams 提取查詢參數
-        const urlParams = new URLSearchParams(window.location.search);
-
-        // 獲取 `list_id` 的值
-        const activityId = urlParams.get('list_id');
-        const Guild = localStorage.getItem('Guild');
-
-        window.location.href ="./Sign_Qrcode?list_id="+activityId+"&Guild="+Guild
-
-      }
 </script>
 @endsection
