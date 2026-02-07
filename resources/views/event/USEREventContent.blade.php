@@ -199,14 +199,14 @@
     }
 </script>
 <script>
-fetch('/check-identity')
-  .then(res => res.json())
-  .then(data => 
-    console.log('Level:', data.level, 'Guild:', data.Guild)
-    if(data.level == 1){
-        $(".addEventHref").addClass("d-none")
-    }
-  );
+// fetch('/check-identity')
+//   .then(res => res.json())
+//   .then(data => 
+//     console.log('Level:', data.level, 'Guild:', data.Guild)
+//     if(data.level == 1){
+//         $(".addEventHref").addClass("d-none")
+//     }
+//   );
 </script>
 <script>
     async function loadEventContent() {

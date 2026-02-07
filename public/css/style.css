@@ -13194,6 +13194,9 @@ span.page-link:hover, span.page-link:focus, span.page-link:active {
 html.boxed body {
 	background: #edeff4 url(../images/bg-pattern-boxed.png) repeat fixed;
 }
+html .list-inline-xs{
+    margin-bottom: 0;
+}
 
 @media (min-width: 1630px) {
 	html.boxed .page {
