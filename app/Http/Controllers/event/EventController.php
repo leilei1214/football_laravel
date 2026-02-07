@@ -14,6 +14,10 @@ class EventController extends Controller
     {
         return view('event.AddEvent');
     }
+    public function USEREventContent()
+    {
+        return view('event.USEREventContent');
+    }
     
     public function ApiEvent(Request $request)
     {
