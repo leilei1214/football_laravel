@@ -209,6 +209,26 @@
 //   );
 </script>
 <script>
+    fetchEventData()
+    function formatDate(dateStr, offsetHours = -7) {
+        // return new Date(dateStr).toLocaleString('zh-TW', { timeZone: 'Asia/Taipei', hour12: false });
+
+        const taiwanDate = new Date(dateStr);
+         taiwanDate.setHours(taiwanDate.getHours() + offsetHours);
+        // const taiwanDate = new Date(new Date(date.getTime() + 8 * 60 * 60 * 1000));
+
+        // 年、月、日
+        const year = taiwanDate.getFullYear();
+        const month = String(taiwanDate.getMonth() + 1).padStart(2, '0'); // 月份從 0 開始
+        const day = String(taiwanDate.getDate()).padStart(2, '0');
+
+        // 時、分、秒
+        const hours = String(taiwanDate.getHours()).padStart(2, '0');
+        const minutes = String(taiwanDate.getMinutes()).padStart(2, '0');
+        const seconds = String(taiwanDate.getSeconds()).padStart(2, '0');
+
+        return `${year}/${month}/${day} ${hours}:${minutes}:${seconds}`;
+    }
     async function loadEventContent() {
         const params = new URLSearchParams(window.location.search);
         const listId = params.get('list_id');
