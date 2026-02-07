@@ -210,214 +210,216 @@
 </script>
 <script>
     async function loadEventContent() {
-    const params = new URLSearchParams(window.location.search);
-    const listId = params.get('list_id');
-    const guildId = params.get('guild_id');
+        const params = new URLSearchParams(window.location.search);
+        const listId = params.get('list_id');
+        const guildId = params.get('guild_id');
 
-    if (!listId || !guildId) {
-        alert("連結錯誤");
-        setTimeout(() => {
-            window.location.href = "/";
-        }, 1000);
-        return;
-    }
-
-    try {
-        const response = await fetch('/api/event/content', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': document
-                    .querySelector('meta[name="csrf-token"]')
-                    ?.getAttribute('content')
-            },
-            body: JSON.stringify({
-                list_id: listId,
-                guild_id: guildId
-            })
-        });
-
-        if (!response.ok) {
-            alert('讀取失敗');
+        if (!listId || !guildId) {
+            alert("連結錯誤");
+            setTimeout(() => {
+                window.location.href = "/";
+            }, 1000);
             return;
         }
-        if (response.ok) {
-            const res = await response.json();
 
-            const data = res.event
-            console.log(data)
-            // 遍歷陣列並輸出每個元素
-            // for (const item of data.activity_category) {
-            //   document.getElementById('activity_level').innerHTML += `
-            //     <div class="badge badge-secondary">${item}
-            //     </div>
-            //   `
-            // }
-            const levels = data.activity_level.replace(/^{|}$/g, '').split(',');
+        try {
+            const response = await fetch('/api/event/content', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document
+                        .querySelector('meta[name="csrf-token"]')
+                        ?.getAttribute('content')
+                },
+                body: JSON.stringify({
+                    list_id: listId,
+                    guild_id: guildId
+                })
+            });
 
-            for (const item of levels) {
-                if( item == "基礎"){
-                document.getElementById('activity_level').innerHTML += `
-                    <div class="badge badge-primary">${item}
-                    </div>
-                `
-                }
-                else if( item == "實踐"){
-                document.getElementById('activity_level').innerHTML += `
-                    <div class="badge badge-red">${item}
-                    </div>
-                `
-                }
-                else{
-                document.getElementById('activity_level').innerHTML += `
-                    <div class="badge badge-secondary">${item}
-                    </div>
-                `
-                }
-
+            if (!response.ok) {
+                alert('讀取失敗');
+                return;
             }
-            $(".blog-post-title").html(data.activity_notice)
-            // const taiwanTime = new Date(data.time).toLocaleString('zh-TW', { timeZone: 'Asia/Taipei', hour12: false });
+            if (response.ok) {
+                const res = await response.json();
 
-            const taiwanDate = new Date(data.time);
-            taiwanDate.setHours(taiwanDate.getHours()-7 );
-            // const taiwanDate =  new Date(new Date(date.getTime() + 8 * 60 * 60 * 1000));
-            // 提取年月日和小時分鐘
-            const year = taiwanDate.getFullYear();
+                const data = res.event
+                console.log(data)
+                // 遍歷陣列並輸出每個元素
+                // for (const item of data.activity_category) {
+                //   document.getElementById('activity_level').innerHTML += `
+                //     <div class="badge badge-secondary">${item}
+                //     </div>
+                //   `
+                // }
+                const levels = data.activity_level.replace(/^{|}$/g, '').split(',');
 
-            const month = String(taiwanDate.getMonth() + 1).padStart(2, '0'); // 月份從0開始，需要+1
-            const day = String(taiwanDate.getDate()).padStart(2, '0');
-            const hours = String(taiwanDate.getHours()).padStart(2, '0');
-            const minutes = String(taiwanDate.getMinutes()).padStart(2, '0');
-
-            // 組合成所需格式
-            const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}`;
-            // console.log(formattedDate); // "2024-11-01 06:00"
-            $(".amount").html(data.amount)
-            $(".current_participants").html(data.current_participants)
-            $(".max_participants").html(data.max_participants)
-            $(".location").html(data.location)
-            $(".organizer").html(data.organizer)
-            $(".active_date").html(formattedDate)
-            $(".activity_intro").html(data.activity_intro)
-            $(".sum_amount").html(data.amount*data.current_participants)
-
-            localStorage.setItem('Guild',data.club);
-
-            // #---------------------------------------------------------------------------------------
-            const registrations = res.registrations
-            console.log(registrations)
-            let add_registrations = ""; // Initialize the HTML string
-            let Nadd_registrations = ""; // Initialize the HTML string
-            let Backup_registrations = "";
-            // 不參加名單
-            Istatus_Nadd = 0;
-            Istatus_add = 0;
-            // 備取生
-            Istatus_Badd = 0;
-            registrations.forEach((registration, index) => {
-                Istatus_add += 1
-                if(registration.status_add == "1"){
-                    
-                    if(registration.identifier == localStorage.getItem("identifier") ){
-                    const element = document.querySelector('.btn_add');
-                    $(".btn_add").addClass("active")
-                    // Add inline styles
-                    element.style.background = '#888'; // Changes text color to red
-                    element.style.borderColor = '#888'; 
-                    }
-                    let check_in = "未簽到";
-                    if (registration.check_in == 1) {
-                        check_in = "已簽到";
-                        check_in = formatDate(registration.check_in_time)
-                    }
-
-                    let check_out = "未簽退"; // Corrected this line
-                    if (registration.check_out == 1) {
-                        check_out = "已簽退";
-                        check_out = formatDate(registration.check_out_time)
-                    }
-
-                    let payment_status = "未繳費";
-                    if (registration.payment_status) {
-                    payment_status ="已繳費"; // Use the actual name
-                    payment_status = formatDate(registration.payment_time); // Use the actual name
-
-                    }
-
-                    console.log(`Registration ${index + 1}:`, registration);
-                    if(Istatus_add <= data.max_participants){
-                    
-                    add_registrations += `
-                    <tr>
-                        <th scope="row">${Istatus_add}</th>
-                        <td>${registration.username}</td>
-                        <td>${registration.preferred_position1}、${registration.preferred_position2}</td>
-                        <td>${check_in}</td>
-                        <td>${check_out}</td>
-                        <td>${payment_status}</td>
-                    </tr>
-                    `;
-                    }else{
-                    Istatus_Badd += 1
-                    Backup_registrations +=`
-                    <tr>
-                        <td><span>${Istatus_Badd}</span></td>
-                        <td class="team-inline">
-
-                        <div class="team-title">
-                            <div class="team-name">${registration.preferred_position1}、${registration.preferred_position2}</div>
+                for (const item of levels) {
+                    if( item == "基礎"){
+                    document.getElementById('activity_level').innerHTML += `
+                        <div class="badge badge-primary">${item}
                         </div>
-                        </td>
-                        <td>備取${Istatus_Badd}</td>
-                    </tr>
+                    `
+                    }
+                    else if( item == "實踐"){
+                    document.getElementById('activity_level').innerHTML += `
+                        <div class="badge badge-red">${item}
+                        </div>
+                    `
+                    }
+                    else{
+                    document.getElementById('activity_level').innerHTML += `
+                        <div class="badge badge-secondary">${item}
+                        </div>
                     `
                     }
 
                 }
+                $(".blog-post-title").html(data.activity_notice)
+                // const taiwanTime = new Date(data.time).toLocaleString('zh-TW', { timeZone: 'Asia/Taipei', hour12: false });
 
-                else if(registration.status_add == "0"){
+                const taiwanDate = new Date(data.time);
+                taiwanDate.setHours(taiwanDate.getHours()-7 );
+                // const taiwanDate =  new Date(new Date(date.getTime() + 8 * 60 * 60 * 1000));
+                // 提取年月日和小時分鐘
+                const year = taiwanDate.getFullYear();
 
-                    Istatus_Nadd += 1
-                    $(".btn_Nadd").addClass("active")
-                    // Add inline styles
-                    const element = document.querySelector('.btn_Nadd');
+                const month = String(taiwanDate.getMonth() + 1).padStart(2, '0'); // 月份從0開始，需要+1
+                const day = String(taiwanDate.getDate()).padStart(2, '0');
+                const hours = String(taiwanDate.getHours()).padStart(2, '0');
+                const minutes = String(taiwanDate.getMinutes()).padStart(2, '0');
 
-                    element.style.background = '#888'; // Changes text color to red
-                    element.style.borderColor = '#888'; 
+                // 組合成所需格式
+                const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}`;
+                // console.log(formattedDate); // "2024-11-01 06:00"
+                $(".amount").html(data.amount)
+                $(".current_participants").html(data.current_participants)
+                $(".max_participants").html(data.max_participants)
+                $(".location").html(data.location)
+                $(".organizer").html(data.organizer)
+                $(".active_date").html(formattedDate)
+                $(".activity_intro").html(data.activity_intro)
+                $(".sum_amount").html(data.amount*data.current_participants)
 
-                    Nadd_registrations += `
-                    <tr>
-                        <td>${Istatus_Nadd}</th>
-                        <td>${registration.username}</td>
-                        <td>${registration.preferred_position1}、${registration.preferred_position2}</td>
+                localStorage.setItem('Guild',data.club);
+
+                // #---------------------------------------------------------------------------------------
+                const registrations = res.registrations
+                console.log(registrations)
+                let add_registrations = ""; // Initialize the HTML string
+                let Nadd_registrations = ""; // Initialize the HTML string
+                let Backup_registrations = "";
+                // 不參加名單
+                Istatus_Nadd = 0;
+                Istatus_add = 0;
+                // 備取生
+                Istatus_Badd = 0;
+                registrations.forEach((registration, index) => {
+                    Istatus_add += 1
+                    if(registration.status_add == "1"){
+                        
+                        if(registration.identifier == localStorage.getItem("identifier") ){
+                        const element = document.querySelector('.btn_add');
+                        $(".btn_add").addClass("active")
+                        // Add inline styles
+                        element.style.background = '#888'; // Changes text color to red
+                        element.style.borderColor = '#888'; 
+                        }
+                        let check_in = "未簽到";
+                        if (registration.check_in == 1) {
+                            check_in = "已簽到";
+                            check_in = formatDate(registration.check_in_time)
+                        }
+
+                        let check_out = "未簽退"; // Corrected this line
+                        if (registration.check_out == 1) {
+                            check_out = "已簽退";
+                            check_out = formatDate(registration.check_out_time)
+                        }
+
+                        let payment_status = "未繳費";
+                        if (registration.payment_status) {
+                        payment_status ="已繳費"; // Use the actual name
+                        payment_status = formatDate(registration.payment_time); // Use the actual name
+
+                        }
+
+                        console.log(`Registration ${index + 1}:`, registration);
+                        if(Istatus_add <= data.max_participants){
+                        
+                        add_registrations += `
+                        <tr>
+                            <th scope="row">${Istatus_add}</th>
+                            <td>${registration.username}</td>
+                            <td>${registration.preferred_position1}、${registration.preferred_position2}</td>
+                            <td>${check_in}</td>
+                            <td>${check_out}</td>
+                            <td>${payment_status}</td>
+                        </tr>
+                        `;
+                        }else{
+                        Istatus_Badd += 1
+                        Backup_registrations +=`
+                        <tr>
+                            <td><span>${Istatus_Badd}</span></td>
+                            <td class="team-inline">
+
+                            <div class="team-title">
+                                <div class="team-name">${registration.preferred_position1}、${registration.preferred_position2}</div>
+                            </div>
+                            </td>
+                            <td>備取${Istatus_Badd}</td>
+                        </tr>
+                        `
+                        }
+
+                    }
+
+                    else if(registration.status_add == "0"){
+
+                        Istatus_Nadd += 1
+                        $(".btn_Nadd").addClass("active")
+                        // Add inline styles
+                        const element = document.querySelector('.btn_Nadd');
+
+                        element.style.background = '#888'; // Changes text color to red
+                        element.style.borderColor = '#888'; 
+
+                        Nadd_registrations += `
+                        <tr>
+                            <td>${Istatus_Nadd}</th>
+                            <td>${registration.username}</td>
+                            <td>${registration.preferred_position1}、${registration.preferred_position2}</td>
+                    
+                        </tr>
+                        `;
+                    }
+                    
+                });
+
+                $("#add_registrations").html(add_registrations); // Correct jQuery method
+                $("#Nadd_registrations").html(Nadd_registrations); // Correct jQuery method
+                $("#Backup_registrations").html(Backup_registrations); // Correct jQuery method
+
                 
-                    </tr>
-                    `;
-                }
-                
-            });
-
-            $("#add_registrations").html(add_registrations); // Correct jQuery method
-            $("#Nadd_registrations").html(Nadd_registrations); // Correct jQuery method
-            $("#Backup_registrations").html(Backup_registrations); // Correct jQuery method
-
-            
-            // activity_level
-            // eventContentDiv.innerHTML = `
-            //     <p><strong>活動名稱：</strong> ${data.activity_name || '無資料'}</p>
-            //     <p><strong>地點：</strong> ${data.location || '無資料'}</p>
-            //     <p><strong>簡介：</strong> ${data.activity_intro || '無資料'}</p>
-            //     <p><strong>時間：</strong> ${data.time || '無資料'}</p>
-            //     <p><strong>參加人數：</strong> ${data.current_participants || 0} / ${data.max_participants || '無限制'}</p>
-            // `;
-        } 
+                // activity_level
+                // eventContentDiv.innerHTML = `
+                //     <p><strong>活動名稱：</strong> ${data.activity_name || '無資料'}</p>
+                //     <p><strong>地點：</strong> ${data.location || '無資料'}</p>
+                //     <p><strong>簡介：</strong> ${data.activity_intro || '無資料'}</p>
+                //     <p><strong>時間：</strong> ${data.time || '無資料'}</p>
+                //     <p><strong>參加人數：</strong> ${data.current_participants || 0} / ${data.max_participants || '無限制'}</p>
+                // `;
+            } 
 
 
-    } catch (err) {
-        console.error(err);
-        alert('系統錯誤');
+        } catch (err) {
+            console.error(err);
+            alert('系統錯誤');
+        }
     }
-}
+    document.addEventListener('DOMContentLoaded', loadEventContent);
+
 </script>
 @endsection
