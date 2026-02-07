@@ -429,7 +429,7 @@
                                 </div>
                             </div>
                             `
-                            console.log(111)
+                            console.log(add_registrations)
                         // add_registrations += `
                         // <tr>
                         //     <th scope="row">${Istatus_add}</th>
