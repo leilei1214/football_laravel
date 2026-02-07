@@ -412,23 +412,24 @@
 
                         console.log(`Registration ${index + 1}:`, registration);
                         if(Istatus_add <= data.max_participants){
-                        add_registrations +=`
-                        <div class="player-avatar">
-                            <div class="avatar-wrapper">
-                                <img src="${registration.user_img}" alt="player" />
+                            add_registrations +=`
+                            <div class="player-avatar">
+                                <div class="avatar-wrapper">
+                                    <img src="${registration.user_img}" alt="player" />
 
-                                <!-- 位置 Badge -->
-                                <span class="position-badge">${registration.preferred_position1}</span>
-                            </div>
+                                    <!-- 位置 Badge -->
+                                    <span class="position-badge">${registration.preferred_position1}</span>
+                                </div>
 
-                            <!-- 狀態列 -->
-                            <div class="status-row">
-                                <span class="status checkin" title="已簽到">${check_in}</span>
-                                <span class="status checkin" title="已簽退">${check_out}</span>
-                                <span class="status paid" title="已繳費">${payment_status}</span>
+                                <!-- 狀態列 -->
+                                <div class="status-row">
+                                    <span class="status checkin" title="已簽到">${check_in}</span>
+                                    <span class="status checkin" title="已簽退">${check_out}</span>
+                                    <span class="status paid" title="已繳費">${payment_status}</span>
+                                </div>
                             </div>
-                        </div>
-                        `
+                            `
+                            console.log(111)
                         // add_registrations += `
                         // <tr>
                         //     <th scope="row">${Istatus_add}</th>
