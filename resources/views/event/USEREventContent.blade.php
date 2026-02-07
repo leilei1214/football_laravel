@@ -412,7 +412,7 @@
 
                         console.log(`Registration ${index + 1}:`, registration);
                         if(Istatus_add <= data.max_participants){
-                        add_registration +=`
+                        add_registrations +=`
                         <div class="player-avatar">
                             <div class="avatar-wrapper">
                                 <img src="${registeration.user_img}" alt="player" />
