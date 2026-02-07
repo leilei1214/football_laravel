@@ -209,7 +209,7 @@
 //   );
 </script>
 <script>
-    fetchEventData()
+    
     function formatDate(dateStr, offsetHours = -7) {
         // return new Date(dateStr).toLocaleString('zh-TW', { timeZone: 'Asia/Taipei', hour12: false });
 
