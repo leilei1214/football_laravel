@@ -54,19 +54,12 @@
 
                 </div>
                 <div class="row">
-                <!-- mx-auto -->
-                <ul class="list-inline mx-auto list-inline-xs">
-                    <li><a class="button button-md button-primary btn_add" href="#">編輯</a></li>
-                    <li><a class="button button-md button-primary btn_Nadd" href="#">刪除</a></li>
+                    <!-- mx-auto -->
+                    <ul class="list-inline mx-auto list-inline-xs">
+                        <li><a class="button button-md button-primary btn_add" href="#">V 參加</a></li>
+                        <li><a class="button button-md button-primary btn_Nadd" href="#">X 不參加</a></li>
 
-                </ul>
-                <ul class="list-inline mx-auto list-inline-xs">
-                    <li><a class="button button-md button-primary btn_add" href="#" onclick="ClockOut()">簽到表</a></li>
-                    <li><a class="button button-md button-primary btn_Nadd" href="#" onclick="QrcodeSign()">Qrcode簽到</a></li>
-
-                </ul>
-
-
+                    </ul>
                 </div>
                 <div class="row">
                 <div class="col-sm-12 owl-carousel-outer-navigation">
@@ -80,6 +73,20 @@
 
                 </div>
                 <div class="table-custom-responsive">
+                    <div class="player-avatar">
+                        <div class="avatar-wrapper">
+                            <img src="https://i.pravatar.cc/150?img=12" alt="player" />
+
+                            <!-- 位置 Badge -->
+                            <span class="position-badge">FW</span>
+                        </div>
+
+                        <!-- 狀態列 -->
+                        <div class="status-row">
+                            <span class="status checkin" title="已簽到">✔</span>
+                            <span class="status paid" title="已繳費">💰</span>
+                        </div>
+                    </div>
                 <table class="table">
                     <!-- <div class="badge badge-secondary">錄取名單
                     </div> -->
@@ -349,19 +356,19 @@
                         let check_in = "未簽到";
                         if (registration.check_in == 1) {
                             check_in = "已簽到";
-                            check_in = formatDate(registration.check_in_time)
+                            // check_in = formatDate(registration.check_in_time)
                         }
 
                         let check_out = "未簽退"; // Corrected this line
                         if (registration.check_out == 1) {
                             check_out = "已簽退";
-                            check_out = formatDate(registration.check_out_time)
+                            // check_out = formatDate(registration.check_out_time)
                         }
 
                         let payment_status = "未繳費";
                         if (registration.payment_status) {
                         payment_status ="已繳費"; // Use the actual name
-                        payment_status = formatDate(registration.payment_time); // Use the actual name
+                        // payment_status = formatDate(registration.payment_time); // Use the actual name
 
                         }
 

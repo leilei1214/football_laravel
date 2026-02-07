@@ -86,7 +86,7 @@ class EventController extends Controller
         }
 
         $registrations = DB::select("
-            SELECT r.*, u.username, u.preferred_position1, u.preferred_position2
+            SELECT r.*, u.username, u.Sex,u.preferred_position1, u.preferred_position2
             FROM registrations r
             JOIN users u ON r.identifier = u.identifier
             WHERE r.activity_id = ?
