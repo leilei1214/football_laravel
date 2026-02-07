@@ -138,23 +138,9 @@
 
                 </div>
                 <div class="table-custom-responsive">
-                    <div class="player-avatar">
-                        <div class="avatar-wrapper">
-                            <img src="https://i.pravatar.cc/150?img=12" alt="player" />
 
-                            <!-- 位置 Badge -->
-                            <span class="position-badge">FW</span>
-                        </div>
+                <!-- <table class="table">
 
-                        <!-- 狀態列 -->
-                        <div class="status-row">
-                            <span class="status checkin" title="已簽到">✔</span>
-                            <span class="status paid" title="已繳費">💰</span>
-                        </div>
-                    </div>
-                <table class="table">
-                    <!-- <div class="badge badge-secondary">錄取名單
-                    </div> -->
                     <thead class="table-standings ">
                     <tr>
                         <th scope="col">#</th>
@@ -167,26 +153,9 @@
                     </tr>
                     </thead>
                     <tbody id="add_registrations">
-                    <!-- <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                    </tr> -->
+
                     </tbody>
-                </table>
+                </table> -->
                 </div>
 
                 
@@ -421,35 +390,55 @@
                         let check_in = "未簽到";
                         if (registration.check_in == 1) {
                             check_in = "已簽到";
+                            check_in = '✔';
+
                             // check_in = formatDate(registration.check_in_time)
                         }
 
                         let check_out = "未簽退"; // Corrected this line
                         if (registration.check_out == 1) {
                             check_out = "已簽退";
+                            check_out = '⏹';
                             // check_out = formatDate(registration.check_out_time)
                         }
 
                         let payment_status = "未繳費";
                         if (registration.payment_status) {
                         payment_status ="已繳費"; // Use the actual name
+                        payment_status ='💰';
                         // payment_status = formatDate(registration.payment_time); // Use the actual name
 
                         }
 
                         console.log(`Registration ${index + 1}:`, registration);
                         if(Istatus_add <= data.max_participants){
-                        
-                        add_registrations += `
-                        <tr>
-                            <th scope="row">${Istatus_add}</th>
-                            <td>${registration.username}</td>
-                            <td>${registration.preferred_position1}、${registration.preferred_position2}</td>
-                            <td>${check_in}</td>
-                            <td>${check_out}</td>
-                            <td>${payment_status}</td>
-                        </tr>
-                        `;
+                        add_registration +=`
+                        <div class="player-avatar">
+                            <div class="avatar-wrapper">
+                                <img src="${registeration.user_img}" alt="player" />
+
+                                <!-- 位置 Badge -->
+                                <span class="position-badge">${registration.preferred_position1}</span>
+                            </div>
+
+                            <!-- 狀態列 -->
+                            <div class="status-row">
+                                <span class="status checkin" title="已簽到">${check_in}</span>
+                                <span class="status checkin" title="已簽退">${check_out}</span>
+                                <span class="status paid" title="已繳費">${payment_status}</span>
+                            </div>
+                        </div>
+                        `
+                        // add_registrations += `
+                        // <tr>
+                        //     <th scope="row">${Istatus_add}</th>
+                        //     <td>${registration.username}</td>
+                        //     <td>${registration.preferred_position1}、${registration.preferred_position2}</td>
+                        //     <td>${check_in}</td>
+                        //     <td>${check_out}</td>
+                        //     <td>${payment_status}</td>
+                        // </tr>
+                        // `;
                         }else{
                         Istatus_Badd += 1
                         Backup_registrations +=`
