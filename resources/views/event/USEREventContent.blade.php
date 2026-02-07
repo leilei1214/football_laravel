@@ -137,7 +137,7 @@
                 </div>
 
                 </div>
-                <div class="table-custom-responsive">
+                <div class="table-custom-responsive" id="add_registrations">
 
                 <!-- <table class="table">
 
@@ -429,7 +429,7 @@
                                 </div>
                             </div>
                             `
-                            console.log(add_registrations)
+                            console.log(111)
                         // add_registrations += `
                         // <tr>
                         //     <th scope="row">${Istatus_add}</th>
