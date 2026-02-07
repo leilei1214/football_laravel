@@ -415,7 +415,7 @@
                         add_registrations +=`
                         <div class="player-avatar">
                             <div class="avatar-wrapper">
-                                <img src="${registeration.user_img}" alt="player" />
+                                <img src="${registration.user_img}" alt="player" />
 
                                 <!-- 位置 Badge -->
                                 <span class="position-badge">${registration.preferred_position1}</span>
