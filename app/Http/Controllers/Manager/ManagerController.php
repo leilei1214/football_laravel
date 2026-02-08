@@ -14,6 +14,10 @@
         {
             return view('Manager.EventContent');
         }
+        public function SignIn()
+        {
+            return view('Manager.SignIn');
+        }
         public function MApiEvent(Request $request)
         {
             $Slevel= session('level');
