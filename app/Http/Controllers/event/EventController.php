@@ -101,12 +101,20 @@ class EventController extends Controller
     public function updateStatus(Request $request)
     {
         $guildId  = $request->input('guildId');
+        $guildName  = "";
         // 1️⃣ 取得 session 使用者
         if (!session('identifier')) {
+            $result = DB::select(
+                'SELECT * FROM guilds WHERE guild_id = ?',
+                [$guildId]
+            );
+            if (count($result) > 0) {
+                $guildName = $result[0] ->name;
+            }
             return response()->json([
                 'status' => 401,
                 'message' => 'User session not found',
-                'redirect' => route('login') . '?status=login&club='.$guildId.'&level=2'
+                'redirect' => route('login') . '?status=login&club='.$guildName.'&level=2'
             ], 401);
         }
         $identifier = session('identifier');
@@ -114,6 +122,7 @@ class EventController extends Controller
         $activityId = $request->input('activityId');
 
         if (!$identifier) {
+            
             return response()->json([
                 'status' => 400,
                 'message' => 'User session not found'

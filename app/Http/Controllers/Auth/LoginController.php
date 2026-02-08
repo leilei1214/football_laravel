@@ -78,7 +78,8 @@ class LoginController extends Controller
         $identifier = '';
         if (count($result) > 0) {
             $identifier = $result[0] ->identifier;
-            
+
+
             foreach ($result as  $index => $user) {
                 // $user 是物件，可以直接存取欄位
                 if ($user->Guild == $Guild && $status == 'login') {
