@@ -49,3 +49,8 @@ h5 {
 	background: #fd6565;
 	border-color: #fd6565;
 }
+@media (max-width: 991.98px) {
+    section.section-sm:first-of-type, section.section-md:first-of-type, section.section-lg:first-of-type, section.section-xl:first-of-type, section.section-xxl:first-of-type {
+        padding-top: 90px;
+    }
+}

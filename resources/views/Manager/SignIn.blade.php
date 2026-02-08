@@ -19,7 +19,7 @@
 
 
 @section('content')
-<section class="section section-md bg-gray-100">
+<section class="section section-md bg-gray-100" style="hight:100vh">
     <div class="container">
         <div class="row row-50 justify-content-center">
             <div class="col-lg-10 ">
