@@ -227,27 +227,53 @@ class EventController extends Controller
         $activityId = $request->input('activityId');
         $status_add  = (int) $request->input('status_add');
         $identifier = session('identifier');
-
-        DB::beginTransaction();
         try {
+            DB::beginTransaction();
 
-            // 1️⃣ Upsert 報名 (updateOrCreate = 查找 + 更新/插入)
-            Registration::updateOrCreate(
-                ['activity_id' => $activityId, 'identifier' => $identifier],
-                ['status_add' => $status_add,'updated_at' => now()]
-            );
+            // 先查看看這筆紀錄存在不
+            $exists = DB::table('registrations')
+                ->where('activity_id', $activityId)
+                ->where('identifier', $identifier)
+                ->exists();
 
-            // 2️⃣ 更新活動當前人數
-            $currentParticipants = Registration::where('activity_id', $activityId)
+            if ($exists) {
+                // 已存在就更新
+                DB::table('registrations')
+                    ->where('activity_id', $activityId)
+                    ->where('identifier', $identifier)
+                    ->update([
+                        'status_add' => $status_add,
+                        'updated_at' => now(),
+                    ]);
+                // 可加 log
+                \Log::info("Updated existing registration");
+            } else {
+                // 不存在就新增
+                DB::table('registrations')->insert([
+                    'activity_id' => $activityId,
+                    'identifier' => $identifier,
+                    'status_add' => $status_add,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]);
+                \Log::info("Inserted new registration");
+            }
+
+            // 更新活動當前人數
+            $currentParticipants = DB::table('registrations')
+                ->where('activity_id', $activityId)
                 ->where('status_add', 1)
                 ->count();
 
-            Activity::where('id', $activityId)
+            DB::table('activities')
+                ->where('id', $activityId)
                 ->update(['current_participants' => $currentParticipants]);
 
             DB::commit();
+
             return response()->json(['status' => 200]);
-        } catch (\Exception $e) {
+        }
+        catch (\Exception $e) {
             DB::rollBack();
             \Log::error('資料庫更新失敗: ' . $e->getMessage());
             return response()->json([
