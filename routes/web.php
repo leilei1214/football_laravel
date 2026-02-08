@@ -56,4 +56,8 @@ Route::post('/Mapi/event', [ManagerController::class, 'MApiEvent'])->name('Mapi.
 Route::get('/Manager/EventList', [ManagerController::class, 'EventManager'])->name('ManagerEventList');
 Route::get('/Manager/EventContent', [ManagerController::class, 'EventContentManager'])->name('ManagerEventContent');
 Route::get('/Manager/SignIn', [ManagerController::class, 'SignIn'])->name('ManagerSignIn');
+Route::get('/Manager/Update_SignIn', [ManagerController::class, 'updateSignIn'])->name('ManagerUpdateSignIn');
+
+
+
 
