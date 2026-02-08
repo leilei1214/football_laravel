@@ -100,12 +100,13 @@ class EventController extends Controller
     }
     public function updateStatus(Request $request)
     {
+        $guildId  = $request->input('guildId');
         // 1️⃣ 取得 session 使用者
         if (!session('identifier')) {
             return response()->json([
                 'status' => 401,
                 'message' => 'User session not found',
-                'redirect' => route('login?status=login&club=圖斯特宇宙&level=4')
+                'redirect' => route('login') . '?status=login&club='+$guildId+'&level=2'
             ], 401);
         }
         $identifier = session('identifier');

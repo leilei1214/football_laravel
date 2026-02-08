@@ -518,6 +518,9 @@
 
 </script>
 <script>
+    const params = new URLSearchParams(window.location.search);
+    const listId = params.get('list_id');
+    const guildId = params.get('guild_id');
     $(".btn_add").click(()=>{
         // if()
         if($(".btn_add").hasClass("active")){
@@ -540,7 +543,8 @@
                 },
                 body: JSON.stringify({
                 status_add: 1,
-                activityId:activityId
+                activityId:activityId,
+                guildId:guildId
                 }),
             })
             .then(response => response.json())
@@ -549,7 +553,13 @@
                     alert("報名成功！");
                     location.reload();
 
-                } else {
+                }
+                else if (data.message === 'User session not found') {
+                    window.location.href = data.redirect;
+                    return;
+                }
+
+                else {
                     alert("報名失败：" + data.message);
                 }
             })
