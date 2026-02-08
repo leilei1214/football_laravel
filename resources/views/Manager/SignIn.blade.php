@@ -245,6 +245,17 @@
                 $(".sum_amount").html(data.amount*data.current_participants)
 
                 localStorage.setItem('Guild',data.club);
+                                // #---------------------------------------------------------------------------------------
+                const registrations = res.registrations
+                console.log(registrations)
+                let add_registrations = ""; // Initialize the HTML string
+                let Nadd_registrations = ""; // Initialize the HTML string
+                let Backup_registrations = "";
+                // 不參加名單
+                Istatus_Nadd = 0;
+                Istatus_add = 0;
+                // 備取生
+                Istatus_Badd = 0;
                 registrations.forEach((registration, index) => {
                     let check_in = `
                     <label class="checkbox-inline input-filter input-filter-danube">
