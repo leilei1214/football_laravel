@@ -226,7 +226,7 @@ class EventController extends Controller
 
         $activityId = $request->input('activityId');
         $status_add  = (int) $request->input('status_add');
-        $identifier = $user->identifier;
+        $identifier = session('identifier');
 
         DB::beginTransaction();
         try {
