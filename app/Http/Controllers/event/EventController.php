@@ -210,7 +210,7 @@ class EventController extends Controller
 
             return response()->json([
                 'status' => 500,
-                'message' => '資料庫錯誤'
+                'message' => '資料庫錯誤'.$e
             ], 500);
         }
     }
