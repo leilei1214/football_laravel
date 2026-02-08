@@ -172,8 +172,8 @@
                     </div>
                     </article>
                     <!-- Table team-->
-                    <div class="table-custom-responsive">
-                    <table class="table-custom table-standings table-classic" style="table-layout: fixed; width: 100%;">
+                    <div class="table-custom-responsive" id="Backup_registrations">
+                    <!-- <table class="table-custom table-standings table-classic" style="table-layout: fixed; width: 100%;">
                         <thead>
                         <tr>
                             <th>順序</th>
@@ -185,7 +185,7 @@
                         <tbody id="Backup_registrations">
 
                         </tbody>
-                    </table>
+                    </table> -->
                     </div>
                 </div>
                 </aside>
@@ -201,20 +201,19 @@
                     </div>
                     </article>
                     <!-- Table team-->
-                    <div class="table-custom-responsive">
-                    <table class="table-custom table-standings table-classic" style="table-layout: fixed; width: 100%;">
+                    <div class="table-custom-responsive" id="Nadd_registrations">
+                    <!-- <table class="table-custom table-standings table-classic" style="table-layout: fixed; width: 100%;">
                         <thead>
                         <tr>
                             <th>順序</th>
                             <th>名字</th>
                             <th>位置</th>
-                            <!-- <th>備註</th> -->
                         </tr>
                         </thead>
                         <tbody id="Nadd_registrations">
 
                         </tbody>
-                    </table>
+                    </table> -->
                     </div>
                 </div>
                 </aside>
@@ -418,9 +417,10 @@
                                     <img src="${registration.user_img}" alt="player" />
 
                                     <!-- 位置 Badge -->
-                                    <span class="position-badge">${registration.preferred_position1}</span>
+                                    // <span class="position-badge">${registration.preferred_position1}</span>
                                 </div>
-
+                                    <div class="badge badge-secondary">${registration.username}
+                                </div>
                                 <!-- 狀態列 -->
                                 <div class="status-row">
                                     <span class="status checkin" title="已簽到">${check_in}</span>
@@ -443,17 +443,23 @@
                         }else{
                         Istatus_Badd += 1
                         Backup_registrations +=`
-                        <tr>
-                            <td><span>${Istatus_Badd}</span></td>
-                            <td class="team-inline">
+                            <div class="player-avatar">
+                                <div class="avatar-wrapper">
+                                    <img src="${registration.user_img}" alt="player" />
 
-                            <div class="team-title">
-                                <div class="team-name">${registration.preferred_position1}、${registration.preferred_position2}</div>
+                                    <!-- 位置 Badge -->
+                                    // <span class="position-badge">${registration.preferred_position1}</span>
+                                </div>
+
+                                <!-- 狀態列 -->
+                                <div class="status-row">
+                                    <span class="status checkin" title="已簽到">${check_in}</span>
+                                    <span class="status checkin" title="已簽退">${check_out}</span>
+                                    <span class="status paid" title="已繳費">${payment_status}</span>
+                                </div>
                             </div>
-                            </td>
-                            <td>備取${Istatus_Badd}</td>
-                        </tr>
-                        `
+                            
+                            `
                         }
 
                     }
@@ -469,12 +475,21 @@
                         element.style.borderColor = '#888'; 
 
                         Nadd_registrations += `
-                        <tr>
-                            <td>${Istatus_Nadd}</th>
-                            <td>${registration.username}</td>
-                            <td>${registration.preferred_position1}、${registration.preferred_position2}</td>
-                    
-                        </tr>
+                          <div class="player-avatar">
+                                <div class="avatar-wrapper">
+                                    <img src="${registration.user_img}" alt="player" />
+
+                                    <!-- 位置 Badge -->
+                                    // <span class="position-badge">${registration.preferred_position1}</span>
+                                </div>
+
+                                <!-- 狀態列 -->
+                                <div class="status-row">
+                                    <span class="status checkin" title="已簽到">${check_in}</span>
+                                    <span class="status checkin" title="已簽退">${check_out}</span>
+                                    <span class="status paid" title="已繳費">${payment_status}</span>
+                                </div>
+                            </div>
                         `;
                     }
                     
