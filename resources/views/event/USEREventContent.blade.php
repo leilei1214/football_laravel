@@ -604,7 +604,11 @@
                     alert("取消成功！");
                     location.reload();
 
-                } else {
+                } else if (data.message === 'User session not found') {
+                    window.location.href = data.redirect;
+                    return;
+                }
+                else {
                     alert("取消失败：" + data.message);
                 }
             })

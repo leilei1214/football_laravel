@@ -436,7 +436,11 @@
             if (data.status == 200) {
                 alert("儲存成功！");
                 location.reload();
-            } else {
+            }else if (data.message === 'User session not found') {
+                window.location.href = data.redirect;
+                return;
+            } 
+            else {
                 alert("儲存失败：" + data.message);
             }
         })
