@@ -121,13 +121,6 @@ class EventController extends Controller
         $Guild = session('Guild');
         $activityId = $request->input('activityId');
 
-        if (!$identifier) {
-            
-            return response()->json([
-                'status' => 400,
-                'message' => 'User session not found'
-            ], 400);
-        }
 
 
         $statusAdd  = (int) $request->input('status_add');

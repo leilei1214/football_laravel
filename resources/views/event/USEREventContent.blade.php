@@ -71,6 +71,10 @@
 .status.checkin {
   background-color: #2ecc71;
 }
+.status.checkout {
+  background-color: black;
+}
+
 
 /* 已繳費 */
 .status.paid {
@@ -426,7 +430,7 @@
                                 <!-- 狀態列 -->
                                 <div class="status-row">
                                     <span class="status checkin" title="已簽到">${check_in}</span>
-                                    <span class="status checkin" title="已簽退">${check_out}</span>
+                                    <span class="status checkout" title="已簽退">${check_out}</span>
                                     <span class="status paid" title="已繳費">${payment_status}</span>
                                 </div>
                             </div>
@@ -456,7 +460,7 @@
                                 <!-- 狀態列 -->
                                 <div class="status-row">
                                     <span class="status checkin" title="已簽到">${check_in}</span>
-                                    <span class="status checkin" title="已簽退">${check_out}</span>
+                                    <span class="status checkout" title="已簽退">${check_out}</span>
                                     <span class="status paid" title="已繳費">${payment_status}</span>
                                 </div>
                             </div>
