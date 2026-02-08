@@ -158,7 +158,7 @@
 
                 return response()->json([
                     'status'  => 500,
-                    'message' => 'Unexpected server error:'.e
+                    'message' => 'Unexpected server error:'.$e
                 ], 500);
             }
         }
