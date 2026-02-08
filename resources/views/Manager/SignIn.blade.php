@@ -22,7 +22,7 @@
 <section class="section section-md bg-gray-100">
     <div class="container">
         <div class="row row-50">
-            <div class="col-lg-12 ">
+            <div class="col-lg-8 ">
 
 
 
@@ -82,7 +82,7 @@
                         </div>
                     </article>
                     </div>
-                    <div class="table-custom-responsive">
+                    <div class="table-custom-responsive col-lg-12">
                         <table class="table">
                         <!-- <div class="badge badge-secondary">錄取名單
                         </div> -->
