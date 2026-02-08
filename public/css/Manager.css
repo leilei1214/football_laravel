@@ -49,7 +49,7 @@ h5 {
 	background: #fd6565;
 	border-color: #fd6565;
 }
-.tabs-modern{
+#tabs-modern{
     margin: 0 auto;
 }
 @media (max-width: 991.98px) {
