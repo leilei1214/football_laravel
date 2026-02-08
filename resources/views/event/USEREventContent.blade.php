@@ -11,6 +11,8 @@
 }
 .player-avatar {
   width: 80px;
+  margin-right: 39px;
+  float: left;
   text-align: center;
   font-family: Arial, sans-serif;
 }
