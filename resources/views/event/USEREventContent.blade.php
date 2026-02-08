@@ -417,10 +417,9 @@
                                     <img src="${registration.user_img}" alt="player" />
 
                                     <!-- 位置 Badge -->
-                                    // <span class="position-badge">${registration.preferred_position1}</span>
+                                    <span class="position-badge">${registration.preferred_position1}</span>
                                 </div>
-                                    <div class="badge badge-secondary">${registration.username}
-                                </div>
+                                <div class="badge badge-secondary">${registration.username}</div>
                                 <!-- 狀態列 -->
                                 <div class="status-row">
                                     <span class="status checkin" title="已簽到">${check_in}</span>
@@ -450,7 +449,7 @@
                                     <!-- 位置 Badge -->
                                     // <span class="position-badge">${registration.preferred_position1}</span>
                                 </div>
-
+                                <div class="badge badge-secondary">${registration.username}</div>
                                 <!-- 狀態列 -->
                                 <div class="status-row">
                                     <span class="status checkin" title="已簽到">${check_in}</span>
@@ -482,13 +481,9 @@
                                     <!-- 位置 Badge -->
                                     // <span class="position-badge">${registration.preferred_position1}</span>
                                 </div>
-
+                                <div class="badge badge-secondary">${registration.username}</div>
                                 <!-- 狀態列 -->
-                                <div class="status-row">
-                                    <span class="status checkin" title="已簽到">${check_in}</span>
-                                    <span class="status checkin" title="已簽退">${check_out}</span>
-                                    <span class="status paid" title="已繳費">${payment_status}</span>
-                                </div>
+                           
                             </div>
                         `;
                     }
