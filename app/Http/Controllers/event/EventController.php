@@ -106,7 +106,7 @@ class EventController extends Controller
             return response()->json([
                 'status' => 401,
                 'message' => 'User session not found',
-                'redirect' => route('login') . '?status=login&club='+$guildId+'&level=2'
+                'redirect' => route('login') . '?status=login&club='.$guildId.'&level=2'
             ], 401);
         }
         $identifier = session('identifier');
