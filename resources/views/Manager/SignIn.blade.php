@@ -414,7 +414,7 @@
     });
     // 打印结果
     console.log(jsonData);
-    fetch('/Manager/Update_SignIn', {
+    fetch('/Mapi/Update_SignIn', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
