@@ -48,6 +48,7 @@ Route::get('/ShowEvent', [EventController::class, 'ShowEvent'])->name('ShowEvent
 Route::post('/api/event', [EventController::class, 'ApiEvent'])->name('api.event');;
 Route::get('/AddEvent', [EventController::class, 'AddEvent'])->name('AddEvent');
 Route::get('/USEREventContent', [EventController::class, 'USEREventContent'])->name('USEREventContent');
+Route::post('/update-registration-status', [EventController::class, 'updateStatus']);
 
 
 Route::post('/Mapi/event', [ManagerController::class, 'MApiEvent'])->name('Mapi.event');;

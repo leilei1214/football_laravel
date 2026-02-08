@@ -529,7 +529,7 @@
 
             // 獲取 `list_id` 的值
             const activityId = urlParams.get('list_id');
-            fetch('./insert-event', {
+            fetch('/update-registration-status', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
