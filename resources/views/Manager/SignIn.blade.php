@@ -21,8 +21,8 @@
 @section('content')
 <section class="section section-md bg-gray-100">
     <div class="container">
-        <div class="row row-50">
-            <div class="col-lg-8 ">
+        <div class="row row-50 justify-content-center">
+            <div class="col-lg-10 ">
 
 
 
@@ -97,7 +97,7 @@
 
                             </tr>
                         </thead>
-                        <tbody id="add_registrations" style="background-color: #ffffff;">
+                        <tbody id="add_registrations" style="text-align:center;background-color: #ffffff;">
                             <!-- <tr>
                             <th scope="row">1</th>
                             <td>Mark</td>
