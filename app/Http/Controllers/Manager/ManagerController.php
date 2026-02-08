@@ -64,6 +64,7 @@
         }
         public function updateSignIn(Request $request)
         {
+            $guildId  = $request->input('guildId');
             // 1️⃣ 檢查 session
             if (!session('identifier')) {
                 $result = DB::select(
@@ -76,7 +77,7 @@
                 return response()->json([
                     'status' => 401,
                     'message' => 'User session not found',
-                    'redirect' => route('login') . '?status=login&club='.$guildName.'&level=2'
+                    'redirect' => route('login') . '?status=login&club='.$guildName.'&level=1'
                 ], 401);
             }
 

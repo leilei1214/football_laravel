@@ -368,6 +368,8 @@
 
     // 獲取 `list_id` 的值
     const activityId = urlParams.get('list_id');
+    const guildId = urlParams.get('guild_id');
+
     // SignIn SignOut SignFree
     let jsonData = []; // 用于存储复选框信息的数组
 
@@ -424,7 +426,9 @@
         },
         body: JSON.stringify({
             activityId: activityId,
-            jsonData:jsonData
+            jsonData:jsonData,
+            guildId:guildId
+
         })
         })
         .then(response => response.json())

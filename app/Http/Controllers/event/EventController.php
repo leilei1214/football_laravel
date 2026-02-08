@@ -209,6 +209,7 @@ class EventController extends Controller
     }
     public function updateNoStatus(Request $request)
     {
+        $guildId  = $request->input('guildId');
         if (!session('identifier')) {
             $result = DB::select(
                 'SELECT * FROM guilds WHERE guild_id = ?',
