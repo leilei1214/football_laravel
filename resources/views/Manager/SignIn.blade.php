@@ -21,7 +21,7 @@
 @section('content')
 <section class="section section-md bg-gray-100" style="height:100vh">
     <div class="container">
-        <div class="justify-content-center">
+        <div class="row row-50 justify-content-center">
             <div class="col-lg-10 ">
 
 
