@@ -93,8 +93,8 @@
                     $checked   = $item['checked'];
                     $value     = $item['value'];     // identifier
                     $className = $item['class'];
-                    $time      = $item['time'];
-
+                    $time = date('Y-m-d H:i:s', strtotime($item['time']));
+                    
                     if ($className === 'SignIn') {
 
                         $changeChecked = $checked ? 1 : 0;
