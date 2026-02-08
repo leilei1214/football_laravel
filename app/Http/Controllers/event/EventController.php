@@ -207,5 +207,54 @@ class EventController extends Controller
             ], 500);
         }
     }
+    public function updateNoStatus(Request $request)
+    {
+        if (!session('identifier')) {
+            $result = DB::select(
+                'SELECT * FROM guilds WHERE guild_id = ?',
+                [$guildId]
+            );
+            if (count($result) > 0) {
+                $guildName = $result[0] ->name;
+            }
+            return response()->json([
+                'status' => 401,
+                'message' => 'User session not found',
+                'redirect' => route('login') . '?status=login&club='.$guildName.'&level=2'
+            ], 401);
+        }
+
+        $activityId = $request->input('activityId');
+        $status_add  = (int) $request->input('status_add');
+        $identifier = $user->identifier;
+
+        DB::beginTransaction();
+        try {
+
+            // 1️⃣ Upsert 報名 (updateOrCreate = 查找 + 更新/插入)
+            Registration::updateOrCreate(
+                ['activity_id' => $activityId, 'identifier' => $identifier],
+                ['status_add' => $status_add,'updated_at' => now()]
+            );
+
+            // 2️⃣ 更新活動當前人數
+            $currentParticipants = Registration::where('activity_id', $activityId)
+                ->where('status_add', 1)
+                ->count();
+
+            Activity::where('id', $activityId)
+                ->update(['current_participants' => $currentParticipants]);
+
+            DB::commit();
+            return response()->json(['status' => 200]);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            \Log::error('資料庫更新失敗: ' . $e->getMessage());
+            return response()->json([
+                'status' => 500,
+                'message' => '資料庫更新錯誤'
+            ], 500);
+        }
+    }
 }
 

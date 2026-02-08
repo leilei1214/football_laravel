@@ -584,14 +584,15 @@
 
             // 獲取 `list_id` 的值
             const activityId = urlParams.get('list_id');
-            fetch('./delete-event', {
+            fetch('./update-registration-NoStatus', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
                 status_add: 0,
-                activityId:activityId
+                activityId:activityId,
+                guildId:guildId
                 }),
             })
             .then(response => response.json())
