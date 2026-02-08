@@ -73,7 +73,7 @@
 
 
                 </div>
-                <div class="row">
+                <div class="">
                     <div class="col-sm-12 owl-carousel-outer-navigation">
                     <article class="heading-component" >
                         <div class="heading-component-inner">
