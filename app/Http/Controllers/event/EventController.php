@@ -98,6 +98,104 @@ class EventController extends Controller
             'registrations' => $registrations
         ]);
     }
+    public function updateStatus(Request $request)
+    {
+        // 1️⃣ 取得 session 使用者
+        $identifier = session('identifier');
+        $Guild = session('Guild');
+        $activityId = $request->input('activityId');
 
+        if (!$identifier) {
+            return response()->json([
+                'status' => 400,
+                'message' => 'User session not found'
+            ], 400);
+        }
+
+
+        $statusAdd  = (int) $request->input('status_add');
+
+        try {
+            DB::beginTransaction();
+
+            // 2️⃣ 取得活動上限
+            $activity = DB::table('activities')
+                ->where('id', $activityId)
+                ->lockForUpdate()
+                ->first();
+
+            if (!$activity) {
+                DB::rollBack();
+                return response()->json(['message' => 'Activity not found'], 404);
+            }
+
+            // 3️⃣ 若是「簽到」，檢查人數
+            if ($statusAdd === 1) {
+                $currentCount = DB::table('registrations')
+                    ->where('activity_id', $activityId)
+                    ->where('status_add', 1)
+                    ->count();
+
+                if ($currentCount >= $activity->max_participants) {
+                    DB::rollBack();
+                    return response()->json([
+                        'status' => 409,
+                        'message' => '人數已滿'
+                    ], 409);
+                }
+            }
+
+            // 4️⃣ 是否已有報名資料
+            $registration = DB::table('registrations')
+                ->where('activity_id', $activityId)
+                ->where('identifier', $identifier)
+                ->first();
+
+            if ($registration) {
+                // UPDATE
+                DB::table('registrations')
+                    ->where('id', $registration->id)
+                    ->update([
+                        'status_add' => $statusAdd,
+                        'updated_at' => now()
+                    ]);
+            } else {
+                // INSERT
+                DB::table('registrations')
+                    ->insert([
+                        'activity_id' => $activityId,
+                        'identifier'  => $identifier,
+                        'status_add'  => $statusAdd,
+                        'created_at'  => now(),
+                        'updated_at'  => now()
+                    ]);
+            }
+
+            // 5️⃣ 重新計算在場人數（只算簽到）
+            $currentParticipants = DB::table('registrations')
+                ->where('activity_id', $activityId)
+                ->where('status_add', 1)
+                ->count();
+
+            DB::table('activities')
+                ->where('id', $activityId)
+                ->update([
+                    'current_participants' => $currentParticipants
+                ]);
+
+            DB::commit();
+
+            return response()->json(['status' => 200]);
+
+        } catch (\Exception $e) {
+            DB::rollBack();
+            \Log::error($e);
+
+            return response()->json([
+                'status' => 500,
+                'message' => '資料庫錯誤'
+            ], 500);
+        }
+    }
 }
 

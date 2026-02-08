@@ -84,6 +84,7 @@ class LoginController extends Controller
                 if ($user->Guild == $Guild && $status == 'login') {
                     // Guild 一致，導首頁
                     session([
+                        'identifier'=>$user -> identifier,
                         'level'     => $user ->level,
                         'Guild'     => $Guild,
                     ]);
@@ -113,6 +114,7 @@ class LoginController extends Controller
             $Guild     = session('Guild');
             $level     = session('level');
             $Gender    = session('Gender');
+            
 
             // 頭像
             $user_img = match ($Gender) {

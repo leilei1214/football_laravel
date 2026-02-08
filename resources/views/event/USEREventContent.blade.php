@@ -516,4 +516,80 @@
     document.addEventListener('DOMContentLoaded', loadEventContent);
 
 </script>
+<script>
+    $(".btn_add").click(()=>{
+        // if()
+        if($(".btn_add").hasClass("active")){
+            alert("已報名成功")
+        }else{
+            const currentUrl = window.location.href;
+
+            // 使用 URLSearchParams 提取查詢參數
+            const urlParams = new URLSearchParams(window.location.search);
+
+            // 獲取 `list_id` 的值
+            const activityId = urlParams.get('list_id');
+            fetch('./insert-event', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                status_add: 1,
+                activityId:activityId
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status == 200) {
+                    alert("報名成功！");
+                    location.reload();
+
+                } else {
+                    alert("報名失败：" + data.message);
+                }
+            })
+            .catch(error => {
+                console.error("请求失败:", error);
+            });
+        }
+    })
+
+    $(".btn_Nadd").click(()=>{
+        if($(".btn_Nadd").hasClass("active")){
+            alert("已取消報名")
+        }else{
+            const currentUrl = window.location.href;
+
+            // 使用 URLSearchParams 提取查詢參數
+            const urlParams = new URLSearchParams(window.location.search);
+
+            // 獲取 `list_id` 的值
+            const activityId = urlParams.get('list_id');
+            fetch('./delete-event', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                status_add: 0,
+                activityId:activityId
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status == 200) {
+                    alert("取消成功！");
+                    location.reload();
+
+                } else {
+                    alert("取消失败：" + data.message);
+                }
+            })
+            .catch(error => {
+                console.error("请求失败:", error);
+            });
+        }
+    })
+</script>
 @endsection
