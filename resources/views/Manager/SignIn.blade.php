@@ -22,7 +22,7 @@
 <section class="section section-md bg-gray-100">
     <div class="container">
         <div class="row row-50">
-            <div class="col-lg-8 ">
+            <div class="col-lg-12 ">
 
 
 
