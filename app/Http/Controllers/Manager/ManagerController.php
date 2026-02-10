@@ -18,6 +18,11 @@
         {
             return view('Manager.SignIn');
         }
+        
+        public function SignIn_Qrcode()
+        {
+            return view('Manager.SignIn_Qrcode');
+        }
         public function MApiEvent(Request $request)
         {
             $Slevel= session('level');
@@ -94,7 +99,7 @@
                     $value     = $item['value'];     // identifier
                     $className = $item['class'];
                     $time = date('Y-m-d H:i:s', strtotime($item['time']));
-                    
+
                     if ($className === 'SignIn') {
 
                         $changeChecked = $checked ? 1 : 0;
