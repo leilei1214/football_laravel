@@ -469,5 +469,39 @@
     //   });
     // })
 </script>
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+<script>
+        // window.location.href ="./Sign_Qrcode?list_id="+activityId+"&Guild="+Guild
+        function getURLParameter(name) {
+            return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)')
+                .exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+        }
+        const listId = getURLParameter('list_id');
+        const Guild = getURLParameter('Guild');
+        const liffUrl_IN = `https://liff.line.me/1661291645-p5ObO70M?list_id=${listId}&Sign=IN`; // ← 替換成你的 LIFF 網址
+        const liffUrl_OUT = `https://liff.line.me/1661291645-p5ObO70M?list_id=${listId}&Sign=OUT`; // ← 替換成你的 LIFF 網址
+        console.log(liffUrl_IN);
+        const liffId = "1661291645-p5ObO70M"
+        new QRCode(document.getElementById("qrcode_in"), {
+            text: liffUrl_IN,
+            width: 256,
+            height: 256,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+        });
+        new QRCode(document.getElementById("qrcode_out"), {
+            text: liffUrl_OUT,
+            width: 256,
+            height: 256,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+        });
+        function back_event(){
+                window.location.href = `./event_content?list_id=${listId}`
+        }
 
+</script>
 @endsection

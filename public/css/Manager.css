@@ -52,6 +52,9 @@ h5 {
 #tabs-modern{
     margin: 0 auto;
 }
+body{
+    background: #edeff4 !important;
+}
 @media (max-width: 991.98px) {
     section.section-sm:first-of-type, section.section-md:first-of-type, section.section-lg:first-of-type, section.section-xl:first-of-type, section.section-xxl:first-of-type {
         padding-top: 90px;
