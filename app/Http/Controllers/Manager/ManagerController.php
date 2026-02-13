@@ -23,6 +23,10 @@
         {
             return view('Manager.SignIn_Qrcode');
         }
+        public function liff_signin()
+        {
+            return view('Manager.liff_signin');
+        }
         public function MApiEvent(Request $request)
         {
             $Slevel= session('level');
@@ -167,5 +171,92 @@
                 ], 500);
             }
         }
+        public function updateSignInQrcode(Request $request)
+        {
+            // 檢查 session
+            $guildId  = $request->input('guildId');
+            // 1️⃣ 檢查 session
+            if (!session('identifier')) {
+                $result = DB::select(
+                    'SELECT * FROM guilds WHERE guild_id = ?',
+                    [$guildId]
+                );
+                if (count($result) > 0) {
+                    $guildName = $result[0] ->name;
+                }
+                return response()->json([
+                    'status' => 401,
+                    'message' => 'User session not found',
+                    'redirect' => route('login') . '?status=login&club='.$guildName.'&level=1'
+                ], 401);
+            }
+
+            $time      = $request->input('time');
+            $upUserId  = $request->input('Up_userId');
+            $listId    = $request->input('listId');
+            $sign      = $request->input('Sign');
+
+            try {
+
+                // 1️⃣ 取得 identifier
+                $userRow = DB::select(
+                    "SELECT identifier FROM users WHERE userid = ?",
+                    [$upUserId]
+                );
+
+                if (empty($userRow)) {
+                    return response()->json([
+                        'status' => 404,
+                        'message' => 'User not found'
+                    ], 404);
+                }
+
+                $identifier = $userRow[0]->identifier;
+
+                // ⭐⭐⭐ 重要：轉時間格式 ⭐⭐⭐
+                $formattedTime = date('Y-m-d H:i:s', strtotime($time));
+
+                if ($sign === 'IN') {
+
+                    DB::update(
+                        "
+                        UPDATE registrations
+                        SET check_in = 1,
+                            check_in_time = ?
+                        WHERE activity_id = ?
+                        AND identifier = ?
+                        ",
+                        [$formattedTime, $listId, $identifier]
+                    );
+
+                } elseif ($sign === 'OUT') {
+
+                    DB::update(
+                        "
+                        UPDATE registrations
+                        SET check_out = 1,
+                            check_out_time = ?
+                        WHERE activity_id = ?
+                        AND identifier = ?
+                        ",
+                        [$formattedTime, $listId, $identifier]
+                    );
+                }
+
+                return response()->json([
+                    'status' => 200
+                ]);
+
+            } catch (\Exception $e) {
+
+                \Log::error($e->getMessage());
+
+                return response()->json([
+                    'status' => 500,
+                    'message' => 'Unexpected server error'
+                ], 500);
+            }
+        }
+
     }
 ?>

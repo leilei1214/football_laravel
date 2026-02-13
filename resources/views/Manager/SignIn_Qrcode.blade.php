@@ -14,6 +14,10 @@
     font-size: 20px;
     padding: 10px;
 }
+.product-figure{
+    width: 80%;
+    margin: 0 auto;
+}
 </style>
 @endsection
 
@@ -478,9 +482,9 @@
                 .exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
         }
         const listId = getURLParameter('list_id');
-        const Guild = getURLParameter('Guild');
-        const liffUrl_IN = `https://liff.line.me/1661291645-p5ObO70M?list_id=${listId}&Sign=IN`; // ← 替換成你的 LIFF 網址
-        const liffUrl_OUT = `https://liff.line.me/1661291645-p5ObO70M?list_id=${listId}&Sign=OUT`; // ← 替換成你的 LIFF 網址
+        const guild_id = getURLParameter('guild_id');
+        const liffUrl_IN = `https://liff.line.me/1661291645-p5ObO70M?list_id=${listId}&Sign=IN&guild_id=${guild_id}`; // ← 替換成你的 LIFF 網址
+        const liffUrl_OUT = `https://liff.line.me/1661291645-p5ObO70M?list_id=${listId}&Sign=OUT&guild_id=${guild_id}`; // ← 替換成你的 LIFF 網址
         console.log(liffUrl_IN);
         const liffId = "1661291645-p5ObO70M"
         new QRCode(document.getElementById("qrcode_in"), {
