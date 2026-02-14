@@ -340,7 +340,7 @@
 
         // 獲取 `list_id` 的值
         const activityId = urlParams.get('list_id');
-        const guild_id = localStorage.getItem('guild_id');
+        const guild_id = urlParams.get('guild_id');
 
         window.location.href ="./SignIn?list_id="+activityId+"&guild_id="+guild_id
 
@@ -353,7 +353,7 @@
 
         // 獲取 `list_id` 的值
         const activityId = urlParams.get('list_id');
-        const guild_id = localStorage.getItem('guild_id');
+        const guild_id = urlParams.get('guild_id');
 
         window.location.href ="./SignIn_Qrcode?list_id="+activityId+"&guild_id="+guild_id
 
