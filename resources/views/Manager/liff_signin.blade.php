@@ -28,22 +28,14 @@
     <div class="container">
     <div class="row row-50">
         <div class="col-lg-8">
-        <ul class="list-inline mx-auto list-inline-xs "  style="margin-bottom: -4px;">
-            <li class="pl-0 pr-0"><a class=" button-md icon-media icon-media-round icon-media-instagram " href="#">編輯</a></li>
-            <li class="pl-0 pr-0"><a class="button-md icon-media icon-media-round icon-media-instagram " href="#">簽退</a></li>
-            <li class="pl-0 pr-0"><a class="button-md icon-media icon-media-round icon-media-google " href="#">刪除</a></li>
-            <li class="pl-0 pr-0"><a class="button-md icon-media icon-media-round icon-media-google " href="#">Qrcode簽到</a></li>
-            <li class="pl-0 pr-0"><a class="button-md icon-media icon-media-round icon-media-google " href="#">Qrcode簽退</a></li>
 
-        </ul>
-
-        <div class="blog-post">
-            <!-- Badge-->
-            <div id="qrcode"></div>
-            <div id="result">正在檢查是否從 LINE 開啟...</div>
+            <div class="blog-post">
+                <!-- Badge-->
+                <div id="qrcode"></div>
+                <div id="result">正在檢查是否從 LINE 開啟...</div>
 
 
-        </div>
+            </div>
 
         </div>
     </div>
@@ -104,6 +96,7 @@
 <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 <script>
         // window.location.href ="./Sign_Qrcode?list_id="+activityId+"&Guild="+Guild
+            const liffId = "1661291645-p5ObO70M"
             async function runLiffSignIn() {
                 try {
                     await liff.init({ liffId });
