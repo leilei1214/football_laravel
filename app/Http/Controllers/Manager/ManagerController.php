@@ -34,7 +34,7 @@
             $level = $request->input('level');
             try {
             // 🔐 未登入就擋
-                $query = DB::table('activities')->where('guild_id', $guild_Id)->where('status', 1)->get();
+                $query = DB::table('activities')->where('guild_id', $guild_Id)->where('status', 1);
                 if ($level !== '總覽') {
                     // 只撈符合 level 的活動
                     $query->whereRaw(
