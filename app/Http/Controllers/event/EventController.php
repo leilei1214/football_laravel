@@ -286,7 +286,7 @@ class EventController extends Controller
     public function getEvents(Request $request) {
         // 將分頁數量改為 9
         $activities = Event::where('level', $request->level)
-                            ->paginate(9); 
+                            ->paginate(1); 
 
         return response()->json($activities);
     }
