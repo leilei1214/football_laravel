@@ -76,9 +76,9 @@ $(".btn_delete").on("click",  async function () {
         if (response.ok) {
             const res = await response.json();
 
-            const data = res.event
-            console.log(data)
-
+            if(res.status == 200){
+                window.location.href ='/Manager/EventList'
+            }
         } 
 
 
