@@ -30,7 +30,7 @@
         public function MApiEvent(Request $request)
         {
             $Slevel= session('level');
-            $guild_Id = $request->session()->get('guild_Id'); // 拿 session 裡存的公會
+            $guild_Id = session('guild_Id'); // 拿 session 裡存的公會
             $level = $request->input('level');
             try {
             // 🔐 未登入就擋
