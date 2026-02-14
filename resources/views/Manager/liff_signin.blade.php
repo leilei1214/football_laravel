@@ -114,7 +114,7 @@
                     }
                     // list_id=${listId}&Guild=${Guild}&Sign=IN
                     const listId = getURLParameter('list_id');
-                    const Guild = getURLParameter('Guild');
+                    const Guild = getURLParameter('guild_id');
                     const Sign = getURLParameter('Sign');
 
                     console.log(listId);
@@ -133,6 +133,9 @@
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': document
+                                .querySelector('meta[name="csrf-token"]')
+                                ?.getAttribute('content')
                         },
                         body: JSON.stringify({
                           time: new Date(),
