@@ -64,7 +64,8 @@ $(".btn_delete").on("click",  async function () {
         });
 
         if (!response.ok) {
-            if (response.message === 'User session not found') {
+            const res = await response.json();
+            if (res.message === 'User session not found') {
                 alert('請先登入');
                 window.location.href = data.redirect;
                 return;
