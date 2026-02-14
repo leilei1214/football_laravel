@@ -97,6 +97,15 @@
 <script>
         // window.location.href ="./Sign_Qrcode?list_id="+activityId+"&Guild="+Guild
             const liffId = "1661291645-p5ObO70M"
+
+            // 使用 URLSearchParams 提取查詢參數
+            const urlParams = new URLSearchParams(window.location.search);
+
+            // 獲取 `list_id` 的值
+            // list_id=${listId}&Guild=${Guild}&Sign=IN
+            const listId = urlParams.get('list_id');
+            const Guild = urlParams.get('guild_id');
+            const Sign = urlParams.get('Sign');
             async function runLiffSignIn() {
                 try {
                     await liff.init({ liffId });
@@ -105,16 +114,7 @@
                         liff.login();
                         return;
                     }
-                    const currentUrl = window.location.href;
 
-                    // 使用 URLSearchParams 提取查詢參數
-                    const urlParams = new URLSearchParams(window.location.search);
-
-                    // 獲取 `list_id` 的值
-                    // list_id=${listId}&Guild=${Guild}&Sign=IN
-                    const listId = urlParams.get('list_id');
-                    const Guild = urlParams.get('guild_id');
-                    const Sign = urlParams.get('Sign');
 
                     console.log(listId);
                     const profile = await liff.getProfile();
