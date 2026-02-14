@@ -40,7 +40,7 @@ function QrcodeSign(){
 }
 $(".btn_delete").on("click",  async function () {
     console.log("delete clicked");
-    
+
     const currentUrl = window.location.href;
     // 使用 URLSearchParams 提取查詢參數
     const urlParams = new URLSearchParams(window.location.search);
@@ -64,6 +64,11 @@ $(".btn_delete").on("click",  async function () {
         });
 
         if (!response.ok) {
+            if (response.message === 'User session not found') {
+                alert('請先登入');
+                window.location.href = data.redirect;
+                return;
+            } 
             alert('讀取失敗');
             return;
         }
