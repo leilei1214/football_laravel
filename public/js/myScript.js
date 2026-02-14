@@ -12,3 +12,29 @@ document.querySelectorAll('[data-custom-toggle]').forEach(btn => {
         btn?.classList.toggle('active');
     });
 });
+function ClockOut() {
+    const currentUrl = window.location.href;
+
+    // 使用 URLSearchParams 提取查詢參數
+    const urlParams = new URLSearchParams(window.location.search);
+
+    // 獲取 `list_id` 的值
+    const activityId = urlParams.get('list_id');
+    const guild_id = urlParams.get('guild_id');
+
+    window.location.href ="./SignIn?list_id="+activityId+"&guild_id="+guild_id
+
+}
+function QrcodeSign(){
+    const currentUrl = window.location.href;
+
+    // 使用 URLSearchParams 提取查詢參數
+    const urlParams = new URLSearchParams(window.location.search);
+
+    // 獲取 `list_id` 的值
+    const activityId = urlParams.get('list_id');
+    const guild_id = urlParams.get('guild_id');
+
+    window.location.href ="./SignIn_Qrcode?list_id="+activityId+"&guild_id="+guild_id
+
+}
