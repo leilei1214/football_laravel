@@ -83,6 +83,14 @@ class LoginController extends Controller
             foreach ($result as  $index => $user) {
                 // $user 是物件，可以直接存取欄位
                 if ($user->Guild == $Guild && $status == 'login') {
+                    $guildId = DB::table('guilds')
+                    ->where('name', $Guild)
+                    ->value('guild_id');
+                    if ($guildId > 0) {
+                        session([
+                            'guild_Id'=>$guildId
+                        ]);
+                    }
                     // Guild 一致，導首頁
                     session([
                         'identifier'=>$user -> identifier,
