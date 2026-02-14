@@ -67,8 +67,8 @@
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item" role="presentation" ><a class="nav-link btn_add" href="#tabs-modern-1" data-bs-toggle="tab" aria-selected="true" role="tab">編輯</a></li>
                             <li class="nav-item" role="presentation" ><a class="nav-link btn_Nadd" href="#tabs-modern-1" data-bs-toggle="tab" aria-selected="false" tabindex="-1" role="tab">刪除</a></li>
-                            <li class="nav-item" role="presentation" ><a class="nav-link active show" onclick="ClockOut()" href="#tabs-modern-3" data-bs-toggle="tab" aria-selected="false" tabindex="-1" role="tab">簽到表</a></li>
-                            <li class="nav-item" role="presentation" ><a class="nav-link" onclick="QrcodeSign()" href="#tabs-modern-3" data-bs-toggle="tab" aria-selected="false" tabindex="-1" role="tab">Qrcode簽到</a></li>
+                            <li class="nav-item" role="presentation" ><a class="nav-link " onclick="ClockOut()" href="#tabs-modern-3" data-bs-toggle="tab" aria-selected="false" tabindex="-1" role="tab">簽到表</a></li>
+                            <li class="nav-item" role="presentation" ><a class="nav-link active show"" onclick="QrcodeSign()" href="#tabs-modern-3" data-bs-toggle="tab" aria-selected="false" tabindex="-1" role="tab">Qrcode簽到</a></li>
 
                         </ul>                    
                     </div>
@@ -264,154 +264,7 @@
     // 頁面載入後執行
     document.addEventListener('DOMContentLoaded', loadEventContent);
 </script>
-<script>
-      function ClockOut() {
-        const currentUrl = window.location.href;
 
-        // 使用 URLSearchParams 提取查詢參數
-        const urlParams = new URLSearchParams(window.location.search);
-
-        // 獲取 `list_id` 的值
-        const activityId = urlParams.get('list_id');
-
-        window.location.href ="./SignIn?list_id="+activityId
-
-      }
-      function QrcodeSign(){
-        const currentUrl = window.location.href;
-
-        // 使用 URLSearchParams 提取查詢參數
-        const urlParams = new URLSearchParams(window.location.search);
-
-        // 獲取 `list_id` 的值
-        const activityId = urlParams.get('list_id');
-        const Guild = localStorage.getItem('Guild');
-
-        window.location.href ="./Sign_Qrcode?list_id="+activityId+"&Guild="+Guild
-
-      }
-</script>
-
-<script>
-    function save(){
-    const currentUrl = window.location.href;
-
-    // 使用 URLSearchParams 提取查詢參數
-    const urlParams = new URLSearchParams(window.location.search);
-
-    // 獲取 `list_id` 的值
-    const activityId = urlParams.get('list_id');
-    const guildId = urlParams.get('guild_id');
-
-    // SignIn SignOut SignFree
-    let jsonData = []; // 用于存储复选框信息的数组
-
-    // 遍历所有 .SignIn 复选框
-    $(".SignIn").each(function () {
-        let isChecked = $(this).is(":checked"); // 检查是否选中
-        let value = $(this).val(); // 获取复选框的值
-
-        // 将状态和值存入 JSON 数组
-        jsonData.push({
-            checked: isChecked,  // 是否选中
-            value: value,      // 复选框的值
-            class: "SignIn",
-            time: new Date()
-        });
-    });
-            // 遍历所有 .SignIn 复选框
-    $(".SignOut").each(function () {
-        let isChecked = $(this).is(":checked"); // 检查是否选中
-        let value = $(this).val(); // 获取复选框的值
-
-        // 将状态和值存入 JSON 数组
-        jsonData.push({
-            checked: isChecked,  // 是否选中
-            value: value,         // 复选框的值
-            class: "SignOut",
-            time: new Date()
-
-        });
-    });
-            // 遍历所有 .SignIn 复选框
-    $(".SignFree").each(function () {
-        let isChecked = $(this).is(":checked"); // 检查是否选中
-        let value = $(this).val(); // 获取复选框的值
-
-        // 将状态和值存入 JSON 数组
-        jsonData.push({
-            checked: isChecked,  // 是否选中
-            value: value,         // 复选框的值
-            class:"SignFree",
-            time: new Date()
-            
-        });
-    });
-    // 打印结果
-    console.log(jsonData);
-    fetch('/Mapi/Update_SignIn', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': document
-                        .querySelector('meta[name="csrf-token"]')
-                        ?.getAttribute('content')
-        },
-        body: JSON.stringify({
-            activityId: activityId,
-            jsonData:jsonData,
-            guildId:guildId
-
-        })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.status == 200) {
-                alert("儲存成功！");
-                location.reload();
-            }else if (data.message === 'User session not found') {
-                window.location.href = data.redirect;
-                return;
-            } 
-            else {
-                alert("儲存失败：" + data.message);
-            }
-        })
-        .catch(error => {
-            console.error("请求失败:", error);
-        });
-    }
-    // $(".btn_add").click(()=>{
-    //   const currentUrl = window.location.href;
-
-    //   // 使用 URLSearchParams 提取查詢參數
-    //   const urlParams = new URLSearchParams(window.location.search);
-
-    //   // 獲取 `list_id` 的值
-    //   const activityId = urlParams.get('list_id');
-    //   fetch('./insert-event', {
-    //       method: 'POST',
-    //       headers: {
-    //           'Content-Type': 'application/json',
-    //       },
-    //       body: JSON.stringify({
-    //         status_add: 1,
-    //         activityId:activityId
-    //       }),
-    //   })
-    //   .then(response => response.json())
-    //   .then(data => {
-    //       if (data.status == 200) {
-    //           alert("報名成功！");
-    //       } else {
-    //           alert("報名失败：" + data.message);
-    //       }
-    //   })
-    //   .catch(error => {
-    //       console.error("请求失败:", error);
-    //   });
-    // })
-</script>
 <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 <script>
