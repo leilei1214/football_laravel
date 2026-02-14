@@ -203,6 +203,9 @@
         console.log('Level:', data.level, 'Guild:', data.Guild);
         if(data.level == 1){
             $(".addEventHref").addClass("d-none");
+        }else{
+            alert("無權限")
+            window.location.href = "/";
         }
       })
       .catch(err => console.error('Fetch error:', err));

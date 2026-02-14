@@ -129,7 +129,7 @@
                     🆔 User ID：<code>${userId}</code><br>
                     🕒 時間：${new Date().toLocaleString()}
                     `;
-                    fetch('./api/Update_SignIn_Qrcode', {
+                    fetch('/api/Update_SignIn_Qrcode', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
