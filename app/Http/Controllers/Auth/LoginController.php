@@ -171,6 +171,9 @@ class LoginController extends Controller
                     ->where('name', $Guild)
                     ->value('guild_id');
                 if ($guildId > 0) {
+                    session([
+                        'guild_Id'=>$guildId
+                    ]);
                     $tag = session('tag') ?? ['football'];
                     foreach ($tag as $sport) {
                         DB::table('union_members')->insert([

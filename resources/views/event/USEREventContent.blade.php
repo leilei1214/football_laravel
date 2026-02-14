@@ -393,7 +393,7 @@
                         element.style.background = '#888'; // Changes text color to red
                         element.style.borderColor = '#888'; 
                         }
-                        let check_in = "未簽到";
+                        let check_in = "未";
                         if (registration.check_in == 1) {
                             check_in = "已簽到";
                             check_in = '✔';
@@ -401,14 +401,14 @@
                             // check_in = formatDate(registration.check_in_time)
                         }
 
-                        let check_out = "未簽退"; // Corrected this line
+                        let check_out = "未"; // Corrected this line
                         if (registration.check_out == 1) {
                             check_out = "已簽退";
                             check_out = '⏹';
                             // check_out = formatDate(registration.check_out_time)
                         }
 
-                        let payment_status = "未繳費";
+                        let payment_status = "未";
                         if (registration.payment_status) {
                         payment_status ="已繳費"; // Use the actual name
                         payment_status ='💰';

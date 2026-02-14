@@ -30,11 +30,11 @@
         public function MApiEvent(Request $request)
         {
             $Slevel= session('level');
-            $Guild = $request->session()->get('Guild'); // 拿 session 裡存的公會
+            $guild_Id = $request->session()->get('guild_Id'); // 拿 session 裡存的公會
             $level = $request->input('level');
             try {
             // 🔐 未登入就擋
-                $query = DB::table('activities')->get();
+                $query = DB::table('activities')->where('guild_id', $guild_Id)->get();
                 if ($level !== '總覽') {
                     // 只撈符合 level 的活動
                     $query->whereRaw(
@@ -48,8 +48,6 @@
                     return '
                     
                     <a href="/Manager/event-content/'.$row->id.'" class="btn btn-sm btn-primary">詳情</a>
-                    <a href="/Manager/event-edit/'.$row->id.'" class="btn btn-sm btn-secondary">編輯</a>
-                    <a href="/Manager/event-delete/'.$row->id.'" class="btn btn-sm btn-red">刪除</a>
                     ';
                 })
                 ->rawColumns(['action'])
