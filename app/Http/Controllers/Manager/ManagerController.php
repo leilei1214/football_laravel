@@ -34,7 +34,7 @@
             $level = $request->input('level');
             try {
             // 🔐 未登入就擋
-                $query = DB::table('activities')->where('guild_id', $guild_Id)->get();
+                $query = DB::table('activities')->where('guild_id', $guild_Id)->where('status', 1)->get();
                 if ($level !== '總覽') {
                     // 只撈符合 level 的活動
                     $query->whereRaw(
@@ -42,12 +42,11 @@
                         [$level]
                     );
                 }
-
                 return DataTables::of($query)
                 ->addColumn('action', function($row){
                     return '
                     
-                    <a href="/Manager/event-content/'.$row->id.'" class="btn btn-sm btn-primary">詳情</a>
+                    <a href="/Manager/EventContent?list_id'.$row->id.'&guild_id ='.$guild_Id.'" class="btn btn-sm btn-primary">詳情</a>
                     ';
                 })
                 ->rawColumns(['action'])
