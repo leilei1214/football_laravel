@@ -250,68 +250,7 @@
                 Istatus_add = 0;
                 // 備取生
                 Istatus_Badd = 0;
-                registrations.forEach((registration, index) => {
-                    let check_in = `
-                    <label class="checkbox-inline input-filter input-filter-danube">
-                        <input name="input-checkbox-6" id="check_in-${registration.identifier}" value="${registration.identifier}" type="checkbox" class="checkbox-custom SignIn"><span class="checkbox-custom-dummy"></span>
-                    </label>
-                    `;
 
-
-                    let check_out = `
-                        <label class="checkbox-inline input-filter input-filter-geraldine">
-                        <input name="input-checkbox-9" id="check_out-${registration.identifier}" value="${registration.identifier}" type="checkbox" class="checkbox-custom SignOut"><span class="checkbox-custom-dummy"></span>
-                    </label>
-
-                    `; // Corrected this line
-
-
-                    let payment_status = `
-                    <label class="checkbox-inline input-filter input-filter-blue">
-                        <input name="input-checkbox-9" id="payment_status-${registration.identifier}" value="${registration.identifier}" type="checkbox" class="checkbox-custom SignFree"><span class="checkbox-custom-dummy"></span>
-                    </label>
-                    `;
-
-
-                    console.log(`Registration ${index + 1}:`, registration);
-
-                    add_registrations += `
-                        <tr>
-                        <th scope="row">${index + 1}</th>
-                        <td>${registration.username}</td>
-                        <td>${registration.preferred_position1}、${registration.preferred_position2}</td>
-                        <td>${check_in}</td>
-                        <td>${check_out}</td>
-                        <td>${payment_status}</td>
-                        </tr>
-                    `;
-                    document.getElementById("add_registrations").innerHTML += add_registrations
-                    if(registration.check_in == 1){
-
-                        const specificCheckbox = document.getElementById(`check_in-${registration.identifier}`);
-                        if (specificCheckbox) {
-                        specificCheckbox.checked = true;
-                        console.log(`Checkbox with id unique-checkbox-${registration.identifier} is checked.`);
-                        }
-                    }
-                    if (registration.check_out == 1) {
-                        const specificCheckbox = document.getElementById(`check_out-${registration.identifier}`);
-                        if (specificCheckbox) {
-                        specificCheckbox.checked = true;
-                        console.log(`Checkbox with id unique-checkbox-${registration.identifier} is checked.`);
-                        }
-                        // check_out = "已簽退";
-                    }
-                    if (registration.payment_status) {
-                        // payment_status = registration.payment_status; // Use the actual name
-                        const specificCheckbox = document.getElementById(`payment_status-${registration.identifier}`);
-                        if (specificCheckbox) {
-                        specificCheckbox.checked = true;
-                        console.log(`Checkbox with id unique-checkbox-${registration.identifier} is checked.`);
-                        }
-                    }
-                    add_registrations = ``
-                });
 
 
             } 
