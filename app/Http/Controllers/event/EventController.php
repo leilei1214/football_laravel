@@ -21,41 +21,31 @@ class EventController extends Controller
     
     public function ApiEvent(Request $request)
     {
-        // $identifier = $request->input('identifier');
         $level = $request->input('level');
 
         try {
-        // 🔐 未登入就擋
             if ($level === '總覽') {
-                $activities = DB::table('activities')->get();
+                // 使用 paginate(9) 取代 get()，Laravel 會自動處理 ?page= 參數
+                $activities = DB::table('activities')->paginate(9);
+                
                 if ($activities->isEmpty()) {
                     return response()->json(['message' => '找不到對應的活動'], 404);
                 }
                 return response()->json($activities);
-            }else{
-                // $activities = DB::table('activities')->get();
-                // if ($activities->isEmpty()) {
-                //     return response()->json(['message' => '找不到對應的活動'], 404);
-                // }
 
-                // // 撈活動
-                $result = DB::select(
-                    "SELECT * FROM activities
-                    WHERE FIND_IN_SET(
-                        ?, 
-                        REPLACE(REPLACE(activity_level, '{', ''), '}', '')
-                    ) > 0",
-                    [$level]
-                );
+            } else {
+                // 針對有篩選 Level 的情況，建議改用 Query Builder 以便串接 paginate
+                $activities = DB::table('activities')
+                    ->whereRaw("FIND_IN_SET(?, REPLACE(REPLACE(activity_level, '{', ''), '}', '')) > 0", [$level])
+                    ->paginate(9);
 
-                if (count($result) === 0) {
+                if ($activities->isEmpty()) {
                     return response()->json(['message' => '找不到對應的活動'], 404);
                 }
 
-                return response()->json($result);
+                return response()->json($activities);
             }
-        }catch (\Exception $e) {
-            // 將完整 Exception 訊息寫入日誌
+        } catch (\Exception $e) {
             \Log::error('ApiEvent Exception', [
                 'message' => $e->getMessage(),
                 'trace'   => $e->getTraceAsString()
@@ -66,9 +56,8 @@ class EventController extends Controller
                 'error'   => $e->getMessage()
             ], 500);
         }
-
-
     }
+
         // 單一活動內容
     public function content(Request $request)
     {
@@ -283,13 +272,7 @@ class EventController extends Controller
             ], 500);
         }
     }
-    public function getEvents(Request $request) {
-        // 將分頁數量改為 9
-        $activities = Event::where('level', $request->level)
-                            ->paginate(1); 
 
-        return response()->json($activities);
-    }
 }
 
 
