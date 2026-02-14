@@ -340,8 +340,9 @@
 
         // 獲取 `list_id` 的值
         const activityId = urlParams.get('list_id');
+        const guild_id = localStorage.getItem('guild_id');
 
-        window.location.href ="./SignIn?list_id="+activityId
+        window.location.href ="./SignIn?list_id="+activityId+"&guild_id="+guild_id
 
       }
       function QrcodeSign(){
@@ -352,9 +353,9 @@
 
         // 獲取 `list_id` 的值
         const activityId = urlParams.get('list_id');
-        const Guild = localStorage.getItem('Guild');
+        const guild_id = localStorage.getItem('guild_id');
 
-        window.location.href ="./Sign_Qrcode?list_id="+activityId+"&Guild="+Guild
+        window.location.href ="./SignIn_Qrcode?list_id="+activityId+"&guild_id="+guild_id
 
       }
 </script>
