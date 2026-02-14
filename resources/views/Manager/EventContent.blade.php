@@ -63,10 +63,11 @@
                 <!-- mx-auto -->
                     <div id="tabs-modern" >
                         <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item" role="presentation" ><a class="nav-link btn_EventContent active show" href="#tabs-modern-1" data-bs-toggle="tab" aria-selected="true" role="tab">詳情</a></li>
                             <li class="nav-item" role="presentation" ><a class="nav-link btn_edit" href="#tabs-modern-1" data-bs-toggle="tab" aria-selected="true" role="tab">編輯</a></li>
                             <li class="nav-item" role="presentation" ><a class="nav-link btn_delete" href="#tabs-modern-1" data-bs-toggle="tab" aria-selected="false" tabindex="-1" role="tab">刪除</a></li>
                             <li class="nav-item" role="presentation" ><a class="nav-link " onclick="ClockOut()" href="#tabs-modern-3" data-bs-toggle="tab" aria-selected="false" tabindex="-1" role="tab">簽到表</a></li>
-                            <li class="nav-item" role="presentation" ><a class="nav-link active show" onclick="QrcodeSign()" href="#tabs-modern-3" data-bs-toggle="tab" aria-selected="false" tabindex="-1" role="tab">Qrcode簽到</a></li>
+                            <li class="nav-item" role="presentation" ><a class="nav-link " onclick="QrcodeSign()" href="#tabs-modern-3" data-bs-toggle="tab" aria-selected="false" tabindex="-1" role="tab">Qrcode簽到</a></li>
 
                         </ul>                    
                     </div>
