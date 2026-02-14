@@ -117,7 +117,7 @@ fetch('/check-identity')
       .then(data => {
           console.log('Response data:', data);  // 查看完整響應
 
-          const activities = Array.isArray(data) ? data : [];
+          const activities = (data && Array.isArray(data.data)) ? data.data : [];
           if (activities.length === 0) {
               console.log("No activities to display");
           }
