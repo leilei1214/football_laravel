@@ -154,7 +154,7 @@
                     })
                     .then(data => {
                       alert('會員等級已成功更新');
-                      window.location.href ="/USEREventContent?list_id="+listId+"guild_id="+Guild
+                      window.location.href ="/USEREventContent?list_id="+listId+"&guild_id="+Guild
 
                     })
                     .catch(error => {
