@@ -336,13 +336,7 @@ async function loadEventContent() {
                 Istatus_add += 1
                 if(registration.status_add == "1"){
                     
-                    if(registration.identifier == localStorage.getItem("identifier") ){
-                    const element = document.querySelector('.btn_add');
-                    $(".btn_add").addClass("active")
-                    // Add inline styles
-                    element.style.background = '#888'; // Changes text color to red
-                    element.style.borderColor = '#888'; 
-                    }
+            
                     let check_in = "未簽到";
                     if (registration.check_in == 1) {
                         check_in = "已簽到";
