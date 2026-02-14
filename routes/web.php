@@ -58,6 +58,7 @@ Route::get('/Manager/EventContent', [ManagerController::class, 'EventContentMana
 Route::get('/Manager/SignIn', [ManagerController::class, 'SignIn'])->name('ManagerSignIn');
 Route::get('/Manager/SignIn_Qrcode', [ManagerController::class, 'SignIn_Qrcode'])->name('ManagerSignIn_Qrcode');
 Route::post('/Mapi/Update_SignIn', [ManagerController::class, 'updateSignIn'])->name('ManagerUpdateSignIn');
+Route::post('/Mapi/EventDelete', [ManagerController::class, 'EventDelete'])->name('ManagerEventDelete');
 Route::post('/api/liff_signin', [ManagerController::class, 'liff_signin'])->name('ManagerUpdateSignIn');
 Route::post('/api/Update_SignIn_Qrcode', [ManagerController::class, 'updateSignInQrcode']);
 

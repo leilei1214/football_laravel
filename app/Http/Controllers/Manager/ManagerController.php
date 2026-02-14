@@ -257,6 +257,59 @@
                 ], 500);
             }
         }
+        public function EventDelete(Request $request)
+        {
+            // 檢查 session
+            $list_id  = $request->input('list_id');
+            $guild_id  = $request->input('guild_id');
+            $identifier = session('identifier');
+
+            // 1️⃣ 檢查 session
+            if (!session('identifier')) {
+                $result = DB::select(
+                    'SELECT * FROM guilds WHERE guild_id = ?',
+                    [$guild_id]
+                );
+                if (count($result) > 0) {
+                    $guildName = $result[0] ->name;
+                }
+                return response()->json([
+                    'status' => 401,
+                    'message' => 'User session not found',
+                    'redirect' => route('login') . '?status=login&club='.$guildName.'&level=1'
+                ], 401);
+            }
+
+
+
+            try {
+
+
+                DB::update(
+                    "
+                    UPDATE activities
+                    SET status = 0,
+                        edit_person = ?
+                    WHERE id = ?
+                    AND guild_id = ?
+                    ",
+                    [$identifier, $list_id, $guild_id]
+                );
+
+                return response()->json([
+                    'status' => 200
+                ]);
+
+            } catch (\Exception $e) {
+
+                \Log::error($e->getMessage());
+
+                return response()->json([
+                    'status' => 500,
+                    'message' => 'Unexpected server error'
+                ], 500);
+            }
+        }
 
     }
 ?>
