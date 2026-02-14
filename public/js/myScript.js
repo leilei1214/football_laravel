@@ -44,7 +44,7 @@ $(".btn_EventContent").on("click",  async function () {
     // 獲取 `list_id` 的值Manager/EventContent?list_id=4&guild_id=4#
     const activityId = urlParams.get('list_id');
     const guild_id = urlParams.get('guild_id');
-    window.location.href ='Manager/EventContent?list_id='+activityId+'&guild_id='+guild_id
+    window.location.href ='/Manager/EventContent?list_id='+activityId+'&guild_id='+guild_id
 
 
 })

@@ -52,6 +52,9 @@ h5 {
 #tabs-modern{
     margin: 0 auto;
 }
+#tabs-modern .nav-link {
+    padding: 10px;
+}
 body{
     background: #edeff4 !important;
 }
