@@ -43,7 +43,7 @@
                     );
                 }
                 return DataTables::of($query)
-                ->addColumn('action', function($row){
+                ->addColumn('action', function ($row) use ($guild_Id){
                     return '
                     
                     <a href="/Manager/EventContent?list_id'.$row->id.'&guild_id ='.$guild_Id.'" class="btn btn-sm btn-primary">詳情</a>
