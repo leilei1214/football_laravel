@@ -142,7 +142,7 @@
                                             <ul class="rd-menu rd-navbar-dropdown">
                                             <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="{{ route('AddEvent') }}">新增活動</a>
                                             </li>
-                                            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="./ListMember">球員名冊</a>
+                                            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="{{ route('ManagerEventList') }}">活動管理</a>
                                             </li>
                                             <!-- <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="list-shop.html">List Shop</a>
                                             </li>
