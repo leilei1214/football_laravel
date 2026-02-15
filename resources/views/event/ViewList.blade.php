@@ -96,7 +96,7 @@ fetch('/check-identity')
         fetchEvents(1, "總覽");
     });
     function fetchEvents(page = 1, Lv = "總覽") {
-      fetch('./api/event?page=${page}', {
+      fetch(`./api/event?page=${page}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json;charset=utf-8',
@@ -162,7 +162,7 @@ fetch('/check-identity')
 
               }
               activitiesHtml += `
-                  <div class="item mb-3 col-md-6 col-lg-4"  onclick="event_content_href(${activity.id })">
+                  <div class="item mb-3 col-md-6 col-lg-4"  onclick="event_content_href(${activity.id },${activity.guild_id})">
                       <article class="product">
                           <header class="product-header">
                               ${activitylevel}
@@ -265,6 +265,12 @@ fetch('/check-identity')
     // 篩選 Level 功能
     function show_level(Lv) {
         fetchEvents(1, Lv);
+    }
+</script>
+<script>
+    function event_content_href(id,club){
+            window.location.href ='/EventContent?list_id='+id+'&guild_id='+club
+
     }
 </script>
 @endsection
