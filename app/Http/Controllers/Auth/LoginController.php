@@ -82,7 +82,7 @@ class LoginController extends Controller
 
             foreach ($result as  $index => $user) {
                 // $user 是物件，可以直接存取欄位
-                if ($user->guild_Id == $guild_Id && $status == 'login') {
+                if ($user->Guild == $guild_Id && $status == 'login') {
                     $guildId = DB::table('guilds')
                     ->where('guild_id', $guild_Id)
                     ->value('guild_id');
@@ -99,12 +99,12 @@ class LoginController extends Controller
                     return redirect()->route('home');
                 } 
                 // 使用者未註冊
-                else if($user->guild_Id != $guild_Id && ($index+1 == count($result)) && $status == 'login'){
+                else if($user->Guild != $guild_Id && ($index+1 == count($result)) && $status == 'login'){
                     // Guild 不一致
                     return redirect()->route('login')->with('error', '公會不一致');
                 }
                 // 註冊第二個工會確認(一人最多兩個)
-                else if($user->guild_Id != $guild_Id && count($result) == 1 && $status == 'register'){
+                else if($user->Guild != $guild_Id && count($result) == 1 && $status == 'register'){
                     $sql_true = TRUE;
                 }
             }

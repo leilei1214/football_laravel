@@ -99,21 +99,21 @@
         if (cardToggle) cardToggle.classList.add("active");
         // alert('請先註冊'); // 或改用更美觀的訊息框
     }
-    $(".card-toggle").on("click", function () {
+    // $(".card-toggle").on("click", function () {
 
-        // 取得目前 URL
-        const url = new URL(window.location.href);
+    //     // 取得目前 URL
+    //     const url = new URL(window.location.href);
 
-        // 判斷有沒有 has 這個 class
-        if ($(this).hasClass("has")) {
-            url.searchParams.set("status", "register");
-        } else {
-            url.searchParams.set("status", "login");
-        }
+    //     // 判斷有沒有 has 這個 class
+    //     if ($(this).hasClass("has")) {
+    //         url.searchParams.set("status", "register");
+    //     } else {
+    //         url.searchParams.set("status", "login");
+    //     }
 
-        // 重新導向
-        // window.location.href = url.toString();
-    });
+    //     // 重新導向
+    //     // window.location.href = url.toString();
+    // });
 </script>
 <script>
         // 使用 URLSearchParams 提取查詢參數
