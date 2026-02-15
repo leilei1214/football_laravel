@@ -346,8 +346,6 @@
                     'guild_id'         => $Guild,
                     'edit_person'      => $identifier,
                     'status'           => 1,
-                    'created_at'       => now(),
-                    'updated_at'       => now(),
                 ]);
 
                 return response()->json([
