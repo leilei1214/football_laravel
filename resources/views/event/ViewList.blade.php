@@ -42,13 +42,13 @@
                 </div>
 
                 <!-- Owl Carousel-->
-                <div class="owl-carousel owl-spacing-1 owl-loaded" data-items="3" data-dots="false" data-nav="true" data-autoplay="true" data-autoplay-speed="4000" data-stage-padding="0" data-loop="false" data-margin="30" id="myCarousel"  data-mouse-drag="false" data-nav-custom=".owl-carousel-outer-navigation">
+                <!-- <div class="owl-carousel owl-spacing-1 owl-loaded" data-items="3" data-dots="false" data-nav="true" data-autoplay="true" data-autoplay-speed="4000" data-stage-padding="0" data-loop="false" data-margin="30" id="myCarousel"  data-mouse-drag="false" data-nav-custom=".owl-carousel-outer-navigation"> -->
                     
                     
                 <div class="owl-carousel owl-spacing-1" id="myCarousel"></div>
 
                 </div>
-                <div id="pagination-wrapper" class="mt-5">
+                <div id="pagination-wrapper" class="mt-5 row row-30">
                     <!-- 分頁按鈕會被插入到這裡 -->
                 </div>
 
