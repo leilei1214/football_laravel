@@ -360,7 +360,7 @@
 
                 return response()->json([
                     'status' => 500,
-                    'message' => '資料庫插入錯誤'
+                    'message' => $e
                 ], 500);
             }
         }
