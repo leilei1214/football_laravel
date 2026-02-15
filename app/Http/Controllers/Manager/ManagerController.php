@@ -27,6 +27,10 @@
         {
             return view('Manager.liff_signin');
         }
+        public function EditEvent()
+        {
+            return view('Manager.EditEvent');
+        }
         public function MApiEvent(Request $request)
         {
             $Slevel= session('level');

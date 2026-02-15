@@ -59,11 +59,13 @@ Route::get('/Manager/EventList', [ManagerController::class, 'EventManager'])->na
 Route::get('/Manager/EventContent', [ManagerController::class, 'EventContentManager'])->name('ManagerEventContent');
 Route::get('/Manager/SignIn', [ManagerController::class, 'SignIn'])->name('ManagerSignIn');
 Route::get('/Manager/SignIn_Qrcode', [ManagerController::class, 'SignIn_Qrcode'])->name('ManagerSignIn_Qrcode');
+Route::get('/Manager/EditEvent', [ManagerController::class, 'EditEvent'])->name('ManagerEditEvent');
 Route::post('/Mapi/Update_SignIn', [ManagerController::class, 'updateSignIn'])->name('ManagerUpdateSignIn');
 Route::post('/Mapi/EventDelete', [ManagerController::class, 'EventDelete'])->name('ManagerEventDelete');
 Route::get('/api/liff_signin', [ManagerController::class, 'liff_signin'])->name('ManagerUpdateSignIn');
 Route::post('/api/Update_SignIn_Qrcode', [ManagerController::class, 'updateSignInQrcode']);
 Route::post('/submit_event', [ManagerController::class, 'handleActivitySubmission']);
+
 
 
 
