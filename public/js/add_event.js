@@ -30,7 +30,6 @@ function addEvent() {
         method: 'POST',
         credentials: 'same-origin',
         headers: { 
-            'Content-Type': 'application/json',  // Ensure the request content type is JSON
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             
         },
