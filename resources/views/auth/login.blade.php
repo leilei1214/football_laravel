@@ -109,7 +109,7 @@
                 'Content-Type': 'application/json;charset=utf-8',
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
             },
-            body: JSON.stringify({ status:'login',birthday: '', position1: '', position2: '',Guild:club,level:'',Gender:'' }),
+            body: JSON.stringify({ status:'login',birthday: '', position1: '', position2: '',guild_Id:club,level:'',Gender:'' }),
         })
         .then(response => response.json())
         .then(data => {
@@ -135,7 +135,7 @@
           level = 4
         }
         if(!club){
-          club = "圖斯特宇宙"
+          club = 4
         }
           // 抓取表單值
         e.preventDefault(); 
@@ -156,7 +156,7 @@
                   'Content-Type': 'application/json;charset=utf-8',
                   'X-CSRF-TOKEN': '{{ csrf_token() }}'
               },
-              body: JSON.stringify({ status:'register',birthday: birthday, position1: position1, position2: position2,Guild:club,level:level,Gender:Gender }),
+              body: JSON.stringify({ status:'register',birthday: birthday, position1: position1, position2: position2,guild_Id:club,level:level,Gender:Gender }),
           })
           .then(response => response.json())
           .then(data => {

@@ -69,7 +69,7 @@ class LoginController extends Controller
         // status:'register'
 
         $status = $request->session()->get('status'); // 拿 session 裡存的公會
-        $Guild = $request->session()->get('Guild'); // 拿 session 裡存的公會
+        $guild_Id = $request->session()->get('guild_Id'); // 拿 session 裡存的公會
         $result = DB::select(
             'SELECT * FROM users WHERE userid = ?',
             [$userId]
@@ -82,9 +82,9 @@ class LoginController extends Controller
 
             foreach ($result as  $index => $user) {
                 // $user 是物件，可以直接存取欄位
-                if ($user->Guild == $Guild && $status == 'login') {
+                if ($user->guild_Id == $guild_Id && $status == 'login') {
                     $guildId = DB::table('guilds')
-                    ->where('name', $Guild)
+                    ->where('guild_id', $guild_Id)
                     ->value('guild_id');
                     if ($guildId > 0) {
                         session([
@@ -95,17 +95,16 @@ class LoginController extends Controller
                     session([
                         'identifier'=>$user -> identifier,
                         'level'     => $user ->level,
-                        'Guild'     => $Guild,
                     ]);
                     return redirect()->route('home');
                 } 
                 // 使用者未註冊
-                else if($user->Guild != $Guild && ($index+1 == count($result)) && $status == 'login'){
+                else if($user->guild_Id != $guild_Id && ($index+1 == count($result)) && $status == 'login'){
                     // Guild 不一致
                     return redirect()->route('login')->with('error', '公會不一致');
                 }
                 // 註冊第二個工會確認(一人最多兩個)
-                else if($user->Guild != $Guild && count($result) == 1 && $status == 'register'){
+                else if($user->guild_Id != $guild_Id && count($result) == 1 && $status == 'register'){
                     $sql_true = TRUE;
                 }
             }
@@ -120,7 +119,7 @@ class LoginController extends Controller
             $birthday  = session('birthday');
             $position1 = session('position1');
             $position2 = session('position2');
-            $Guild     = session('Guild');
+            $guild_Id  = session('guild_Id');
             $level     = session('level');
             $Gender    = session('Gender');
             
@@ -165,7 +164,7 @@ class LoginController extends Controller
                     'displayName' => $lineDisplayName,
                     'preferred_position1' => $position1,
                     'preferred_position2' => $position2,
-                    'Guild'    => $Guild,
+                    'Guild'    => $guild_Id,
                     'level'    => $level,
                     'Gender'   => $Gender,
                     'user_img' => $user_img,
@@ -176,7 +175,7 @@ class LoginController extends Controller
 
                 // 取得 guild_id
                 $guildId = DB::table('guilds')
-                    ->where('name', $Guild)
+                    ->where('guild_id', $guild_Id)
                     ->value('guild_id');
                 if ($guildId > 0) {
                     session([
