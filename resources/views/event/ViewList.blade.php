@@ -269,7 +269,7 @@ fetch('/check-identity')
 </script>
 <script>
     function event_content_href(id,club){
-            window.location.href ='/EventContent?list_id='+id+'&guild_id='+club
+            window.location.href ='/USEREventContent?list_id='+id+'&guild_id='+club
 
     }
 </script>
