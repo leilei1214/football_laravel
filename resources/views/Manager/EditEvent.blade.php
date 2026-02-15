@@ -271,10 +271,7 @@
             // }
             if (data.activity_level) {
 
-                const levels = data.activity_level
-                    .replace(/^{|}$/g, '')
-                    .split(',')
-                    .map(item => item.trim());
+                let currentLevels = rawData.replace(/[{}]/g, "").split(",");
 
                 // 取得所有 checkbox
                 $('.checkbox-custom').each(function() {
