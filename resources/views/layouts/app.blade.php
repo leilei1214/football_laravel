@@ -128,7 +128,7 @@
         .then(res => res.json())
         .then(data => {
             console.log('Level:', data.level, 'Guild:', data.Guild,'guild_Id:', data.guild_Id);
-            if(data.level == 1){
+            if(data.level != 1){
                 $(".Boss").addClass("d-none");
             }
         })
