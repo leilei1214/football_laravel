@@ -272,15 +272,12 @@
             if (data.activity_level) {
                 let rawData = data.activity_level
                 let currentLevels = rawData.replace(/[{}]/g, "").split(",");
-
+                console.log(rawData)
                 // 取得所有 checkbox
                 $('.checkbox-custom').each(function() {
-                    let checkboxValue = $(this).val();
-                    
-                    // 比對並勾選
-                    if (currentLevels.includes(checkboxValue)) {
-                        $(this).prop('checked', true);
-                        console.log("成功勾選：" + checkboxValue);
+                    // 檢查目前這個 checkbox 的 value 是否在陣列中
+                    if (currentLevels.indexOf($(this).val()) !== -1) {
+                        $(this).prop('checked', true); // 這裡會觸發 CSS 的 :checked 狀態
                     }
                 });
             }
