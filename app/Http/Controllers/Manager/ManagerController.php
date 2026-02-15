@@ -334,7 +334,7 @@
 
             try {
 
-                $id = DB::table('activities')->insert([
+                $id = DB::table('activities')->insertGetId([
                     'activity_level'   => $this->formatArrayForMysql($eventData['activity_level'] ?? []),
                     'time'             => $eventData['date'] ?? null,
                     'activity_notice'  => $eventData['activity_notice'] ?? null,
