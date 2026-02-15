@@ -123,6 +123,18 @@
 
     </script>
     <script>
+            // 修正你的 fetch 語法錯誤 (少了一個括號)
+        fetch('/check-identity')
+        .then(res => res.json())
+        .then(data => {
+            console.log('Level:', data.level, 'Guild:', data.Guild,'guild_Id:', data.guild_Id);
+            if(data.level == 1){
+                $(".Boss").addClass("d-none");
+            }
+        })
+        .catch(err => console.error('Fetch error:', err));
+    </script>
+    <script>
         $(document).ready(function(){
 
             const $carousel = $('.owl-carousel-inline');
