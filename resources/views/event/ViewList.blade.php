@@ -162,7 +162,7 @@ fetch('/check-identity')
 
               }
               activitiesHtml += `
-                  <div class="item mb-3" style="width: 330px; margin-right: 30px;" onclick="event_content_href(${activity.id })">
+                  <div class="item mb-3 col-md-6 col-lg-4"  onclick="event_content_href(${activity.id })">
                       <article class="product">
                           <header class="product-header">
                               ${activitylevel}
