@@ -1,4 +1,5 @@
-function addEvent() {
+function addEvent(event) {
+    if (event) event.preventDefault(); // 阻止表單預設的提交行為
     var formData = {};
 
     // Get all checked checkboxes
@@ -30,6 +31,7 @@ function addEvent() {
         method: 'POST',
         credentials: 'same-origin',
         headers: { 
+            'Content-Type': 'application/json',  // Ensure the request content type is JSON
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             
         },
