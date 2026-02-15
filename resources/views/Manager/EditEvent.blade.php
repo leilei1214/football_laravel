@@ -211,7 +211,7 @@
     </div>
     <div class="form-button pt-5 d-flex justify-content-center form-button">
         <button class=" button button-primary"  aria-label="Send" onclick="addEvent()">
-        <span style="font-weight: 600;"> 確認送出</span>
+        <span style="font-weight: 600;"> 更新</span>
         </button>
     </div>
 </div>
@@ -220,21 +220,124 @@
 @section('scripts')
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
-<script src="{{ asset('js/add_event.js') }}"></script>
+<!-- <script src="{{ asset('js/add_event.js') }}"></script> -->
 
 <!-- <script src="{{ asset('js/event_level.js') }}"></script> -->
-<script>
-    function show_level(level){
-        var tabEl = document.querySelectorAll('#tabs-modern .nav-link');
-        consol
-        tabEl.forEach(function (el) {
-            el.addEventListener('shown.bs.tab', function (event) {
-                const level = event.target.dataset.level;
-                console.log('切換完成：', level);
-            });
-        });
-    }
-</script>
 
+<script>
+    async function loadEventContent() {
+    const params = new URLSearchParams(window.location.search);
+    const listId = params.get('list_id');
+    const guildId = params.get('guild_id');
+
+    if (!listId || !guildId) {
+        alert("連結錯誤");
+        setTimeout(() => {
+            window.location.href = "/";
+        }, 1000);
+        return;
+    }
+
+    try {
+        const response = await fetch('/api/event/content', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document
+                    .querySelector('meta[name="csrf-token"]')
+                    ?.getAttribute('content')
+            },
+            body: JSON.stringify({
+                list_id: listId,
+                guild_id: guildId
+            })
+        });
+
+        if (!response.ok) {
+            alert('讀取失敗');
+            return;
+        }
+        if (response.ok) {
+            const res = await response.json();
+
+            const data = res.event
+            console.log(data)
+            // 遍歷陣列並輸出每個元素
+            // for (const item of data.activity_category) {
+            //   document.getElementById('activity_level').innerHTML += `
+            //     <div class="badge badge-secondary">${item}
+            //     </div>
+            //   `
+            // }
+            if (data.activity_level) {
+
+                const levels = data.activity_level
+                    .replace(/^{|}$/g, '')
+                    .split(',')
+                    .map(item => item.trim());
+
+                // 取得所有 checkbox
+                const checkboxes = document.querySelectorAll(".checkbox-custom");
+
+                checkboxes.forEach(cb => {
+                    if (levels.includes(cb.value)) {
+                        cb.checked = true;
+                    }
+                });
+            }
+            // ====== 2️⃣ 填入時間 (datetime-local) ======
+            if (data.time) {
+                const date = new Date(data.time);
+                date.setHours(date.getHours() - 7);
+
+                const yyyy = date.getFullYear();
+                const mm = String(date.getMonth() + 1).padStart(2, '0');
+                const dd = String(date.getDate()).padStart(2, '0');
+                const hh = String(date.getHours()).padStart(2, '0');
+                const min = String(date.getMinutes()).padStart(2, '0');
+
+                document.getElementById("date").value =
+                    `${yyyy}-${mm}-${dd}T${hh}:${min}`;
+            }
+
+            // ====== 3️⃣ 填入其他欄位 ======
+            document.getElementById("max_participants").value = data.max_participants ?? '';
+            document.getElementById("activity_notice").value = data.activity_notice ?? '';
+            document.getElementById("activity_intro").value = data.activity_intro ?? '';
+            document.getElementById("phone").value = data.phone ?? '';
+            document.getElementById("amount").value = data.amount ?? '';
+
+            // ====== 4️⃣ 如果 location 對應 select ======
+            if (data.location) {
+                const select = document.getElementById("activity_level");
+                for (let option of select.options) {
+                    if (option.text === data.location) {
+                        option.selected = true;
+                    }
+                }
+            }
+
+
+            
+            // activity_level
+            // eventContentDiv.innerHTML = `
+            //     <p><strong>活動名稱：</strong> ${data.activity_name || '無資料'}</p>
+            //     <p><strong>地點：</strong> ${data.location || '無資料'}</p>
+            //     <p><strong>簡介：</strong> ${data.activity_intro || '無資料'}</p>
+            //     <p><strong>時間：</strong> ${data.time || '無資料'}</p>
+            //     <p><strong>參加人數：</strong> ${data.current_participants || 0} / ${data.max_participants || '無限制'}</p>
+            // `;
+        } 
+
+
+    } catch (err) {
+        console.error(err);
+        alert('系統錯誤');
+    }
+}
+
+// 頁面載入後執行
+document.addEventListener('DOMContentLoaded', loadEventContent);
+</script>
 
 @endsection
