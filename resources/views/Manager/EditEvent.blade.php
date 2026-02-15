@@ -277,11 +277,13 @@
                     .map(item => item.trim());
 
                 // 取得所有 checkbox
-                const checkboxes = document.querySelectorAll(".checkbox-custom");
-
-                checkboxes.forEach(cb => {
-                    if (levels.includes(cb.value)) {
-                        cb.checked = true;
+                $('.checkbox-custom').each(function() {
+                    let checkboxValue = $(this).val();
+                    
+                    // 比對並勾選
+                    if (currentLevels.includes(checkboxValue)) {
+                        $(this).prop('checked', true);
+                        console.log("成功勾選：" + checkboxValue);
                     }
                 });
             }
