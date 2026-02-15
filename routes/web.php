@@ -63,7 +63,7 @@ Route::post('/Mapi/Update_SignIn', [ManagerController::class, 'updateSignIn'])->
 Route::post('/Mapi/EventDelete', [ManagerController::class, 'EventDelete'])->name('ManagerEventDelete');
 Route::get('/api/liff_signin', [ManagerController::class, 'liff_signin'])->name('ManagerUpdateSignIn');
 Route::post('/api/Update_SignIn_Qrcode', [ManagerController::class, 'updateSignInQrcode']);
-
+Route::post('/submit_event', [ManagerController::class, 'handleActivitySubmission']);
 
 
 

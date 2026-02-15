@@ -307,6 +307,58 @@
                 ], 500);
             }
         }
+        public function handleActivitySubmission(Request $request)
+        {
+            $eventData = $request->all();
+
+            // 取得 session
+            $birthday   = session('birthday');
+            $position1  = session('position1');
+            $position2  = session('position2');
+            $Guild      = session('guild_Id');
+            $level      = session('level');
+            $identifier = session('identifier');
+
+            // 🔐 檢查登入
+            if (!$identifier) {
+                return response()->json([
+                    'status' => 401,
+                    'message' => 'User session not found'
+                ], 401);
+            }
+
+            try {
+
+                DB::table('activities')->insert([
+                    'activity_level'   => $this->formatArrayForMysql($eventData['activity_level'] ?? []),
+                    'time'             => $eventData['date'] ?? null,
+                    'activity_notice'  => $eventData['activity_notice'] ?? null,
+                    'activity_intro'   => $eventData['activity_intro'] ?? null,
+                    'max_participants' => $eventData['max_participants'] ?? null,
+                    'phone'            => $eventData['phone'] ?? null,
+                    'amount'           => $eventData['amount'] ?? null,
+                    'location'         => $eventData['address'] ?? null,
+                    'guild_id'         => $Guild,
+                    'edit_person'      => $identifier,
+                    'status'           => 1,
+                    'created_at'       => now(),
+                    'updated_at'       => now(),
+                ]);
+
+                return response()->json([
+                    'status' => 200
+                ]);
+
+            } catch (\Exception $e) {
+
+                \Log::error($e->getMessage());
+
+                return response()->json([
+                    'status' => 500,
+                    'message' => '資料庫插入錯誤'
+                ], 500);
+            }
+        }
 
     }
 ?>

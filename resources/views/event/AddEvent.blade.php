@@ -221,6 +221,7 @@
 @section('scripts')
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
+<script src="{{ asset('js/add_event.js') }}"></script>
 
 <!-- <script src="{{ asset('js/event_level.js') }}"></script> -->
 <script>
@@ -235,15 +236,6 @@
         });
     }
 </script>
-<script>
-fetch('/check-identity')
-  .then(res => res.json())
-  .then(data => 
-    console.log('Level:', data.level, 'Guild:', data.Guild)
-    if(data.level == 1){
-        $(".addEventHref").addClass("d-none")
-    }
-  );
-</script>
+
 
 @endsection
