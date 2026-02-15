@@ -275,8 +275,10 @@
                 console.log(rawData)
                 // 取得所有 checkbox
                 $('.checkbox-custom').each(function() {
+                    let val = $(this).val().trim(); // 同時確保 checkbox 裡的 value 也是乾淨的
+
                     // 檢查目前這個 checkbox 的 value 是否在陣列中
-                    if (currentLevels.indexOf($(this).val()) !== -1) {
+                    if (currentLevels.indexOf(val)) !== -1) {
                         $(this).prop('checked', true); // 這裡會觸發 CSS 的 :checked 狀態
                     } else {
                         console.log("❌ 不匹配：" + val + " (陣列內容為: " + JSON.stringify(currentLevels) + ")");
