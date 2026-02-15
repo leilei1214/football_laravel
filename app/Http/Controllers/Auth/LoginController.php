@@ -108,6 +108,9 @@ class LoginController extends Controller
                     $sql_true = TRUE;
                 }
             }
+            if ($status == 'login') {
+                return redirect()->route('login')->with('error', '公會不一致或尚未註冊此公會');
+            }
 
             // 使用者存在
         }else{
