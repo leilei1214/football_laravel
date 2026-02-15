@@ -270,7 +270,7 @@
             //   `
             // }
             if (data.activity_level) {
-
+                let rawData = data.activity_level
                 let currentLevels = rawData.replace(/[{}]/g, "").split(",");
 
                 // 取得所有 checkbox
