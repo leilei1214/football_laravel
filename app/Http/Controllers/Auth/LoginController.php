@@ -233,11 +233,14 @@ function generateUniqueIdentifier()
         $identifier = generateIdentifier();
 
         try {
-            User::create([
-                'identifier' => $identifier,
-            ]);
 
-            return $identifier;
+            $exists = DB::table('users')
+                ->where('identifier', $identifier)
+                ->exists();
+
+            if (!$exists) {
+                return $identifier; // 找到唯一的
+            }
 
         } catch (QueryException $e) {
 
