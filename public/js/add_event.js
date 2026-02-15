@@ -1,5 +1,4 @@
-function addEvent(event) {
-    if (event) event.preventDefault(); // 阻止表單預設的提交行為
+function addEvent() {
     var formData = {};
 
     // Get all checked checkboxes

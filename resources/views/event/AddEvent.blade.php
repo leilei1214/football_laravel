@@ -211,7 +211,7 @@
         </div>
     </div>
     <div class="form-button pt-5 d-flex justify-content-center form-button">
-        <button class=" button button-primary" type="submit" aria-label="Send" onclick="addEvent(event)">
+        <button class=" button button-primary"  aria-label="Send" onclick="addEvent()">
         <span style="font-weight: 600;"> 確認送出</span>
         </button>
     </div>
