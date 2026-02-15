@@ -112,7 +112,7 @@
         }
 
         // 重新導向
-        window.location.href = url.toString();
+        // window.location.href = url.toString();
     });
 </script>
 <script>
