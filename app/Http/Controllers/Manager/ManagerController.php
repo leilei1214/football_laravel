@@ -334,7 +334,7 @@
 
             try {
 
-                DB::table('activities')->insert([
+                $id = DB::table('activities')->insert([
                     'activity_level'   => $this->formatArrayForMysql($eventData['activity_level'] ?? []),
                     'time'             => $eventData['date'] ?? null,
                     'activity_notice'  => $eventData['activity_notice'] ?? null,
@@ -349,7 +349,12 @@
                 ]);
 
                 return response()->json([
-                    'status' => 200
+                    'status' => 200,
+                    'data' => ['insertId' => $id,
+                    'guild_id' => $Guild
+                    
+                    ]
+
                 ]);
 
             } catch (\Exception $e) {

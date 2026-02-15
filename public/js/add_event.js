@@ -47,7 +47,7 @@ function addEvent() {
         console.log('Response Data:', data);  // Handle the returned data
         if (data.status === 200){
             const id = data.data.insertId
-            window.location.href = `./event_content?list_id=${id}`;
+            window.location.href = `./USEREventContent?list_id=${id}&guild_id=${data.data.guild_id}`;
         }
     })
     .catch(error => {
