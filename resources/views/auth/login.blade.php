@@ -3,7 +3,7 @@
 @section('title', 'Login Page')
 
 @section('content')
-    <section class="section section-variant-1 bg-gray-100">
+    <section class="section section-variant-1 bg-gray-100" style="height:calc(100vh - 325px)">
     <div class="container">
         <div class="row row-50 justify-content-center">
         <div class="col-md-10 col-lg-8 col-xl-6">
@@ -19,7 +19,9 @@
             </div>
             <div class="card-form card-form-login">
                 <form class="rd-form rd-mailform" novalidate="novalidate">
-                <button class="button button-lg button-primary button-block" type="button" onclick="line_login()">
+                <button class="bu
+                
+                tton button-lg button-primary button-block" type="button" onclick="line_login()">
                     <img src="./images/icons8-line.svg" alt="" style="width: 30px;margin-right: 20px;">
                     使用line登入
                 </button>
@@ -95,6 +97,21 @@
         if (cardToggle) cardToggle.classList.add("active");
         // alert('請先註冊'); // 或改用更美觀的訊息框
     }
+    $(".card-toggle").on("click", function () {
+
+        // 取得目前 URL
+        const url = new URL(window.location.href);
+
+        // 判斷有沒有 has 這個 class
+        if ($(this).hasClass("has")) {
+            url.searchParams.set("status", "register");
+        } else {
+            url.searchParams.set("status", "login");
+        }
+
+        // 重新導向
+        window.location.href = url.toString();
+    });
 </script>
 <script>
         // 使用 URLSearchParams 提取查詢參數
