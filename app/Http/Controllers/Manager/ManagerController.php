@@ -307,6 +307,11 @@
                 ], 500);
             }
         }
+        private function formatArrayForMysql($array)
+        {
+            // PHP 版的格式化：將 ["A", "B"] 轉為 "{A,B}"
+            return '{' . implode(',', (array)$array) . '}';
+        }
         public function handleActivitySubmission(Request $request)
         {
             $eventData = $request->all();
