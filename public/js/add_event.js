@@ -32,6 +32,7 @@ function addEvent(event) {
         credentials: 'same-origin',
         headers: { 
             'Content-Type': 'application/json',  // Ensure the request content type is JSON
+            'Accept': 'application/json', // 告訴 Laravel 回傳 JSON 而不是跳轉頁面
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             
         },
