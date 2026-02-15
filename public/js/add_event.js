@@ -29,7 +29,9 @@ function addEvent() {
     fetch('./submit_event', {
         method: 'POST',
         headers: { 
-            'Content-Type': 'application/json'  // Ensure the request content type is JSON
+            'Content-Type': 'application/json',  // Ensure the request content type is JSON
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            
         },
         body: JSON.stringify(formData),  // Convert JavaScript object to JSON string
     })
