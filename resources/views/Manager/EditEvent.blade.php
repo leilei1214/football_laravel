@@ -210,8 +210,8 @@
         </div>
     </div>
     <div class="form-button pt-5 d-flex justify-content-center form-button">
-        <button class=" button button-primary"  aria-label="Send" onclick="addEvent()">
-        <span style="font-weight: 600;"> 更新</span>
+        <button class=" button button-primary"  aria-label="Send" onclick="editEvent()">
+        <span style="font-weight: 600;"> 更新活動</span>
         </button>
     </div>
 </div>
@@ -220,7 +220,7 @@
 @section('scripts')
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
-<!-- <script src="{{ asset('js/add_event.js') }}"></script> -->
+<script src="{{ asset('js/add_event.js') }}"></script>
 
 <!-- <script src="{{ asset('js/event_level.js') }}"></script> -->
 

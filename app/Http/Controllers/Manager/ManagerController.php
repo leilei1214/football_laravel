@@ -371,6 +371,69 @@
                 ], 500);
             }
         }
+        public function edit_event(Request $request)
+        {
+            $eventData = $request->all();
+
+            $level      = session('level');
+            $identifier = session('identifier');
+
+            if (!$identifier) {
+                return response()->json([
+                    'status' => 401,
+                    'message' => 'User session not found'
+                ], 401);
+            }
+
+            try {
+
+                // 必須要有 id 才能更新
+                $listId = $eventData['listId'] ?? null;
+                $guildId = $eventData['guildId'] ?? null;
+
+                if (!$listId) {
+                    return response()->json([
+                        'status' => 400,
+                        'message' => 'Activity ID is required for update'
+                    ], 400);
+                }
+
+                DB::table('activities')
+                    ->where('id', $listId)
+                    ->where('guild_id',$guildId)
+                    ->update([
+                        'activity_level'   => $this->formatArrayForMysql($eventData['activity_level'] ?? []),
+                        'time'             => $eventData['date'] ?? null,
+                        'activity_notice'  => $eventData['activity_notice'] ?? null,
+                        'activity_intro'   => $eventData['activity_intro'] ?? null,
+                        'max_participants' => $eventData['max_participants'] ?? null,
+                        'phone'            => $eventData['phone'] ?? null,
+                        'amount'           => $eventData['amount'] ?? null,
+                        'location'         => $eventData['address'] ?? null,
+                        'guild_id'         => $guildId,
+                        'edit_person'      => $identifier,
+                        'status'           => 1,
+                    ]);
+
+                return response()->json([
+                    'status' => 200,
+                    'message' => 'Update successful',
+                    'data' => [
+                        'id' => $id,
+                        'guild_id' => $Guild
+                    ]
+                ]);
+
+            } catch (\Exception $e) {
+
+                \Log::error($e->getMessage());
+
+                return response()->json([
+                    'status' => 500,
+                    'message' => $e->getMessage()
+                ], 500);
+            }
+        }
 
     }
 ?>

@@ -54,3 +54,65 @@ function addEvent() {
         console.error('Error:', error);  // Catch any errors
     });
 }
+function editEvent(){
+    const params = new URLSearchParams(window.location.search);
+    const listId = params.get('list_id');
+    const guildId = params.get('guild_id');
+    var formData = {};
+
+    // Get all checked checkboxes
+    const activity_level = $("input[type='checkbox']:checked");
+
+    // Collect checked values into an array
+    activity_level.each(function () {
+        formData['activity_level'] = formData['activity_level'] || [];
+        formData['activity_level'].push($(this).val());
+    });
+
+    // Collect other form data
+    formData["listId"] = listId
+    formData["guildId"] = guildId
+    formData['date'] = document.getElementById("date").value;
+    formData['activity_notice'] = document.getElementById("activity_notice").value;
+    formData['activity_intro'] = document.getElementById("activity_intro").value;
+    formData['max_participants'] = document.getElementById("max_participants").value;
+    formData['phone'] = document.getElementById("phone").value;
+    formData['amount'] = document.getElementById("amount").value;
+
+    // Get the selected text from the address dropdown
+    const selectElement = $(".address");
+    const selectedText = selectElement.find("option:selected").text();
+    formData['address'] = selectedText;
+
+    console.log(JSON.stringify(formData));  // Print the JSON data
+
+    // Send the data using fetch
+    fetch('/edit_event', {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: { 
+            'Content-Type': 'application/json',  // Ensure the request content type is JSON
+            'Accept': 'application/json', // 告訴 Laravel 回傳 JSON 而不是跳轉頁面
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            
+        },
+        body: JSON.stringify(formData),  // Convert JavaScript object to JSON string
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();  // Parse the JSON response
+    })
+    .then(data => {
+        console.log('Response Data:', data);  // Handle the returned data
+        if (data.status === 200){
+            const id = data.data.insertId
+            window.location.href = `./USEREventContent?list_id=${id}&guild_id=${data.data.guild_id}`;
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);  // Catch any errors
+    });
+
+}
