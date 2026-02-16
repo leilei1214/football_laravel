@@ -419,8 +419,8 @@
                     'status' => 200,
                     'message' => 'Update successful',
                     'data' => [
-                        'id' => $id,
-                        'guild_id' => $Guild
+                        'id' => $listId,
+                        'guild_id' => $guildId
                     ]
                 ]);
 
