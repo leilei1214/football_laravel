@@ -46,6 +46,15 @@ $(".btn_EventContent").on("click",  async function () {
 
 
 })
+$(".btn_edit").on("click",  async function () {
+    const urlParams = new URLSearchParams(window.location.search);
+
+    // 獲取 `list_id` 的值Manager/EventContent?list_id=4&guild_id=4#
+    const activityId = urlParams.get('list_id');
+    const guild_id = urlParams.get('guild_id');
+    window.location.href ='/Manager/EditEvent?list_id='+activityId+'&guild_id='+guild_id
+
+})
 $(".btn_delete").on("click",  async function () {
     console.log("delete clicked");
 
