@@ -121,25 +121,26 @@
 @section('content')
 <section class="section section-md bg-gray-100">
 <div class="col-12 col-md-8 " style="margin:0 auto">
+    <div class="row">
+        <div id="tabs-modern" >
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item" role="presentation" ><a class="nav-link btn_EventContent" href="#tabs-modern-1" data-bs-toggle="tab" aria-selected="true" role="tab">詳情</a></li>
+                <li class="nav-item" role="presentation" ><a class="nav-link btn_edit" href="#tabs-modern-1" data-bs-toggle="tab" aria-selected="true" role="tab">編輯</a></li>
+                <li class="nav-item" role="presentation" ><a class="nav-link btn_delete" href="#tabs-modern-1" data-bs-toggle="tab" aria-selected="false" tabindex="-1" role="tab">刪除</a></li>
+                <li class="nav-item" role="presentation" ><a class="nav-link " onclick="ClockOut()" href="#tabs-modern-3" data-bs-toggle="tab" aria-selected="false" tabindex="-1" role="tab">簽到表</a></li>
+                <li class="nav-item" role="presentation" ><a class="nav-link active show" onclick="QrcodeSign()" href="#tabs-modern-3" data-bs-toggle="tab" aria-selected="false" tabindex="-1" role="tab">Qrcode簽到</a></li>
+
+            </ul>                    
+        </div>
+        <!-- mx-auto -->
+
+
+
+    </div>
     <div class="card index_page_edit">
 
         <div class="card-body" style="background-color: #fff;border-radius: 0px 0px 16px 16px;">
-        <div class="row">
-            <div id="tabs-modern" >
-                <ul class="nav nav-tabs" role="tablist">
-                    <li class="nav-item" role="presentation" ><a class="nav-link btn_EventContent" href="#tabs-modern-1" data-bs-toggle="tab" aria-selected="true" role="tab">詳情</a></li>
-                    <li class="nav-item" role="presentation" ><a class="nav-link btn_edit" href="#tabs-modern-1" data-bs-toggle="tab" aria-selected="true" role="tab">編輯</a></li>
-                    <li class="nav-item" role="presentation" ><a class="nav-link btn_delete" href="#tabs-modern-1" data-bs-toggle="tab" aria-selected="false" tabindex="-1" role="tab">刪除</a></li>
-                    <li class="nav-item" role="presentation" ><a class="nav-link " onclick="ClockOut()" href="#tabs-modern-3" data-bs-toggle="tab" aria-selected="false" tabindex="-1" role="tab">簽到表</a></li>
-                    <li class="nav-item" role="presentation" ><a class="nav-link active show" onclick="QrcodeSign()" href="#tabs-modern-3" data-bs-toggle="tab" aria-selected="false" tabindex="-1" role="tab">Qrcode簽到</a></li>
 
-                </ul>                    
-            </div>
-            <!-- mx-auto -->
-
-
-
-        </div>
         <!-- <h4 class="card-title">Horizontal Two column</h4> -->
         <div class="form-group row">
             <label for="exampleInputConfirmPassword2" class="col-sm-2 ">程度</label>
