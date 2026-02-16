@@ -127,7 +127,7 @@
         <div class="card-body" style="background-color: #fff;border-radius: 0px 0px 16px 16px;">
         <!-- <h4 class="card-title">Horizontal Two column</h4> -->
         <div class="form-group row">
-            <label for="exampleInputConfirmPassword2" class="col-sm-2 ">程度 : </label>
+            <label for="exampleInputConfirmPassword2" class="col-sm-2 ">程度</label>
             <div class="col-sm-10  col-form-label">
             <ul class="list-md form-wrap">
                 <li>
@@ -153,25 +153,25 @@
         </div>
         <form class="forms-sample">
             <div class="form-group row">
-            <label for="exampleInputUsername2" class="col-sm-2 ">舉辦時間 : </label>
+            <label for="exampleInputUsername2" class="col-sm-2 ">舉辦時間</label>
             <div class="col-sm-10  col-form-label">
             <input type="datetime-local" class="form-control" id="date" name="date" style="border: 3px solid #707279;">                              </div>
             </div>
 
             <div class="form-group row">
-            <label for="exampleInputMobile" class="col-sm-2 ">參加人數 : </label>
+            <label for="exampleInputMobile" class="col-sm-2 ">參加人數</label>
             <div class="col-sm-10  col-form-label">
                 <input type="number" class="form-control" id="max_participants" placeholder="0">
             </div>
             </div>
             <div class="form-group row">
-            <label for="exampleInputPassword2" class="col-sm-2 ">活動標題 : </label>
+            <label for="exampleInputPassword2" class="col-sm-2 ">活動標題</label>
             <div class="col-sm-10  col-form-label">
                 <input type="text" class="form-control" id="activity_notice" value="新手課程，會有教練上課">
             </div>
             </div>
             <div class="form-group row">
-            <label for="exampleInputConfirmPassword2" class="col-sm-2">活動內容 : </label>
+            <label for="exampleInputConfirmPassword2" class="col-sm-2">活動內容</label>
             <div class="col-sm-10">
                 <textarea class="form-control " id="activity_intro" rows="5" >
                     我們熱烈歡迎各行各業的人參加，無論工作有多繁忙，每週都有一天專門為足球而設，我們迫不及待地期待每個人的加入，一同體驗這份樂趣。
@@ -180,13 +180,13 @@
             </div>
             </div>
             <div class="form-group row">
-            <label for="exampleInputConfirmPassword2" class="col-sm-2">聯絡電話 : </label>
+            <label for="exampleInputConfirmPassword2" class="col-sm-2">聯絡電話</label>
             <div class="col-sm-10  col-form-label">
                 <input type="text" class="form-control" id="phone" value="0912345678">
             </div>
             </div>
             <div class="form-group row">
-            <label for="exampleInputConfirmPassword2" class="col-sm-2">活動地點 : </label>
+            <label for="exampleInputConfirmPassword2" class="col-sm-2">活動地點</label>
             <div class="col-sm-10  col-form-label">
                 <select class="form-select form-select-sm address" id="activity_level" name="activity_level" aria-label="Default select example" style="height: 38px;padding: 0;">
                 <option value="1">西屯足球場</option>
@@ -196,7 +196,7 @@
             </div>
             </div>
             <div class="form-group row">
-            <label for="exampleInputConfirmPassword2" class="col-sm-2">費用 : </label>
+            <label for="exampleInputConfirmPassword2" class="col-sm-2">費用</label>
             <div class="col-sm-10  col-form-label">
                 <input type="number" class="form-control" id="amount" >
             </div>
