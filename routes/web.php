@@ -65,6 +65,9 @@ Route::post('/Mapi/EventDelete', [ManagerController::class, 'EventDelete'])->nam
 Route::get('/api/liff_signin', [ManagerController::class, 'liff_signin'])->name('ManagerUpdateSignIn');
 Route::post('/api/Update_SignIn_Qrcode', [ManagerController::class, 'updateSignInQrcode']);
 Route::post('/submit_event', [ManagerController::class, 'handleActivitySubmission']);
+Route::post('/edit_event', [ManagerController::class, 'edit_event']);
+
+
 
 
 
