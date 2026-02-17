@@ -1,5 +1,5 @@
 <?php
-    namespace App\Http\Controllers\Manager;
+    namespace App\Http\Controllers\User;
     use Yajra\DataTables\Facades\DataTables;
     use App\Http\Controllers\Controller;
     use Illuminate\Http\Request;
