@@ -8,6 +8,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\event\EventController;
 use App\Http\Controllers\Manager\ManagerController;
+use App\Http\Controllers\User\UserController;
 
 use Illuminate\Support\Facades\DB;
 
