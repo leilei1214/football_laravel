@@ -4,7 +4,7 @@
     use App\Http\Controllers\Controller;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\DB;
-    class ManagerController extends Controller
+    class UserController extends Controller
     {
         // 基礎
         public function USER_Member_3()
