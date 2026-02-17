@@ -132,7 +132,7 @@
                                         </li>
                                         <li class="rd-nav-item"><a class="rd-nav-link" href="{{ route('ShowEvent') }}">活動</a>
                                         </li>
-                                        <li class="rd-nav-item"><a class="rd-nav-link" href="./USER_Member_3">球員名單</a>
+                                        <li class="rd-nav-item"><a class="rd-nav-link" href="{{ route('USERMember3') }}">球員名單</a>
                                         </li>
                                         <li class="rd-nav-item"><a class="rd-nav-link" href="./SUM_CLUB">加入公會</a>
                                         </li>

@@ -67,6 +67,10 @@ Route::post('/api/Update_SignIn_Qrcode', [ManagerController::class, 'updateSignI
 Route::post('/submit_event', [ManagerController::class, 'handleActivitySubmission']);
 Route::post('/edit_event', [ManagerController::class, 'edit_event']);
 
+Route::get('/User/USER_Member_3', [ManagerController::class, 'USER_Member_3'])->name('USERMember3');
+Route::get('/User/USER_Member_2', [ManagerController::class, 'USER_Member_2'])->name('USERMember2');
+Route::get('/User/USER_Member_4', [ManagerController::class, 'USER_Member_4'])->name('USERMember4');
+
 
 
 
