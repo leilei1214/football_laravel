@@ -1,19 +1,19 @@
 
 const path = window.location.pathname;
 let Search_level = "0";
-if(path == '/my-express-app/USER_Member_3'){
+if(path == '/USER_Member_3'){
     Search_level = "3";
 }
-else if(path == '/my-express-app/USER_Member_4'){
+else if(path == 'USER_Member_4'){
     Search_level = "4";
 }
-else if(path == '/my-express-app/USER_Member_2'){
+else if(path == 'USER_Member_2'){
     Search_level = "2";
 }
-else if(path == '/my-express-app/USER_Member_1'){
+else if(path == 'USER_Member_1'){
     Search_level = "1";
 }
-else if(path == '/my-express-app/USER_Member_0'){
+else if(path == 'USER_Member_0'){
     Search_level = "0";
 }
 fetch('/api/User_list_member', {
