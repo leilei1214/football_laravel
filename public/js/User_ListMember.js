@@ -70,7 +70,7 @@ fetch('/api/User_list_member', {
                         </div>
                 </div>
                 <div class="player-club">
-                    <img src="./images/tooster.png" alt="Barcelona" draggable="false"/>
+                    <img src="/images/tooster.png" alt="Barcelona" draggable="false"/>
                 </div>
                 </div>
                 <div class="player-picture">
