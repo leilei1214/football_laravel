@@ -71,6 +71,10 @@ Route::post('/edit_event', [ManagerController::class, 'edit_event']);
 Route::get('/User/USER_Member_3', [UserController::class, 'USER_Member_3'])->name('USERMember3');
 Route::get('/User/USER_Member_2', [UserController::class, 'USER_Member_2'])->name('USERMember2');
 Route::get('/User/USER_Member_4', [UserController::class, 'USER_Member_4'])->name('USERMember4');
+Route::post('/api/User_list_member', [UserController::class, 'userListMember'])->name('ApiUSERMember');;
+
+
+
 
 
 

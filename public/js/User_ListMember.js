@@ -16,12 +16,15 @@ else if(path == '/my-express-app/USER_Member_1'){
 else if(path == '/my-express-app/USER_Member_0'){
     Search_level = "0";
 }
-fetch('./api/User_list_member', {
+fetch('/api/User_list_member', {
     method: 'POST',
-    headers: {
-        'Content-Type': 'application/json;charset=utf-8'
+    headers: { 
+        'Content-Type': 'application/json',  // Ensure the request content type is JSON
+        'Accept': 'application/json', // 告訴 Laravel 回傳 JSON 而不是跳轉頁面
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        
     },
-    body: JSON.stringify({ identifier: "none",Search_level:Search_level }),
+    body: JSON.stringify({ Search_level:Search_level }),
 })
 .then(response => {
     if (!response.ok) {

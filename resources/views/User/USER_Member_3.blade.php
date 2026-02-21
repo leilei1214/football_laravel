@@ -3,84 +3,118 @@
 @section('title', 'EventViewList')
 @section('style')
 <link rel="stylesheet" href="{{ asset('css/event/style.css') }}">
-<style>
-.product-header .badge {
-    position: relative;
-    font-size: 20px;
-    padding: 10px;
-}
-.player-avatar {
-  width: 80px;
-  margin-right: 39px;
-  float: left;
-  text-align: center;
-  font-family: Arial, sans-serif;
-}
+    <style>
+      .player-feature-title{
+        padding-top: 7px !important;
+      }
+      img{
+        max-width: 75%;
+      }
+      .form-group .col-sm-2 {
+        color: #35ad79;
+        font-weight: 600;
+      }
+      .radio .radio-custom, .radio .radio-custom-dummy, .radio-inline .radio-custom, .radio-inline .radio-custom-dummy, .checkbox .checkbox-custom, .checkbox .checkbox-custom-dummy, .checkbox-inline .checkbox-custom, .checkbox-inline .checkbox-custom-dummy{
+          border: 1px solid #707279;
+          box-shadow: 0 0 1px 1px #707279;
+      }
+      .select2-chosen{
+        font-family: "Kanit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        font-weight: 600;
+        
+      }
+      
+      .form-control{
+        border: 3px solid #707279;
+        font-family: "Kanit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        font-weight: 600;
+      }
+      .stepper{
+        max-width: 300px;
+        width: auto;
+      } 
+      .select2-container{
+        display: block;
+      }
+      .table-roster tbody td:nth-child(1) {
+         
+          font-weight: 900;
+      }
+      .select2-container .select2-choice{
+        display: block;
+        width: 87px;
+        height: calc(1.5em + 0.75rem + 2px);
+        padding: 0.375rem 0.75rem;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 3px solid #707279;
+        border-radius: 0.25rem;
+        
+      }
 
-/* 頭貼包裝 */
-.avatar-wrapper {
-  position: relative;
-  width: 64px;
-  height: 64px;
-  margin: 0 auto;
-}
+      .list_class_table button{
+        height: calc(1.5em + 0.75rem + 2px);
+        padding: 0.375rem 0.75rem;
+        line-height: 1.5;
+        font-size: 13px;
+      }
+      .list_class_table tr td div{
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+      .table-roster tbody td:nth-child(1) {
+          width: 30%;
+          padding-left: 13px !important;
+      }
+        .product-header {
 
-/* 圓形頭貼 */
-.avatar-wrapper img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #2a2a2a;
-}
+            background: #d5deeb;
+        }
+        .object-container {
+            width: 100%;
+            max-width: 1212px; /* 限制最大寬度 */
+            height: 200px; /* 固定高度 */
+            overflow: hidden; /* 隱藏滾動條 */
+            border: 2px solid #007BFF;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            margin-bottom: 20px;
+        }
+        object {
+            width: 100%; /* 設定為 100% 寬度 */
+            height: 100%; /* 設定為 100% 高度 */
+            border: none; /* 去掉邊框 */
+            overflow: hidden !important; /* 強制隱藏滾動條 */
+        }
 
-/* 位置 Badge（FW） */
-.position-badge {
-  position: absolute;
-  right: -4px;
-  bottom: -4px;
-  background-color: #e74c3c;
-  color: #fff;
-  font-size: 12px;
-  font-weight: bold;
-  padding: 4px 6px;
-  border-radius: 12px;
-  box-shadow: 0 0 0 2px #fff;
-}
+        .object-container::webkit-scrollbar {
+            display: none; /* 隱藏滾動條 */
+        }
+        .select2-drop{
+          width: 87px !important;
+        }
+        
 
-/* 狀態列 */
-.status-row {
-  display: flex;
-  justify-content: center;
-  gap: 6px;
-  margin-top: 6px;
-}
+        .row + .row {
+            width: 100%;
+            margin: 12px auto;
+        }
+        @media (max-width: 991.98px){
+            .table-roster tbody td:nth-child(1) {
+                min-width: 90px;
+                font-weight: 900;
+            }
+            .table-roster tbody td:nth-child(2) {
+                min-width: 102px;
+            }
+        } 
 
-/* 狀態 Icon */
-.status {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  font-size: 12px;
-  line-height: 18px;
-  text-align: center;
-  color: #fff;
-}
-
-/* 已簽到 */
-.status.checkin {
-  background-color: #2ecc71;
-}
-.status.checkout {
-  background-color: black;
-}
-
-
-/* 已繳費 */
-.status.paid {
-  background-color: #3498db;
-}
-</style>
+    </style>
 @endsection
 
 
@@ -191,6 +225,7 @@
 @section('scripts')
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="{{ asset('js/User_ListMember.js') }}"></script>
 
 <!-- <script src="{{ asset('js/event_level.js') }}"></script> -->
 
