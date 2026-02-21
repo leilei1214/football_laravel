@@ -142,7 +142,7 @@
                 <div class="d-flex justify-content-center mb-4 border-b border-gray-300 dark:border-gray-700">
                 <button class="py-2 px-4 text-sm font-medium " onclick="window.location.href='./USER_Member_3'" data-subtab="north">基礎</button>
                 <button class="py-2 px-4 text-sm font-medium " onclick="window.location.href='./USER_Member_4'" data-subtab="central">樂踢</button>
-                <button class="py-2 px-4 text-sm font-medium active" data-subtab="south">實戰</button>
+                <button class="py-2 px-4 text-sm font-medium active" onclick="window.location.href='./USER_Member_2'" data-subtab="south">實戰</button>
             </div>
                 <!-- Owl Carousel-->
                 <div class="col-12" style="padding-left: 0;padding-right: 0;">
