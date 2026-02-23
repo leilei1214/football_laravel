@@ -73,18 +73,18 @@
 </script>
 <script>
     // 修正你的 fetch 語法錯誤 (少了一個括號)
-    fetch('/check-identity')
-      .then(res => res.json())
-      .then(data => {
-        console.log('Level:', data.level, 'Guild:', data.Guild,'guild_Id:', data.guild_Id);
-        if(data.level == 1){
-            $(".addEventHref").addClass("d-none");
-        }else{
-            alert("無權限")
-            window.location.href = "/";
-        }
-      })
-      .catch(err => console.error('Fetch error:', err));
+    // fetch('/check-identity')
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     console.log('Level:', data.level, 'Guild:', data.Guild,'guild_Id:', data.guild_Id);
+    //     if(data.level == 1){
+    //         $(".addEventHref").addClass("d-none");
+    //     }else{
+    //         alert("無權限")
+    //         window.location.href = "/";
+    //     }
+    //   })
+    //   .catch(err => console.error('Fetch error:', err));
 </script>
 <!-- 1️⃣ jQuery 先載入 -->
 <!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> -->
