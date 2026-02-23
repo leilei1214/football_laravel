@@ -65,6 +65,7 @@
     </main>
     
     @yield('scripts') <!-- <<--- 一定要有 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{ asset('js/script2.js') }}"></script>
     <!-- <script src="https://cms.devoffice.com/coding-dev/rd-navbar/demo/js/core.min.js"></script> -->
     <script src="https://cms.devoffice.com/coding-dev/rd-navbar/demo/js/script.js"></script>
@@ -81,7 +82,6 @@
     <script src="/js/myScript.js"></script>
     <!-- JS -->
     <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
-    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 
     <!-- <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/core.min.js') }}"></script>
