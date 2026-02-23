@@ -75,7 +75,7 @@
         <!-- <script src="{{ asset('js/core.min.js') }}"></script>
     <script src="{{ asset('js/script.js') }}"></script>
     <script src="{{ asset('js/smoothscroll.min.js') }}"></script> -->
-    <script src="/js/jquery.ui.totop.min.js"></script>
+    <script src="https://dzl.9a1.mytemp.website/js/jquery.ui.totop.min.js"></script>
     <script src="/js/jquery.rd-parallax.min.js"></script>
     <script src="/js/rd-navbar.min.js"></script>
     <script src="/js/myScript.js"></script>
