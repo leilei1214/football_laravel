@@ -75,9 +75,9 @@
         <!-- <script src="{{ asset('js/core.min.js') }}"></script>
     <script src="{{ asset('js/script.js') }}"></script>
     <script src="{{ asset('js/smoothscroll.min.js') }}"></script> -->
-    <script src="{{ asset('js/jquery.ui.totop.min.js') }}"></script> 
-    <script src="{{ asset('js/jquery.rd-parallax.min.js') }}"></script>
-    <script src="{{ asset('js/rd-navbar.min.js') }}"></script>
+    <script src="/js/jquery.ui.totop.min.js"></script> <!-- 這樣就不會變成 CLUB/js 了 -->
+    <script src="/js/jquery.rd-parallax.min.js"></script>
+    <script src="/js/jquery.rd-navbar.js"></script>
     <script src="/js/myScript.js"></script>
     <!-- JS -->
     <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
