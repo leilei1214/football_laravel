@@ -77,9 +77,10 @@ Route::post('/api/User_list_member', [UserController::class, 'userListMember'])-
 
 
 Route::get('/Club/ClubList', [ClubController::class, 'ClubList'])->name('ClubList');
+Route::post('/api/guilds', [ClubController::class, 'getGuilds']);
 
 
-
+getGuilds
 
 
 

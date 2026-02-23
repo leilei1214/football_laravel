@@ -103,7 +103,7 @@ ul#pagination li.active button {
 
         list.innerHTML = "";
 
-        fetch('./api/guilds', {
+        fetch('/api/guilds', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
