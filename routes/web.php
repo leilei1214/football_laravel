@@ -23,7 +23,7 @@ Route::get('/hello', function () {
 });
 
 Route::get('/', [PageController::class, 'home'])->name('home');
-
+Route::view('/partials/header', 'partials.header');
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::get('/line_login', [LoginController::class, 'login']);
 Route::get('/login_data', [LoginController::class, 'callback']);
