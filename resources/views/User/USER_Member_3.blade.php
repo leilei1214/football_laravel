@@ -143,8 +143,8 @@
                     <div id="tabs-modern" >
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item" role="presentation" ><a class="nav-link " href="./USER_Member_3" data-bs-toggle="tab" aria-selected="true" role="tab">基礎</a></li>
-                            <li class="nav-item" role="presentation" ><a class="nav-link " href="./USER_Member_4" data-bs-toggle="tab" aria-selected="true" role="tab">樂踢</a></li>
-                            <li class="nav-item" role="presentation" ><a class="nav-link active show" href="./USER_Member_2" data-bs-toggle="tab" aria-selected="false" tabindex="-1" role="tab">實戰</a></li>
+                            <li class="nav-item" role="presentation" ><a class="nav-link active show" href="./USER_Member_4" data-bs-toggle="tab" aria-selected="true" role="tab">樂踢</a></li>
+                            <li class="nav-item" role="presentation" ><a class="nav-link" href="./USER_Member_2" data-bs-toggle="tab" aria-selected="false" tabindex="-1" role="tab">實戰</a></li>
                         </ul>                    
                     </div>
                 </div>
