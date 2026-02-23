@@ -139,17 +139,13 @@
                     </div> -->
                 </div>
                 </article>
-                <div class="d-flex justify-content-center mb-4 border-b border-gray-300 dark:border-gray-700">
-                    <button class="py-2 px-4 text-sm font-medium " onclick="window.location.href='./USER_Member_3'" data-subtab="north">基礎</button>
-                    <button class="py-2 px-4 text-sm font-medium " onclick="window.location.href='./USER_Member_4'" data-subtab="central">樂踢</button>
-                    <button class="py-2 px-4 text-sm font-medium active" onclick="window.location.href='./USER_Member_2'" data-subtab="south">實戰</button>
-                </div>
+
                 <div class="row">
                     <div id="tabs-modern" >
                         <ul class="nav nav-tabs" role="tablist">
-                            <li class="nav-item" role="presentation" ><a class="nav-link " href="./USER_Member_3" data-bs-toggle="tab" aria-selected="true" role="tab">詳情</a></li>
-                            <li class="nav-item" role="presentation" ><a class="nav-link " href="./USER_Member_4" data-bs-toggle="tab" aria-selected="true" role="tab">編輯</a></li>
-                            <li class="nav-item" role="presentation" ><a class="nav-link active show" href="./USER_Member_2" data-bs-toggle="tab" aria-selected="false" tabindex="-1" role="tab">刪除</a></li>
+                            <li class="nav-item" role="presentation" ><a class="nav-link " href="./USER_Member_3" data-bs-toggle="tab" aria-selected="true" role="tab">基礎</a></li>
+                            <li class="nav-item" role="presentation" ><a class="nav-link " href="./USER_Member_4" data-bs-toggle="tab" aria-selected="true" role="tab">樂踢</a></li>
+                            <li class="nav-item" role="presentation" ><a class="nav-link active show" href="./USER_Member_2" data-bs-toggle="tab" aria-selected="false" tabindex="-1" role="tab">實戰</a></li>
                         </ul>                    
                     </div>
                 </div>
