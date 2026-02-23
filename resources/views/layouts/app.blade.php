@@ -70,7 +70,7 @@
     <script src="{{ asset('js/smoothscroll.min.js') }}"></script>
     <script src="{{ asset('js/jquery.ui.totop.min.js') }}"></script> <!-- 就是這行路徑錯了 -->
     <script src="{{ asset('js/jquery.rd-parallax.min.js') }}"></script>
-    <script src="{{ asset('js/.rd-navbar.js') }}"></script>
+    <script src="{{ asset('js/rd-navbar.js') }}"></script>
     <script src="/js/myScript.js"></script>
     <!-- JS -->
     <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
