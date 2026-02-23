@@ -65,10 +65,16 @@
     </main>
     
     @yield('scripts') <!-- <<--- 一定要有 -->
-    <script src="{{ asset('js/core.min.js') }}"></script>
+    <!-- <script src="{{ asset('js/core.min.js') }}"></script>
     <script src="{{ asset('js/script.js') }}"></script>
     <script src="{{ asset('js/smoothscroll.min.js') }}"></script>
-    <script src="{{ asset('js/jquery.ui.totop.min.js') }}"></script> <!-- 就是這行路徑錯了 -->
+    <script src="{{ asset('js/jquery.ui.totop.min.js') }}"></script>  -->
+    <script src="https://cms.devoffice.com/coding-dev/rd-navbar/demo/js/core.min.js"></script>
+    <script src="https://cms.devoffice.com/coding-dev/rd-navbar/demo/js/script.js"></script>
+    <script src="https://cms.devoffice.com/coding-dev/rd-navbar/demo/js/smoothscroll.min.js"></script>
+    <script src="https://cms.devoffice.com/coding-dev/rd-navbar/demo/js/jquery.ui.totop.min.js"></script>
+    <!-- <script src="https://cms.devoffice.com/coding-dev/rd-navbar/demo/js/jquery.rd-parallax.min.js"></script>
+    <script src="https://cms.devoffice.com/coding-dev/rd-navbar/dist/js/jquery.rd-navbar.js"></script> -->
     <script src="{{ asset('js/jquery.rd-parallax.min.js') }}"></script>
     <script src="{{ asset('js/rd-navbar.min.js') }}"></script>
     <script src="/js/myScript.js"></script>
