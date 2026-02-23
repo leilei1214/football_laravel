@@ -134,7 +134,7 @@
                                         </li>
                                         <li class="rd-nav-item"><a class="rd-nav-link" href="{{ route('USERMember3') }}">球員名單</a>
                                         </li>
-                                        <li class="rd-nav-item"><a class="rd-nav-link" href="./SUM_CLUB">加入公會</a>
+                                        <li class="rd-nav-item"><a class="rd-nav-link" href="{{ route('ClubList')}}">加入公會</a>
                                         </li>
                                         <li class="rd-nav-item rd-navbar--has-dropdown rd-navbar-submenu Boss">
                                             <a class="rd-nav-link" href="#">管理中心</a>
