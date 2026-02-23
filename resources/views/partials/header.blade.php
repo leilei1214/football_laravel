@@ -58,7 +58,7 @@
                                 <div class="cart-inline-main">
                                         <!-- Product inline-->
                                         <article class="product-inline">
-                                        <div class="product-inline-aside"><a class="product-inline-figure" href="#"><img class="product-inline-image" src="images/product-Nike-Air-Zoom-Pegasus-67x30.png" alt="" width="67" height="30"/></a></div>
+                                        <div class="product-inline-aside"><a class="product-inline-figure" href="#"><img class="product-inline-image" src="/images/product-Nike-Air-Zoom-Pegasus-67x30.png" alt="" width="67" height="30"/></a></div>
                                         <div class="product-inline-main">
                                             <p class="heading-7 product-inline-title"><a href="#">Nike Air Zoom Pegasus</a></p>
                                             <ul class="product-inline-meta">
@@ -73,7 +73,7 @@
                                         </article>
                                         <!-- Product inline-->
                                         <article class="product-inline">
-                                        <div class="product-inline-aside"><a class="product-inline-figure" href="#"><img class="product-inline-image" src="images/product-Nike-Baseball-Hat-55x38.png" alt="" width="55" height="38"/></a></div>
+                                        <div class="product-inline-aside"><a class="product-inline-figure" href="#"><img class="product-inline-image" src="/images/product-Nike-Baseball-Hat-55x38.png" alt="" width="55" height="38"/></a></div>
                                         <div class="product-inline-main">
                                             <p class="heading-7 product-inline-title"><a href="#">Nike Baseball Hat</a></p>
                                             <ul class="product-inline-meta">
@@ -102,13 +102,13 @@
                 <div class="rd-navbar-main-top">
                     <div class="rd-navbar-main-container container">
                     <!-- RD Navbar Brand-->
-                    <div class="rd-navbar-brand"><a class="brand" href="./"><img class="brand-logo " src="./images/tooster.png" alt="" width="95" height="126"/></a>
+                    <div class="rd-navbar-brand"><a class="brand" href="./"><img class="brand-logo " src="/images/tooster.png" alt="" width="95" height="126"/></a>
                     </div>
                     <!-- RD Navbar List-->
                     <ul class="rd-navbar-list">
-                        <li class="rd-navbar-list-item"><a class="rd-navbar-list-link" href="#"><img src="../images/partners-1-inverse-75x42.png" alt="" width="75" height="42"/></a></li>
-                        <li class="rd-navbar-list-item"><a class="rd-navbar-list-link" href="#"><img src="../images/partners-2-inverse-88x45.png" alt="" width="88" height="45"/></a></li>
-                        <li class="rd-navbar-list-item"><a class="rd-navbar-list-link" href="#"><img src="../images/partners-3-inverse-79x52.png" alt="" width="79" height="52"/></a></li>
+                        <li class="rd-navbar-list-item"><a class="rd-navbar-list-link" href="#"><img src="/images/partners-1-inverse-75x42.png" alt="" width="75" height="42"/></a></li>
+                        <li class="rd-navbar-list-item"><a class="rd-navbar-list-link" href="#"><img src="/images/partners-2-inverse-88x45.png" alt="" width="88" height="45"/></a></li>
+                        <li class="rd-navbar-list-item"><a class="rd-navbar-list-link" href="#"><img src="/images/partners-3-inverse-79x52.png" alt="" width="79" height="52"/></a></li>
                     </ul>
                     <!-- RD Navbar Search-->
                     <div class="rd-navbar-search">
