@@ -76,7 +76,7 @@ Route::get('/User/USER_Member_4', [UserController::class, 'USER_Member_4'])->nam
 Route::post('/api/User_list_member', [UserController::class, 'userListMember'])->name('ApiUSERMember');
 
 
-Route::get('/Club/USER_Member_3', [ClubController::class, 'ClubList'])->name('ClubList');
+Route::get('/Club/ClubList', [ClubController::class, 'ClubList'])->name('ClubList');
 
 
 
