@@ -80,7 +80,6 @@ Route::get('/Club/ClubList', [ClubController::class, 'ClubList'])->name('ClubLis
 Route::post('/api/guilds', [ClubController::class, 'getGuilds']);
 
 
-getGuilds
 
 
 
