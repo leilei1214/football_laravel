@@ -7,15 +7,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="icon" href="{{ asset('/images/favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
 
     <!-- Google Fonts -->
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Kanit:300,400,500,500i,600,900%7CRoboto:400,900">
 
         <!-- CSS -->
-    <link rel="stylesheet" href="{{ asset('/css/bootstrap.css') }}">
-    <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('/css/fonts.css') }}">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/fonts.css">
 
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
@@ -71,7 +71,7 @@
     <script src="https://cms.devoffice.com/coding-dev/rd-navbar/demo/js/jquery.ui.totop.min.js"></script>
     <script src="https://cms.devoffice.com/coding-dev/rd-navbar/demo/js/jquery.rd-parallax.min.js"></script>
     <script src="https://cms.devoffice.com/coding-dev/rd-navbar/dist/js/jquery.rd-navbar.js"></script>
-    <script src="{{ asset('/js/myScript.js') }}"></script>
+    <script src="/js/myScript.js"></script>
     <!-- JS -->
     <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
     <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'EventViewList')
+@section('title', 'ClubViewList')
 @section('style')
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css">
