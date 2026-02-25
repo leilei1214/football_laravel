@@ -99,6 +99,8 @@
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+
     <script>
         const swiper = new Swiper(".swiper-container", {
             loop: true,                  // 循環滑動
@@ -126,37 +128,6 @@
             caption.classList.add('animated');
             });
         });
-
-
-    </script>
-    <script>
-            // 修正你的 fetch 語法錯誤 (少了一個括號)
-        fetch('/check-identity')
-        .then(res => res.json())
-        .then(data => {
-            console.log('identifier:', data.identifier, 'Guild:', data.Guild,'guild_Id:', data.guild_Id);
-            if(data.level != 1){
-                $(".Boss").addClass("d-none");
-            }
-               // 2. 動態更新導航欄頭像與連結 (對應你的 Laravel Route)
-            if(data.identifier) { 
-                //  $(".login").addClass("d-none");
-                 $(".logout").removeClass("d-none")
-                // 這裡假設 API 有回傳當前使用者的 id 以便跳轉 /players/{id}
-                const profileUrl = `/players/${data.identifier}`; 
-                
-                $("#user_profile_link").attr("href", profileUrl).removeClass("d-none");
-                $("#employee").text(data.lineDisplayName || "My Profile");
-                
-                if(data.pictureUrl) {
-                    $("#user_avatar").attr("src", data.pictureUrl);
-                }
-            }else{
-                // $(".logout").addClass("d-none");
-                 $(".login").removeClass("d-none")
-            }
-        })
-        .catch(err => console.error('Fetch error:', err));
 
 
     </script>
@@ -189,6 +160,28 @@
 
         });
     </script>
-    
+    <script>
+            $(window).on("load", function(){
+
+                setTimeout(function(){
+
+                    $(".login, .logout").addClass("d-none");
+
+                    fetch('/check-identity')
+                    .then(res => res.json())
+                    .then(data => {
+
+                        if (data.identifier) {
+                            $(".logout").removeClass("d-none");
+                        } else {
+                            $(".login").removeClass("d-none");
+                        }
+
+                    });
+
+                }, 300); // 等 navbar 初始化完
+
+});
+    </script>
 </body>
 </html>
