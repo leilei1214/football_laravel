@@ -1,0 +1,215 @@
+@extends('layouts.app')
+
+@section('title', 'EventViewList')
+@section('style')
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+<link rel="stylesheet" href="{{ asset('css/event/style.css') }}">
+
+<link rel="stylesheet" href="{{ asset('css/Manager.css') }}">
+<style>
+.product-header .badge {
+    position: relative;
+    font-size: 20px;
+    padding: 10px;
+}
+</style>
+@endsection
+
+
+@section('content')
+<section class="section section-md bg-gray-100">
+    <div class="container">
+        <div class="row row-50">
+            <div class="col-lg-8 ">
+
+
+
+                <div class="blog-post" style="margin: -4px;">
+                <!-- Badge-->
+                    <div id="activity_level">
+
+                    </div>
+                <!-- <div class="badge badge-secondary">The Team
+                </div> -->
+                <!-- <div class="badge badge-secondary">The Team
+                </div> -->
+                <h3 class="blog-post-title"></h3>
+                <div class="blog-post-header">
+                    <div class="blog-post-author">
+                    <img class="img-circle" src="/images/logo.png" alt="" width="63" height="63">
+
+                    <!-- <img class="img-circle" src="images/user-3-63x63.jpg" alt="" width="63" height="63"> -->
+                    <p class="post-author organizer"></p>
+                    </div>
+                    <div class="blog-post-meta">
+                    <time class="blog-post-time" datetime="2024"><span class="icon mdi mdi-clock"></span><span class="active_date"></span></time>
+                    <div class="blog-post-comment"><span class="icon mdi mdi-map-marker"></span><span class="location"></span></div>
+                    <div class="blog-post-view"><span class="icon mdi mdi-account-multiple"></span><span class="current_participants"></span>/<span class="max_participants"></span> </div>
+                    <div class="blog-post-view "><span class="icon">$</span><span class="icon amount"></div>
+                    <div class="blog-post-view Boss_edit"><span class="icon">應收:</span><span class="icon sum_amount"></div>
+
+
+                    </div>
+                </div>
+                <div class="blog-post-author-quote">
+                    <p class="activity_intro"></p>
+                </div>
+
+                </div>
+                <div class="row">
+                <!-- mx-auto -->
+                    <div id="tabs-modern" >
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item" role="presentation" ><a class="nav-link btn_EventContent active show" href="#tabs-modern-1" data-bs-toggle="tab" aria-selected="true" role="tab">詳情</a></li>
+                            <li class="nav-item" role="presentation" ><a class="nav-link btn_edit" href="#tabs-modern-1" data-bs-toggle="tab" aria-selected="true" role="tab">編輯</a></li>
+                            <li class="nav-item" role="presentation" ><a class="nav-link btn_delete" href="#tabs-modern-1" data-bs-toggle="tab" aria-selected="false" tabindex="-1" role="tab">刪除</a></li>
+                            <li class="nav-item" role="presentation" ><a class="nav-link " onclick="ClockOut()" href="#tabs-modern-3" data-bs-toggle="tab" aria-selected="false" tabindex="-1" role="tab">簽到表</a></li>
+                            <li class="nav-item" role="presentation" ><a class="nav-link " onclick="QrcodeSign()" href="#tabs-modern-3" data-bs-toggle="tab" aria-selected="false" tabindex="-1" role="tab">Qrcode簽到</a></li>
+
+                        </ul>                    
+                    </div>
+
+
+                </div>
+                <div class="row">
+                <div class="col-sm-12 owl-carousel-outer-navigation">
+                    <article class="heading-component" >
+                    <div class="heading-component-inner">
+                        <h5 class="heading-component-title">錄取名單
+                        </h5>
+                    </div>
+                    </article>
+                </div>
+
+                </div>
+                <div class="table-custom-responsive">
+                <table class="table">
+                    <!-- <div class="badge badge-secondary">錄取名單
+                    </div> -->
+                    <thead class="table-standings ">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">名字</th>
+                        <th scope="col">位置</th>
+                        <th scope="col">簽到</th>
+                        <th scope="col">簽退</th>
+                        <th scope="col">繳費</th>
+
+                    </tr>
+                    </thead>
+                    <tbody id="add_registrations">
+                    <!-- <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                    </tr> -->
+                    </tbody>
+                </table>
+                </div>
+
+                
+            </div>
+            <!-- Aside Block-->
+            <div class="col-sm-12 col-md-12 col-lg-4">
+                <aside class="aside-components"  style="display: contents;">
+
+                <div class="aside-component">
+                    <!-- Heading Component-->
+                    <article class="heading-component">
+                    <div class="heading-component-inner">
+                        <h5 class="heading-component-title">備取名單
+                    </div>
+                    </article>
+                    <!-- Table team-->
+                    <div class="table-custom-responsive">
+                    <table class="table-custom table-standings table-classic" style="table-layout: fixed; width: 100%;">
+                        <thead>
+                        <tr>
+                            <th>順序</th>
+                            <th>名字</th>
+                            <th>位置</th>
+                            <th>備註</th>
+                        </tr>
+                        </thead>
+                        <tbody id="Backup_registrations">
+
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+                </aside>
+            </div>
+            <div class="col-lg-8">
+                <aside class="aside-components"  style="display: contents;">
+
+                <div class="aside-component">
+                    <!-- Heading Component-->
+                    <article class="heading-component">
+                    <div class="heading-component-inner">
+                        <h5 class="heading-component-title">不參加名單
+                    </div>
+                    </article>
+                    <!-- Table team-->
+                    <div class="table-custom-responsive">
+                    <table class="table-custom table-standings table-classic" style="table-layout: fixed; width: 100%;">
+                        <thead>
+                        <tr>
+                            <th>順序</th>
+                            <th>名字</th>
+                            <th>位置</th>
+                            <!-- <th>備註</th> -->
+                        </tr>
+                        </thead>
+                        <tbody id="Nadd_registrations">
+
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+</section>
+@endsection
+@section('scripts')
+
+<script sr 淤c="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src = "https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js" ></script>
+ 
+
+<script>
+    // 修正你的 fetch 語法錯誤 (少了一個括號)
+    fetch('/check-identity')
+      .then(res => res.json())
+      .then(data => {
+        console.log('Level:', data.level, 'Guild:', data.Guild);
+        if(data.level == 1){
+            $(".addEventHref").addClass("d-none");
+        }else{
+            alert("無權限")
+            window.location.href = "/";
+        }
+      })
+      .catch(err => console.error('Fetch error:', err));
+</script>
+
+
+@endsection

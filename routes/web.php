@@ -40,12 +40,14 @@ Route::get('/check-identity', function () {
     $level     = session('level');
     $Gender    = session('Gender');
     $guild_Id  = session('guild_Id');
+    $identifier = session('identifier');
 
     // 例：用 session 去查資料庫
     return response()->json([
         'level'     => $level,
         'Guild'     => $Guild,
-        'guild_Id'  => $guild_Id
+        'guild_Id'  => $guild_Id,
+        'identifier' => $identifier
     ]);
 });
 
@@ -74,6 +76,8 @@ Route::get('/User/USER_Member_3', [UserController::class, 'USER_Member_3'])->nam
 Route::get('/User/USER_Member_2', [UserController::class, 'USER_Member_2'])->name('USERMember2');
 Route::get('/User/USER_Member_4', [UserController::class, 'USER_Member_4'])->name('USERMember4');
 Route::post('/api/User_list_member', [UserController::class, 'userListMember'])->name('ApiUSERMember');
+// 球員詳細資料頁面
+Route::get('/players/{id}', [PlayerController::class, 'show'])->name('players.show');
 
 
 Route::get('/Club/ClubList', [ClubController::class, 'ClubList'])->name('ClubList');
