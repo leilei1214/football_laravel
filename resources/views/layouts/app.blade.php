@@ -163,23 +163,32 @@
     <script>
             $(window).on("load", function(){
 
-                setTimeout(function(){
+    setTimeout(function(){
 
-                    $(".login, .logout").addClass("d-none");
+        $(".login, .logout").addClass("d-none");
 
-                    fetch('/check-identity')
-                    .then(res => res.json())
-                    .then(data => {
+        fetch('/check-identity')
+        .then(res => res.json())
+        .then(data => {
 
-                        if (data.identifier) {
-                            $(".logout").removeClass("d-none");
-                        } else {
-                            $(".login").removeClass("d-none");
-                        }
+            if (data.identifier) {
+                $(".logout").removeClass("d-none")
+                // 這裡假設 API 有回傳當前使用者的 id 以便跳轉 /players/{id}
+                const profileUrl = `/players/${data.identifier}`; 
+                
+                $("#user_profile_link").attr("href", profileUrl).removeClass("d-none");
+                $("#employee").text(data.lineDisplayName || "My Profile");
+                
+                if(data.pictureUrl) {
+                    $("#user_avatar").attr("src", data.pictureUrl);
+                }
+            } else {
+                $(".login").removeClass("d-none");
+            }
 
-                    });
+        });
 
-                }, 300); // 等 navbar 初始化完
+    }, 300); // 等 navbar 初始化完
 
 });
     </script>
