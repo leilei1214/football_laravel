@@ -134,7 +134,7 @@
         fetch('/check-identity')
         .then(res => res.json())
         .then(data => {
-            console.log('Level:', data.level, 'Guild:', data.Guild,'guild_Id:', data.guild_Id);
+            console.log('identifier:', data.identifier, 'Guild:', data.Guild,'guild_Id:', data.guild_Id);
             if(data.level != 1){
                 $(".Boss").addClass("d-none");
             }
