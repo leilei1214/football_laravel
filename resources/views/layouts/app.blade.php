@@ -140,6 +140,8 @@
             }
                // 2. 動態更新導航欄頭像與連結 (對應你的 Laravel Route)
             if(data.identifier) { 
+                 $(".login").addClass("d-none");
+                 $(".logout").removeClass("d-none")
                 // 這裡假設 API 有回傳當前使用者的 id 以便跳轉 /players/{id}
                 const profileUrl = `/players/${data.identifier}`; 
                 
@@ -149,6 +151,9 @@
                 if(data.pictureUrl) {
                     $("#user_avatar").attr("src", data.pictureUrl);
                 }
+            }else{
+                $(".logout").addClass("d-none");
+                 $(".login").removeClass("d-none")
             }
         })
         .catch(err => console.error('Fetch error:', err));
