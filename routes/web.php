@@ -46,6 +46,7 @@ Route::get('/check-identity', function () {
 
     // 例：用 session 去查資料庫
     return response()->json([
+        'level'=>$level,
         'pictureUrl'  => $pictureUrl,
         'Guild'     => $Guild,
         'guild_Id'  => $guild_Id,
