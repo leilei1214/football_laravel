@@ -80,7 +80,7 @@ Route::get('/User/USER_Member_2', [UserController::class, 'USER_Member_2'])->nam
 Route::get('/User/USER_Member_4', [UserController::class, 'USER_Member_4'])->name('USERMember4');
 Route::post('/api/User_list_member', [UserController::class, 'userListMember'])->name('ApiUSERMember');
 // 球員詳細資料頁面
-Route::get('/players/{id}', [PlayerController::class, 'show'])->name('players.show');
+Route::get('/players/{id}', [UserController::class, 'show'])->name('players.show');
 
 
 Route::get('/Club/ClubList', [ClubController::class, 'ClubList'])->name('ClubList');
