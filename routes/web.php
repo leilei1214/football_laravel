@@ -41,8 +41,8 @@ Route::get('/check-identity', function () {
     $Gender    = session('Gender');
     $guild_Id  = session('guild_Id');
     $identifier = session('identifier');
-    $pictureUrl = seesion('pictureUrl');
-    $lineDisplayName = seesion('lineDisplayName');
+    $pictureUrl = session('pictureUrl');
+    $lineDisplayName = session('lineDisplayName');
 
     // 例：用 session 去查資料庫
     return response()->json([
