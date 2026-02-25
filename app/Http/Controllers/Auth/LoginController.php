@@ -59,6 +59,12 @@ class LoginController extends Controller
 
         $userId = $profile['userId'];
         $lineDisplayName = $profile['displayName'];
+        $pictureUrl = $profile['pictureUrl'];
+        session([
+            'pictureUrl'=>$pictureUrl,
+            'lineDisplayName'=>$lineDisplayName
+            
+        ]);
         /*
           $profile = [
             'userId' => 'Uxxxx',
