@@ -94,7 +94,7 @@
                         </li>
                         <li id="login_status">
                             <!-- 預設隱藏，由 JS 決定顯示內容 -->
-                            <a class="link link-icon link-icon-left link-classic login d-none" id="user_profile_link" href="/login?status=login&club=4&level=4">
+                            <a class="link link-icon link-icon-left link-classic login d-none"  href="/login?status=login&club=4&level=4">
                                 <img src="/images/default-avatar.png" alt="Avatar" 
                                     style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover; vertical-align: middle; margin-right: 5px;">
                                 <span class="link-icon-text" >請登入</span>
