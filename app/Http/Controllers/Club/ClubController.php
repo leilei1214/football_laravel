@@ -12,6 +12,11 @@
         {
             return view('Club.ClubList');
         }
+        public function ClubProfile()
+        {
+            return view('Club.ClubProfile');
+        }
+        
         public function getGuilds(Request $request)
         {
             try {

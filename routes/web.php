@@ -85,6 +85,8 @@ Route::get('/players/{id}', [UserController::class, 'show'])->name('players.show
 
 
 Route::get('/Club/ClubList', [ClubController::class, 'ClubList'])->name('ClubList');
+Route::get('/Club/ClubProfile', [ClubController::class, 'ClubProfile'])->name('ClubProfile');
+
 Route::post('/api/guilds', [ClubController::class, 'getGuilds']);
 
 
