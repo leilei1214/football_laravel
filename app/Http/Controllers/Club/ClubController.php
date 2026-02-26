@@ -22,7 +22,7 @@
                 'name' => '台北雄鷹隊',
                 'nameEn' => 'Taipei Eagles',
                 'logo' => 'https://images.unsplash.com/photo-1761325970487-05c2541653eb',
-                'coverImage' => 'https://images.unsplash.com/photo-1624295019913-0420eae31f22',
+                'coverImage' => '/images/clubbackground.jpg',
                 'founded' => 2015,
                 'stadium' => '台北市立體育場',
                 'capacity' => '20,000',

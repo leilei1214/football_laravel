@@ -56,7 +56,7 @@
     
     <!-- Navbar Header -->
     @include('partials.header') <!-- 我們可以把你這段 Header 拆成 partial -->
-    @if (!request()->is('Manager/*'))
+    @if (!request()->is('Manager/*') and !request()->is('Club/*'))
         @include('partials.Swiper') <!-- 我們可以把你這段 Header 拆成 partial -->
     @endif
     <main>
