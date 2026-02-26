@@ -26,7 +26,7 @@
 
 
 @section('content')
-<section class="section section-md bg-gray-100">
+<section class="bg-gray-100">
     <div class="min-h-screen">
         {{-- Cover Image --}}
         <div class="relative h-64 lg:h-80 overflow-hidden bg-gradient-to-b from-zinc-900 to-zinc-700">
