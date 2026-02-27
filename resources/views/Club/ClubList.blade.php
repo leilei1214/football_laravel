@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'ClubViewList')
+@section('title', '公會列表')
 @section('style')
 <link rel="stylesheet" href="{{ asset('/css/SUM_CLUB.css') }}">
 
