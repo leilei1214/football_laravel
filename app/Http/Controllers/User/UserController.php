@@ -78,7 +78,7 @@
             ->where('union_members.name', $id)
             ->select(
                 // 'guilds.guild_id',
-                'union_member.created_at'
+                'union_members.created_at',
                 'guilds.name',
                 'union_members.number'
             )
