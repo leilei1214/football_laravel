@@ -40,7 +40,7 @@
                         <div class="grid lg:grid-cols-3 gap-8 mb-8">
                             {{-- Player Image --}}
                             <div class="lg:col-span-1">
-                                <div class="relative aspect-[3/4] overflow-hidden rounded-lg bg-gradient-to-b from-zinc-100 to-zinc-200">
+                                <div class="w-60 h-60 rounded-full overflow-hidden bg-white shadow-lg border-4 border-white flex-shrink-0">
                                     <img 
                                         src="{{ $player['image'] }}" 
                                         alt="{{ $player['name'] }}"
@@ -95,30 +95,32 @@
                                     </div>
                                 </div>
 
-                                <hr class="border-zinc-200">
 
-                                {{-- Stats Grid --}}
-                                <div class="grid grid-cols-4 gap-4 p-4 bg-zinc-50 rounded-lg">
-                                    <div class="text-center">
-                                        <div class="text-3xl font-bold text-zinc-900 mb-1">{{ $player['stats']['matches'] }}</div>
-                                        <div class="text-sm text-zinc-500">參加場次</div>
-                                    </div>
-                                    <div class="text-center">
-                                        <div class="text-3xl font-bold text-zinc-900 mb-1">{{ $player['stats']['FreeSum'] }}</div>
-                                        <div class="text-sm text-zinc-500">簽到次書</div>
-                                    </div>
-                                    <div class="text-center">
-                                        <div class="text-3xl font-bold text-zinc-900 mb-1">{{ $player['stats']['goals'] }}</div>
-                                        <div class="text-sm text-zinc-500">進球</div>
-                                    </div>
-                                    <div class="text-center">
-                                        <div class="text-3xl font-bold text-zinc-900 mb-1">{{ $player['stats']['assists'] }}</div>
-                                        <div class="text-sm text-zinc-500">助攻</div>
-                                    </div>
+                            </div>
+                        </div>
+                        <div class="grid lg:grid-cols-3 gap-8 mb-8">
+                            <hr class="border-zinc-200">
+
+                            {{-- Stats Grid --}}
+                            <div class="grid grid-cols-4 gap-4 p-4 bg-zinc-50 rounded-lg">
+                                <div class="text-center">
+                                    <div class="text-3xl font-bold text-zinc-900 mb-1">{{ $player['stats']['matches'] }}</div>
+                                    <div class="text-sm text-zinc-500">參加場次</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-3xl font-bold text-zinc-900 mb-1">{{ $player['stats']['FreeSum'] }}</div>
+                                    <div class="text-sm text-zinc-500">簽到次書</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-3xl font-bold text-zinc-900 mb-1">{{ $player['stats']['goals'] }}</div>
+                                    <div class="text-sm text-zinc-500">進球</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-3xl font-bold text-zinc-900 mb-1">{{ $player['stats']['assists'] }}</div>
+                                    <div class="text-sm text-zinc-500">助攻</div>
                                 </div>
                             </div>
                         </div>
-
                         {{-- Tabs Section with Alpine.js --}}
                         <div x-data="{ activeTab: 'overview' }">
                             {{-- Tab Navigation --}}
@@ -149,7 +151,7 @@
                             {{-- Tab Content: Overview --}}
                             <div x-show="activeTab === 'overview'" x-cloak class="space-y-4 mt-6">
                                 <div class="bg-white border border-zinc-200 rounded-lg shadow-sm p-6">
-                                    <h3 class="font-semibold text-lg text-zinc-900 mb-4">球員簡介</h3>
+                                    <h3 class="font-semibold text-lg text-zinc-900 mb-4">歷史活動</h3>
                                     <p class="text-zinc-600 leading-relaxed">
                                         {{ $player['name'] }}是一位出色的{{ $player['position'] }}球員，目前效力於{{ $player['team'] }}。
                                         以其出色的技術和戰術意識著稱，在場上展現出色的表現。
