@@ -219,8 +219,25 @@
                             <div x-show="activeTab === 'career'" x-cloak class="space-y-4 mt-6">
                                 <div class="bg-white border border-zinc-200 rounded-lg shadow-sm p-6">
                                     <h3 class="font-semibold text-lg text-zinc-900 mb-4">公會列表</h3>
+
                                     <div class="space-y-6">
-                                        <div class="flex gap-4">
+                                        @if(!empty($player['guilds']) && count($player['guilds']) > 0)
+
+                                            @foreach($player['guilds'] as $guild)
+                                                <div class="flex gap-4">
+                                                    <div class="w-24 text-sm text-zinc-500 font-semibold">{{ $guild->created_at ?? '無資料' }}</div>
+                                                    <div class="flex-1">
+                                                        <div class="font-semibold text-zinc-900 mb-1">{{ $guild->guild_name }}</div>
+                                                        <span class="inline-flex items-center px-2 py-1 rounded-md border border-zinc-300 text-sm">{{ $guild->number ?? '' }} </span>
+                                                    </div>
+
+                                                </div>
+                                            @endforeach
+
+                                        @else
+                                            <p>尚未加入任何公會</p>
+                                        @endif
+                                        <!-- <div class="flex gap-4">
                                             <div class="w-24 text-sm text-zinc-500 font-semibold">2021-現在</div>
                                             <div class="flex-1">
                                                 <div class="font-semibold text-zinc-900 mb-1">{{ $player['team'] }}</div>
@@ -248,11 +265,11 @@
                                                     接受系統性的專業訓練，建立堅實的技術基礎。
                                                 </p>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
 
-                                <div class="bg-white border border-zinc-200 rounded-lg shadow-sm p-6">
+                                <!-- <div class="bg-white border border-zinc-200 rounded-lg shadow-sm p-6">
                                     <h3 class="font-semibold text-lg text-zinc-900 mb-4">榮譽與獎項</h3>
                                     <ul class="space-y-3 text-zinc-600">
                                         <li class="flex items-center gap-3">
@@ -268,7 +285,7 @@
                                             <span>年度最佳新秀</span>
                                         </li>
                                     </ul>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>

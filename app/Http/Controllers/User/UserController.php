@@ -73,6 +73,16 @@
                     'union_members.name as clubname'
                 )
             ->first();
+            $guilds = DB::table('union_members')
+            ->join('guilds', 'union_members.guild_id', '=', 'guilds.guild_id')
+            ->where('union_members.name', $id)
+            ->select(
+                // 'guilds.guild_id',
+                'union_member.created_at'
+                'guilds.guild_name',
+                'union_members.number'
+            )
+            ->get();
             $player = [
                 'name' => $playerData->username,
                 'nameEn' => $playerData->nameEn,
@@ -84,11 +94,12 @@
                 'team' => $playerData->clubname,
                 'stats' => [
                     'matches' => $playerData->activitySum,
-                    'FreeSum' => $playerData->FreeSum;
+                    'FreeSum' => $playerData->FreeSum,
                     'goals' => $playerData->goal,
                     'assists' => $playerData->activitySum,
                     'Assist' => $playerData->Assist,
                 ],
+                'guilds' => $guilds
             ];
 
             return view('User.player-profile', compact('player'));
