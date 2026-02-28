@@ -63,22 +63,31 @@
             // $player = Player::findOrFail($id);
             
             // 示範用的假資料
+            $playerData = DB::table('players')
+            ->where('identifier', $id)
+            ->join('union_members', 'players.identifier', '=', 'union_members.name')
+            ->join('guilds', 'players.Guild', '=', 'guilds.guild_id')
+                ->select(
+                    'players.*',
+                    'union_members.number as number',
+                    'union_members.name as clubname'
+                )
+            ->first();
             $player = [
-                'name' => '陳威廷',
-                'nameEn' => 'Wei-Ting Chen',
-                'image' => 'https://images.unsplash.com/photo-1682486519525-a2c2d1c65b8b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBiYXNrZXRiYWxsJTIwcGxheWVyJTIwcG9ydHJhaXR8ZW58MXx8fHwxNzcxOTk2NTc4fDA&ixlib=rb-4.1.0&q=80&w=1080',
-                'number' => 10,
-                'position' => '前鋒',
-                'nationality' => '台灣',
-                'age' => 26,
-                'height' => '183 cm',
-                'weight' => '78 kg',
-                'team' => '台北雄鷹隊',
+                'name' => $playerData->username,
+                'nameEn' => $playerData->nameEn,
+                'image' => $playerData->user_img,
+                'number' => $playerData->number,
+                'position' =>$playerData->preferred_position1 ,
+                'nationality' => $playerData->nationality,
+                'age' => $playerData->age,
+                'team' => $playerData->clubname,
                 'stats' => [
-                    'matches' => 28,
-                    'goals' => 15,
-                    'assists' => 8,
-                    'rating' => 8.5,
+                    'matches' => $playerData->activitySum,
+                    'FreeSum' => $playerData->FreeSum;
+                    'goals' => $playerData->goal,
+                    'assists' => $playerData->activitySum,
+                    'Assist' => $playerData->Assist,
                 ],
             ];
 

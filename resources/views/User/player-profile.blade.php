@@ -81,14 +81,14 @@
                                         <div class="text-sm text-zinc-500 mb-1">年齡</div>
                                         <div class="font-semibold text-lg text-zinc-900">{{ $player['age'] }} 歲</div>
                                     </div>
-                                    <div>
+                                    <!-- <div>
                                         <div class="text-sm text-zinc-500 mb-1">身高</div>
                                         <div class="font-semibold text-lg text-zinc-900">{{ $player['height'] }}</div>
                                     </div>
                                     <div>
                                         <div class="text-sm text-zinc-500 mb-1">體重</div>
                                         <div class="font-semibold text-lg text-zinc-900">{{ $player['weight'] }}</div>
-                                    </div>
+                                    </div> -->
                                 </div>
 
                                 <hr class="border-zinc-200">
@@ -97,19 +97,19 @@
                                 <div class="grid grid-cols-4 gap-4 p-4 bg-zinc-50 rounded-lg">
                                     <div class="text-center">
                                         <div class="text-3xl font-bold text-zinc-900 mb-1">{{ $player['stats']['matches'] }}</div>
-                                        <div class="text-sm text-zinc-500">場次</div>
+                                        <div class="text-sm text-zinc-500">參加場次</div>
                                     </div>
                                     <div class="text-center">
                                         <div class="text-3xl font-bold text-zinc-900 mb-1">{{ $player['stats']['goals'] }}</div>
-                                        <div class="text-sm text-zinc-500">進球</div>
+                                        <div class="text-sm text-zinc-500">簽到次書</div>
                                     </div>
                                     <div class="text-center">
                                         <div class="text-3xl font-bold text-zinc-900 mb-1">{{ $player['stats']['assists'] }}</div>
-                                        <div class="text-sm text-zinc-500">助攻</div>
+                                        <div class="text-sm text-zinc-500">進球</div>
                                     </div>
                                     <div class="text-center">
                                         <div class="text-3xl font-bold text-zinc-900 mb-1">{{ $player['stats']['rating'] }}</div>
-                                        <div class="text-sm text-zinc-500">評分</div>
+                                        <div class="text-sm text-zinc-500">助攻</div>
                                     </div>
                                 </div>
                             </div>
@@ -150,11 +150,11 @@
                                         {{ $player['name'] }}是一位出色的{{ $player['position'] }}球員，目前效力於{{ $player['team'] }}。
                                         以其出色的技術和戰術意識著稱，在場上展現出色的表現。
                                         本賽季共出場{{ $player['stats']['matches'] }}次，貢獻{{ $player['stats']['goals'] }}個進球和
-                                        {{ $player['stats']['assists'] }}次助攻，場均評分達到{{ $player['stats']['rating'] }}分。
+                                        {{ $player['stats']['assists'] }}次助攻。
                                     </p>
                                 </div>
 
-                                <div class="bg-white border border-zinc-200 rounded-lg shadow-sm p-6">
+                                <!-- <div class="bg-white border border-zinc-200 rounded-lg shadow-sm p-6">
                                     <h3 class="font-semibold text-lg text-zinc-900 mb-4">特點與優勢</h3>
                                     <ul class="space-y-2 text-zinc-600">
                                         <li class="flex items-start gap-2">
@@ -174,7 +174,7 @@
                                             <span>關鍵時刻的穩定表現</span>
                                         </li>
                                     </ul>
-                                </div>
+                                </div> -->
                             </div>
 
                             {{-- Tab Content: Stats --}}
@@ -188,20 +188,20 @@
                                         </div>
                                         <hr class="border-zinc-200">
                                         <div class="flex justify-between items-center">
+                                            <span class="text-zinc-600">簽到次數</span>
+                                            <span class="font-semibold text-zinc-900">{{ $player['stats']['FreeSum'] }} 場</span>
+                                        </div>
+                                        <hr class="border-zinc-200">
+                                        <div class="flex justify-between items-center">
                                             <span class="text-zinc-600">進球數</span>
-                                            <span class="font-semibold text-zinc-900">{{ $player['stats']['goals'] }} 球</span>
+                                            <span class="font-semibold text-zinc-900">{{ $player['stats']['assists'] }} 球</span>
                                         </div>
                                         <hr class="border-zinc-200">
                                         <div class="flex justify-between items-center">
                                             <span class="text-zinc-600">助攻數</span>
                                             <span class="font-semibold text-zinc-900">{{ $player['stats']['assists'] }} 次</span>
                                         </div>
-                                        <hr class="border-zinc-200">
-                                        <div class="flex justify-between items-center">
-                                            <span class="text-zinc-600">場均評分</span>
-                                            <span class="font-semibold text-zinc-900">{{ $player['stats']['rating'] }} 分</span>
-                                        </div>
-                                        <hr class="border-zinc-200">
+                                        <!-- <hr class="border-zinc-200">
                                         <div class="flex justify-between items-center">
                                             <span class="text-zinc-600">射門次數</span>
                                             <span class="font-semibold text-zinc-900">{{ $player['stats']['goals'] * 4 }} 次</span>
@@ -210,7 +210,7 @@
                                         <div class="flex justify-between items-center">
                                             <span class="text-zinc-600">傳球成功率</span>
                                             <span class="font-semibold text-zinc-900">87%</span>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>
@@ -218,7 +218,7 @@
                             {{-- Tab Content: Career --}}
                             <div x-show="activeTab === 'career'" x-cloak class="space-y-4 mt-6">
                                 <div class="bg-white border border-zinc-200 rounded-lg shadow-sm p-6">
-                                    <h3 class="font-semibold text-lg text-zinc-900 mb-4">職業生涯時間軸</h3>
+                                    <h3 class="font-semibold text-lg text-zinc-900 mb-4">公會列表</h3>
                                     <div class="space-y-6">
                                         <div class="flex gap-4">
                                             <div class="w-24 text-sm text-zinc-500 font-semibold">2021-現在</div>
