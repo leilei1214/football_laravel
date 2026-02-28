@@ -63,9 +63,21 @@
                                         <span class="inline-flex items-center px-3 py-1 rounded-md bg-zinc-900 text-white text-base">
                                             {{ $player['position'] }}
                                         </span>
-                                        <span class="inline-flex items-center px-3 py-1 rounded-md bg-zinc-100 text-zinc-900 text-base">
-                                            {{ $player['team'] }}
-                                        </span>
+                                        @if(!empty($player['guilds']) && count($player['guilds']) > 0)
+
+                                            @foreach($player['guilds'] as $guild)
+                                                <span class="inline-flex items-center px-3 py-1 rounded-md bg-zinc-100 text-zinc-900 text-base">
+                                                    {{ $guild->name }}
+                                                </span>
+                                            @endforeach
+
+                                        @else
+                                            <span class="inline-flex items-center px-3 py-1 rounded-md bg-zinc-100 text-zinc-900 text-base">
+                                                尚未加入任何公會
+                                            </span>                                        
+                                            
+                                        @endif
+
                                     </div>
                                 </div>
 
@@ -81,14 +93,6 @@
                                         <div class="text-sm text-zinc-500 mb-1">年齡</div>
                                         <div class="font-semibold text-lg text-zinc-900">{{ $player['age'] }} 歲</div>
                                     </div>
-                                    <!-- <div>
-                                        <div class="text-sm text-zinc-500 mb-1">身高</div>
-                                        <div class="font-semibold text-lg text-zinc-900">{{ $player['height'] }}</div>
-                                    </div>
-                                    <div>
-                                        <div class="text-sm text-zinc-500 mb-1">體重</div>
-                                        <div class="font-semibold text-lg text-zinc-900">{{ $player['weight'] }}</div>
-                                    </div> -->
                                 </div>
 
                                 <hr class="border-zinc-200">
