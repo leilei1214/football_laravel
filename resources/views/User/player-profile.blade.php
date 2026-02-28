@@ -101,7 +101,7 @@
                         <div class="grid lg:grid-cols-3 gap-8 mb-8">
 
                             {{-- Stats Grid --}}
-                            <div class="grid grid-cols-4 gap-4 p-4 bg-zinc-50 rounded-lg">
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 bg-zinc-50 rounded-xl">
                                 <div class="text-center bg-white rounded-lg shadow-sm border border-zinc-200 p-6 text-center">
                                     <div class="text-3xl font-bold text-zinc-900 mb-1">{{ $player['stats']['matches'] }}</div>
                                     <div class="text-sm text-zinc-500">參加場次</div>
