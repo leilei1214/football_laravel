@@ -63,7 +63,7 @@
             // $player = Player::findOrFail($id);
             
             // 示範用的假資料
-            $playerData = DB::table('players')
+            $playerData = DB::table('users')
             ->where('identifier', $id)
             ->join('union_members', 'players.identifier', '=', 'union_members.name')
             ->join('guilds', 'players.Guild', '=', 'guilds.guild_id')
