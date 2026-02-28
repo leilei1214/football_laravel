@@ -79,7 +79,7 @@
             ->select(
                 // 'guilds.guild_id',
                 'union_member.created_at'
-                'guilds.guild_name',
+                'guilds.name',
                 'union_members.number'
             )
             ->get();

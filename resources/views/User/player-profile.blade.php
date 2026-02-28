@@ -227,7 +227,7 @@
                                                 <div class="flex gap-4">
                                                     <div class="w-24 text-sm text-zinc-500 font-semibold">{{ $guild->created_at ?? '無資料' }}</div>
                                                     <div class="flex-1">
-                                                        <div class="font-semibold text-zinc-900 mb-1">{{ $guild->guild_name }}</div>
+                                                        <div class="font-semibold text-zinc-900 mb-1">{{ $guild->name }}</div>
                                                         <span class="inline-flex items-center px-2 py-1 rounded-md border border-zinc-300 text-sm">{{ $guild->number ?? '' }} </span>
                                                     </div>
 
