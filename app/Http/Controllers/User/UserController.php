@@ -65,8 +65,8 @@
             // 示範用的假資料
             $playerData = DB::table('users')
             ->where('identifier', $id)
-            ->join('union_members', 'players.identifier', '=', 'union_members.name')
-            ->join('guilds', 'players.Guild', '=', 'guilds.guild_id')
+            ->join('union_members', 'users.identifier', '=', 'union_members.name')
+            ->join('guilds', 'users.Guild', '=', 'guilds.guild_id')
                 ->select(
                     'users.*',
                     'union_members.number as number',
