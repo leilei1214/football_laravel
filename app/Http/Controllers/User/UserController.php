@@ -64,7 +64,7 @@
             
             // 示範用的假資料
             $playerData = DB::table('users')
-            ->where('users.identifier', `'${$id}'`)
+            ->where('users.identifier', `'{$id}'`)
             ->join('union_members', 'users.identifier', '=', 'union_members.name')
             ->join('guilds', 'users.Guild', '=', 'guilds.guild_id')
                 ->select(
@@ -75,7 +75,7 @@
             ->first();
             $guilds = DB::table('union_members')
             ->join('guilds', 'union_members.guild_id', '=', 'guilds.guild_id')
-            ->where('union_members.name', `'${$id}'`)
+            ->where('union_members.name', `'{$id}'`)
             ->select(
                 // 'guilds.guild_id',
                 'union_members.created_at',
