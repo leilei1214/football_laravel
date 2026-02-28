@@ -68,7 +68,7 @@
             ->join('union_members', 'players.identifier', '=', 'union_members.name')
             ->join('guilds', 'players.Guild', '=', 'guilds.guild_id')
                 ->select(
-                    'players.*',
+                    'users.*',
                     'union_members.number as number',
                     'union_members.name as clubname'
                 )
