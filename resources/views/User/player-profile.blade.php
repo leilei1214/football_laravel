@@ -104,15 +104,15 @@
                                         <div class="text-sm text-zinc-500">參加場次</div>
                                     </div>
                                     <div class="text-center">
-                                        <div class="text-3xl font-bold text-zinc-900 mb-1">{{ $player['stats']['goals'] }}</div>
+                                        <div class="text-3xl font-bold text-zinc-900 mb-1">{{ $player['stats']['FreeSum'] }}</div>
                                         <div class="text-sm text-zinc-500">簽到次書</div>
                                     </div>
                                     <div class="text-center">
-                                        <div class="text-3xl font-bold text-zinc-900 mb-1">{{ $player['stats']['assists'] }}</div>
+                                        <div class="text-3xl font-bold text-zinc-900 mb-1">{{ $player['stats']['goals'] }}</div>
                                         <div class="text-sm text-zinc-500">進球</div>
                                     </div>
                                     <div class="text-center">
-                                        <div class="text-3xl font-bold text-zinc-900 mb-1">{{ $player['stats']['rating'] }}</div>
+                                        <div class="text-3xl font-bold text-zinc-900 mb-1">{{ $player['stats']['assists'] }}</div>
                                         <div class="text-sm text-zinc-500">助攻</div>
                                     </div>
                                 </div>
