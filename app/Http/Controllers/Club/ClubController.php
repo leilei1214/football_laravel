@@ -16,7 +16,7 @@
         {
                     // 範例：從資料庫獲取球隊資料
         // $team = Team::with(['players', 'stats', 'achievements'])->findOrFail($id);
-            $results = DB::select('SELECT guild_id, name, tag, created_at, guild_logo, club_level_1, club_level_2, club_level_3, description FROM guilds ORDER BY guild_id ASC');
+            $results = DB::select('SELECT guild_id, name, tag, created_at, guild_logo, club_level_1, club_level_2, club_level_3, description FROM guilds ORDER BY guild_id ASC')
             ->where('guilds.guild_id', $id)
             ->first();
             $defaultImage = "/images/logo-soccer-default-95x126.png";
