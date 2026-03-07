@@ -77,18 +77,18 @@
                                 </svg>
                                 <span>{{ $team['stadium'] }}</span>
                             </div>
-                            <div class="flex items-center gap-2 text-zinc-600">
+                            <!-- <div class="flex items-center gap-2 text-zinc-600">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
                                 </svg>
                                 <span>容納 {{ $team['capacity'] }} 人</span>
-                            </div>
-                            <div class="flex items-center gap-2 text-zinc-600">
+                            </div> -->
+                            <!-- <div class="flex items-center gap-2 text-zinc-600">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
                                 </svg>
                                 <span>{{ count($team['achievements']) }} 項榮譽</span>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -101,19 +101,19 @@
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
                 <div class="bg-white rounded-lg shadow-sm border border-zinc-200 p-6 text-center">
                     <div class="text-3xl font-bold text-zinc-900 mb-1">{{ $team['stats']['points'] }}</div>
-                    <div class="text-sm text-zinc-500">積分</div>
+                    <div class="text-sm text-zinc-500">活動場次</div>
                 </div>
                 <div class="bg-white rounded-lg shadow-sm border border-zinc-200 p-6 text-center">
                     <div class="text-3xl font-bold text-green-600 mb-1">{{ $team['stats']['wins'] }}</div>
-                    <div class="text-sm text-zinc-500">勝場</div>
+                    <div class="text-sm text-zinc-500">聯賽次數</div>
                 </div>
                 <div class="bg-white rounded-lg shadow-sm border border-zinc-200 p-6 text-center">
                     <div class="text-3xl font-bold text-zinc-900 mb-1">{{ $winRate }}%</div>
                     <div class="text-sm text-zinc-500">勝率</div>
                 </div>
                 <div class="bg-white rounded-lg shadow-sm border border-zinc-200 p-6 text-center">
-                    <div class="text-3xl font-bold text-blue-600 mb-1">{{ $team['stats']['goalsFor'] }}</div>
-                    <div class="text-sm text-zinc-500">進球數</div>
+                    <div class="text-3xl font-bold text-blue-600 mb-1">{{ count($team['achievements']) }}</div>
+                    <div class="text-sm text-zinc-500">榮譽</div>
                 </div>
             </div>
 
@@ -126,7 +126,7 @@
                         :class="activeTab === 'overview' ? 'border-zinc-900 text-zinc-900' : 'border-transparent text-zinc-500 hover:text-zinc-700 hover:border-zinc-300'"
                         class="flex-1 py-3 px-4 text-center border-b-2 font-medium transition-colors"
                     >
-                        球隊概況
+                        活動分級
                     </button>
                     <button 
                         @click="activeTab = 'squad'"
@@ -154,18 +154,43 @@
                 {{-- Overview Tab --}}
                 <div x-show="activeTab === 'overview'" x-cloak class="space-y-4">
                     <div class="bg-white rounded-lg shadow-sm border border-zinc-200 p-6">
-                        <h3 class="font-semibold text-lg text-zinc-900 mb-4">球隊簡介</h3>
-                        <p class="text-zinc-600 leading-relaxed mb-4">
-                            {{ $team['name'] }}成立於{{ $team['founded'] }}年，是{{ $team['league'] }}的一支強勁球隊。
-                            球隊以其進攻型戰術和團隊精神聞名，主場設在{{ $team['stadium'] }}，可容納{{ $team['capacity'] }}名觀眾。
-                        </p>
-                        <p class="text-zinc-600 leading-relaxed">
-                            在教練{{ $team['manager'] }}的帶領下，球隊本賽季表現出色，目前以{{ $team['stats']['points'] }}分位居聯賽前列。
-                            球隊以{{ implode('和', $team['colors']) }}為主色調，象徵著力量與榮耀。
-                        </p>
+                        <h3 class="font-semibold text-lg text-zinc-900 mb-4">活動標籤</h3>
+                            <div class="flex items-center gap-4 p-4 rounded-lg bg-zinc-50">
+                                <div class="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                                    </svg>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="font-semibold text-zinc-900">{{ $team['club_level_1'] }}</div>
+                                    <!-- <div class="text-sm text-zinc-500">{{ $achievement['year'] }} 年</div> -->
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4 p-4 rounded-lg bg-zinc-50">
+                                <div class="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                                    </svg>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="font-semibold text-zinc-900">{{ $team['club_level_2'] }}</div>
+                                    <!-- <div class="text-sm text-zinc-500">{{ $achievement['year'] }} 年</div> -->
+                                </div>
+                            </div>
+                                                        <div class="flex items-center gap-4 p-4 rounded-lg bg-zinc-50">
+                                <div class="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                                    </svg>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="font-semibold text-zinc-900">{{ $team['club_level_3'] }}</div>
+                                    <!-- <div class="text-sm text-zinc-500">{{ $achievement['year'] }} 年</div> -->
+                                </div>
+                            </div>
                     </div>
 
-                    <div class="bg-white rounded-lg shadow-sm border border-zinc-200 p-6">
+                    <!-- <div class="bg-white rounded-lg shadow-sm border border-zinc-200 p-6">
                         <h3 class="font-semibold text-lg text-zinc-900 mb-4">球隊特色</h3>
                         <div class="grid md:grid-cols-2 gap-4">
                             <div>
@@ -193,7 +218,7 @@
                                 </p>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
 
                 {{-- Squad Tab --}}
@@ -326,7 +351,7 @@
                             @endforeach
                         </div>
 
-                        <hr class="border-zinc-200 my-6">
+                        <!-- <hr class="border-zinc-200 my-6">
 
                         <div>
                             <h4 class="font-semibold text-zinc-900 mb-3">球隊記錄</h4>
@@ -348,7 +373,7 @@
                                     <span>最大比分勝利：7-0 (2022)</span>
                                 </li>
                             </ul>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
