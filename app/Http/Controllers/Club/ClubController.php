@@ -61,12 +61,12 @@
                     'goalsAgainst' => 28,
                     'points' => 60,
                 ],
-                'players' => $players
-                                // 'achievements' => [
-                //     ['year' => 2024, 'title' => '聯賽亞軍'],
-                //     ['year' => 2023, 'title' => '盃賽冠軍'],
-                //     ['year' => 2022, 'title' => '聯賽季軍'],
-                // ],
+                'players' => $players,
+                'achievements' => [
+                    ['year' => 2024, 'title' => '聯賽亞軍'],
+                    ['year' => 2023, 'title' => '盃賽冠軍'],
+                    ['year' => 2022, 'title' => '聯賽季軍'],
+                ],
                 //  ['year' => 2022, 'title' => '聯賽季軍'],
                 // ],
             ];
