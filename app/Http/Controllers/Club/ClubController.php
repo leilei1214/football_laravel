@@ -30,7 +30,7 @@
             foreach ($users as $index => $user) {
                 $players[] = [
                     'id' => $index + 1,
-                    'name' => $user->name,
+                    'name' => $user->username,
                     'number' => $user->number,
                     'level' => $user->level,
                     'image' => $user->user_img,
