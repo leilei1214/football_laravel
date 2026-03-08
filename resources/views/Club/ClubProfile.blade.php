@@ -56,12 +56,12 @@
                         <h1 class="text-4xl font-bold text-zinc-900 mb-2">{{ $team['name'] }}</h1>
                         <p class="text-xl text-zinc-500 mb-4">{{ $team['nameEn'] }}</p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="inline-flex items-center px-3 py-1 rounded-md bg-zinc-900 text-white text-sm">
+                            <!-- <span class="inline-flex items-center px-3 py-1 rounded-md bg-zinc-900 text-white text-sm">
                                 {{ $team['league'] }}
                             </span>
                             <span class="inline-flex items-center px-3 py-1 rounded-md bg-zinc-100 text-zinc-900 text-sm">
                                 {{ implode(' / ', $team['colors']) }}
-                            </span>
+                            </span> -->
                         </div>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
                             <div class="flex items-center gap-2 text-zinc-600">
