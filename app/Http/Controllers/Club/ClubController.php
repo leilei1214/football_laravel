@@ -41,7 +41,7 @@
             $team = [
                 'name' => $results->name,
                 'nameEn' => '',
-                'logo' => $results->guild_logo ? asset($team->guild_logo) : asset($defaultImage),
+                'logo' => $results->guild_logo ? asset($results->guild_logo) : asset($defaultImage),
                 // 'coverImage' => '/images/clubbackground.jpg',
                 'founded' => $results->created_at ? Carbon::parse($row->created_at)->format('Y-m-d') : null,
                 'stadium' => '台中',
