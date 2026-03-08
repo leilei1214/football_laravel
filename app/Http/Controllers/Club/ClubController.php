@@ -42,7 +42,7 @@
                 'name' => $results->name,
                 'nameEn' => '',
                 'logo' => $results->guild_logo ? asset($results->guild_logo) : asset($defaultImage),
-                // 'coverImage' => '/images/clubbackground.jpg',
+                'coverImage' =>$results->guild_logo,
                 'founded' => $results->created_at ? Carbon::parse($results->created_at)->format('Y-m-d') : null,
                 'stadium' => '台中',
                 // 'capacity' => '20,000',
