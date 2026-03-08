@@ -11,7 +11,7 @@
         public function ClubList()
         {
             return view('Club.ClubList');
-        }
+        }        
         public function ClubProfile($id)
         {
                     // 範例：從資料庫獲取球隊資料
@@ -25,7 +25,18 @@
                 ->where('guild_id', $id)
                 ->orderBy('created_at', 'asc')
                 ->get();
-            // 示範用的假資料
+            $players = [];
+            foreach ($users as $index => $user) {
+                $players[] = [
+                    'id' => $index + 1,
+                    'name' => $user->name,
+                    'number' => $user->number,
+                    'level' => $user->level,
+                    'image' => $user->user_img,
+                    'position' => $user->preferred_position1
+                ];
+            }
+                 // 示範用的假資料
             $team = [
                 'name' => $results->name,
                 'nameEn' => '',
@@ -49,20 +60,13 @@
                     'goalsAgainst' => 28,
                     'points' => 60,
                 ],
-                foreach ($users as $index => $user) {
-                    $players[] = [
-                        'id' => $index + 1,   // 迴圈次數
-                        'name' => $user->name,
-                        'number' => $user->number,
-                        'level' => $user->level,
-                        'image' => $user->user_img,
-                        'position' => $user ->preferred_position1
-                    ];
-                }
+                'players' => $players
                                 // 'achievements' => [
                 //     ['year' => 2024, 'title' => '聯賽亞軍'],
                 //     ['year' => 2023, 'title' => '盃賽冠軍'],
                 //     ['year' => 2022, 'title' => '聯賽季軍'],
+                // ],
+                //  ['year' => 2022, 'title' => '聯賽季軍'],
                 // ],
             ];
 
