@@ -145,7 +145,6 @@
                                 </div>
                                 <div class="flex-1">
                                     <div class="font-semibold text-zinc-900">{{ $team['club_level_1'] }}</div>
-                                    <!-- <div class="text-sm text-zinc-500">{{ $achievement['year'] }} 年</div> -->
                                 </div>
                             </div>
                             <div class="flex items-center gap-4 p-4 rounded-lg bg-zinc-50">
@@ -156,7 +155,6 @@
                                 </div>
                                 <div class="flex-1">
                                     <div class="font-semibold text-zinc-900">{{ $team['club_level_2'] }}</div>
-                                    <!-- <div class="text-sm text-zinc-500">{{ $achievement['year'] }} 年</div> -->
                                 </div>
                             </div>
                                                         <div class="flex items-center gap-4 p-4 rounded-lg bg-zinc-50">
@@ -167,7 +165,6 @@
                                 </div>
                                 <div class="flex-1">
                                     <div class="font-semibold text-zinc-900">{{ $team['club_level_3'] }}</div>
-                                    <!-- <div class="text-sm text-zinc-500">{{ $achievement['year'] }} 年</div> -->
                                 </div>
                             </div>
                     </div>
