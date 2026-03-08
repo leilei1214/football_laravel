@@ -43,7 +43,7 @@
                 'nameEn' => '',
                 'logo' => $results->guild_logo ? asset($results->guild_logo) : asset($defaultImage),
                 // 'coverImage' => '/images/clubbackground.jpg',
-                'founded' => $results->created_at ? Carbon::parse($row->created_at)->format('Y-m-d') : null,
+                'founded' => $results->created_at ? Carbon::parse($results->created_at)->format('Y-m-d') : null,
                 'stadium' => '台中',
                 // 'capacity' => '20,000',
                 'league' => '球隊標籤',
