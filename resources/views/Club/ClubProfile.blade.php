@@ -76,10 +76,10 @@
                 </div>
             </div>
 
-            {{-- Stats Overview --}}
+            <!-- {{-- Stats Overview --}}
             @php
                 $winRate = number_format(($team['stats']['wins'] / $team['stats']['matches']) * 100, 1);
-            @endphp
+            @endphp -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
                 <div class="bg-white rounded-lg shadow-sm border border-zinc-200 p-6 text-center">
                     <div class="text-3xl font-bold text-zinc-900 mb-1">{{ $team['stats']['points'] }}</div>
@@ -90,7 +90,7 @@
                     <div class="text-sm text-zinc-500">聯賽次數</div>
                 </div>
                 <div class="bg-white rounded-lg shadow-sm border border-zinc-200 p-6 text-center">
-                    <div class="text-3xl font-bold text-zinc-900 mb-1">{{ $winRate }}%</div>
+                    <div class="text-3xl font-bold text-zinc-900 mb-1">{{ 0 }}%</div>
                     <div class="text-sm text-zinc-500">勝率</div>
                 </div>
                 <div class="bg-white rounded-lg shadow-sm border border-zinc-200 p-6 text-center">
