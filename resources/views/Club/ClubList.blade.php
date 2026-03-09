@@ -226,7 +226,7 @@ ul#pagination li.active button {
 
 <script>
     function read_club(id){
-        window.location.href = `./read_club?list_id=${id}`
+        window.location.href = `/Club/ClubProfile/${id}`
     }
     function register_club(id){
         window.location.href = `./register_club?list_id=${id}`

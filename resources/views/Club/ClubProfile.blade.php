@@ -43,7 +43,7 @@
             <div class="bg-white rounded-lg shadow-sm border border-zinc-200 p-6 lg:p-8 mb-8">
                 <div class="flex flex-col md:flex-row gap-6 items-start md:items-center">
                     {{-- Team Logo --}}
-                    <div class="w-32 h-32 rounded-full overflow-hidden bg-white shadow-lg border-4 border-white flex-shrink-0">
+                    <div class="w-32 h-32  overflow-hidden bg-white shadow-lg border-4 border-white flex-shrink-0">
                         <img 
                             src="{{ $team['logo'] }}" 
                             alt="{{ $team['name'] }}"
