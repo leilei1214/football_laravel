@@ -293,6 +293,10 @@
                         </div>
 
                         @php
+                            $matches = $team['stats']['matches'] ?? 0;
+                            $goalsFor = $team['stats']['goalsFor'] ?? 0;
+                            $goalsAgainst = $team['stats']['goalsAgainst'] ?? 0;
+
                             $avgGoalsFor = $matches > 0 ? number_format($goalsFor / $matches, 1) : 0;
                             $avgGoalsAgainst = $matches > 0 ? number_format($goalsAgainst / $matches, 1) : 0;
                         @endphp
