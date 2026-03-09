@@ -76,10 +76,12 @@
                 </div>
             </div>
 
-            <!-- {{-- Stats Overview --}}
+            {{-- Stats Overview --}}
             @php
-                $winRate = number_format(($team['stats']['wins'] / $team['stats']['matches']) * 100, 1);
-            @endphp -->
+                $winRate = $team['stats']['matches'] > 0 
+                ? number_format(($team['stats']['wins'] / $team['stats']['matches']) * 100, 1) 
+                : 0;
+            @endphp
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
                 <div class="bg-white rounded-lg shadow-sm border border-zinc-200 p-6 text-center">
                     <div class="text-3xl font-bold text-zinc-900 mb-1">{{ $team['stats']['points'] }}</div>
