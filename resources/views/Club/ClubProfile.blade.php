@@ -293,8 +293,8 @@
                         </div>
 
                         @php
-                            $avgGoalsFor = number_format($team['stats']['goalsFor'] / $team['stats']['matches'], 1);
-                            $avgGoalsAgainst = number_format($team['stats']['goalsAgainst'] / $team['stats']['matches'], 1);
+                            $avgGoalsFor = $matches > 0 ? number_format($goalsFor / $matches, 1) : 0;
+                            $avgGoalsAgainst = $matches > 0 ? number_format($goalsAgainst / $matches, 1) : 0;
                         @endphp
 
                         <div class="mt-6 p-4 bg-blue-50 rounded-lg">
