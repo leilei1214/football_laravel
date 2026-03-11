@@ -115,23 +115,31 @@
             }
         }
         public function registerClub($id){
-            DB::table('union_members')->insert([
-                'guild_id'   => $id,
-                'name'       => session('identifier'),
-                'level'      => 4,
-                // 'phone'      => request('phone'),
-                'is_active'  => 1,
-                'joined_at'  => now(),
-                // 'left_at'    => null,
-                'created_at' => now(),
-                'class'      => 'football',
-                // 'number'     => request('number')
-            ]);
+            try {
+                DB::table('union_members')->insert([
+                    'guild_id'   => $id,
+                    'name'       => session('identifier'),
+                    'level'      => 4,
+                    // 'phone'      => request('phone'),
+                    'is_active'  => 1,
+                    'joined_at'  => now(),
+                    // 'left_at'    => null,
+                    'created_at' => now(),
+                    'class'      => 'football',
+                    // 'number'     => request('number')
+                ]);
 
-            return response()->json([
-                'success' => true,
-                'message' => '加入球隊成功'
-            ]);
+                return response()->json([
+                    'success' => true,
+                    'message' => '加入球隊成功'
+                ]);
+            }catch (\Exception $e) {
+
+                return response()->json([
+                    'redirect' => route('login') . '?status=login&club=' . $id . '&level=4'
+                ]);
+
+            }
 
         }
         
