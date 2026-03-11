@@ -122,14 +122,30 @@
                 ]);
             }
 
+            $name = session('identifier');
+
+            // 先檢查是否已加入
+            $exists = DB::table('union_members')
+                ->where('guild_id', $id)
+                ->where('name', $name)
+                ->first();
+
+            if ($exists) {
+                return response()->json([
+                    'success' => false,
+                    'message' => '你已經加入過此球隊'
+                ]);
+            }
+
+            // 沒有才新增
             DB::table('union_members')->insert([
                 'guild_id'   => $id,
-                'name'       => session('identifier'),
+                'name'       => $name,
                 'level'      => 4,
                 'is_active'  => 1,
                 'joined_at'  => now(),
                 'created_at' => now(),
-                'class'      => 'football',
+                'class'      => 'football'
             ]);
 
             return response()->json([
@@ -137,7 +153,7 @@
                 'message' => '加入球隊成功'
             ]);
         }
-                
+                        
 
         
     }
