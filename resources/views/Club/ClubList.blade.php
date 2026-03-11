@@ -230,6 +230,19 @@ ul#pagination li.active button {
     }
     function register_club(id){
         window.location.href = `/Club/registerClub/${id}`
+        fetch('/club/register/' + id)
+        .then(res => res.json())
+        .then(data => {
+
+            if (data.redirect) {
+                window.location.href = data.redirect;
+            }
+
+            if (data.success) {
+                alert(data.message);
+            }
+
+        });
     }
 </script>
 @endsection
