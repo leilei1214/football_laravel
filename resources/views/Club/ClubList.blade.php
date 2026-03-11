@@ -250,6 +250,9 @@ ul#pagination li.active button {
             if (data.success) {
                 alert(data.message);
             }
+            if (!data.success) {
+                alert(data.message);
+            }
 
         });
     }
