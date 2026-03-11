@@ -117,7 +117,7 @@
         public function registerClub($id){
             DB::table('union_members')->insert([
                 'guild_id'   => $id,
-                'name'       => ession('identifier'),
+                'name'       => session('identifier'),
                 'level'      => 4,
                 // 'phone'      => request('phone'),
                 'is_active'  => 1,
