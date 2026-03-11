@@ -229,7 +229,7 @@ ul#pagination li.active button {
         window.location.href = `/Club/ClubProfile/${id}`
     }
     function register_club(id){
-        window.location.href = `/Club/registerClub/${id}`
+        // window.location.href = `/Club/registerClub/${id}`
         fetch('/club/register/' + id)({
             method: 'POST',
             headers: {
