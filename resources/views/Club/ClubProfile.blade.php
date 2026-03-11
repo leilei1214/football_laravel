@@ -47,7 +47,7 @@
                         <img 
                             src="{{ $team['logo'] }}" 
                             alt="{{ $team['name'] }}"
-                            class="w-full h-full object-cover"
+                            class="w-full h-full object-fill"
                         />
                     </div>
 

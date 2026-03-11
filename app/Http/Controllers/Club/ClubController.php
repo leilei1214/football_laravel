@@ -65,7 +65,7 @@
                 'achievements' => [
                     ['year' => 'xxxx', 'title' => 'xx亞軍'],
                     ['year' => 'xxxx', 'title' => 'xx冠軍'],
-                    ['year' => 'xxxx', 'title' => 'xx季軍'],
+                    ['year' => 'xxxx', 'title' => 'xxwq1季軍'],
                 ],
                 //  ['year' => 2022, 'title' => '聯賽季軍'],
                 // ],
@@ -113,6 +113,26 @@
                 \Log::error('資料庫查詢失敗: ' . $e->getMessage());
                 return response()->json(['message' => '資料庫查詢錯誤'], 500);
             }
+        }
+        public function registerClub($id){
+            DB::table('union_members')->insert([
+                'guild_id'   => $id,
+                'name'       => ession('identifier'),
+                'level'      => 4,
+                // 'phone'      => request('phone'),
+                'is_active'  => 1,
+                'joined_at'  => now(),
+                // 'left_at'    => null,
+                'created_at' => now(),
+                'class'      => 'football',
+                // 'number'     => request('number')
+            ]);
+
+            return response()->json([
+                'success' => true,
+                'message' => '加入球隊成功'
+            ]);
+
         }
         
 
